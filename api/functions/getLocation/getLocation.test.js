@@ -8,7 +8,7 @@ describe("getLocation function", () => {
 					latLng: { latitude: 53.47671998, longitude: -2.228977818 },
 				},
 			};
-			expect(await getLocation("MAN")).toBe(expectedResponse);
+			expect(await getLocation("MAN")).toEqual(expectedResponse);
 		});
 	});
 });
