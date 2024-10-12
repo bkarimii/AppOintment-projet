@@ -90,3 +90,8 @@ principles are followed:
 [Vitest]: https://vitest.dev/
 [wiki]: https://github.com/textbook/starter-kit/wiki
 [Winston]: https://github.com/winstonjs/winston
+
+## Install Google Maps Services
+
+To use the Google Distance Matrix API (or other Google Maps services) in this project, install the official Node.js client library for Google Maps services by running the following command:
+npm install @googlemaps/google-maps-services-js
