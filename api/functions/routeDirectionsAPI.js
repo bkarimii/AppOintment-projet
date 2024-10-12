@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import axios from "axios";
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
@@ -84,20 +83,12 @@ export async function computeRoutesForOrigins(
 						staticDuration,
 					});
 				} else {
-					console.error(
-						"No routes found in response for origin:",
-						originElement.city,
-					);
 					arrivalDetail.details.push({
 						city: originElement.city,
 						error: "No routes found",
 					});
 				}
 			} catch (error) {
-				console.error(
-					`Error fetching data for origin ${originElement.city}:`,
-					error.response ? error.response.data : error.message,
-				);
 				arrivalDetail.details.push({
 					city: originElement.city,
 					error: "Failed to compute the route",

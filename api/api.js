@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 import { Router } from "express";
 
 import { computeRoutesForOrigins } from "./functions/routeDirectionsAPI.js";
@@ -113,7 +111,6 @@ api.get("/compute-route", async (req, res) => {
 		const forProcess = processTravelInfo(travelInfo);
 		// console.log(forProcess,"<---process")
 		const stats = statistics(forProcess);
-		console.log(apiKey, "<-----This is apikey");
 		res.status(200).json(stats);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
