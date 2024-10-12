@@ -1,5 +1,4 @@
 /* eslint-disable no-console */
-// import { env } from "process";
 
 import { Router } from "express";
 
@@ -7,11 +6,10 @@ import { computeRoutesForOrigins } from "./functions/routeDirectionsAPI.js";
 import { statistics } from "./functions/statisticalAnalyse.js";
 import { processTravelInfo } from "./functions/statisticalAnalyse.js";
 import messageRouter from "./messages/messageRouter.js";
-import googleApiKey from "./utils/config.cjs";
+import { googleApiKey } from "./utils/config.cjs";
 
 const api = Router();
 const apiKey = googleApiKey;
-// const apiKey= process.env.GOOGLE_MAPS_API_KEY_TWO;
 
 api.use("/message", messageRouter);
 
