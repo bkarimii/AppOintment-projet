@@ -12,5 +12,3 @@ describe("getLocation function", () => {
 		});
 	});
 });
-
-// this test is not working because test database is different than production env database

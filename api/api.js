@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import db from "./db.js";
 import messageRouter from "./messages/messageRouter.js";
+// import { getLocation } from "./functions/getLocation/getLocation.js";
 
 const api = Router();
 
