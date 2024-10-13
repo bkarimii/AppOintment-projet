@@ -45,6 +45,7 @@ function NewMeeting() {
 					id="meeting-station"
 					defaultValue={""}
 					onChange={(e) => setMeetingStation(e.target.value)}
+					required
 				>
 					<option value="" disabled>
 						Select a station
