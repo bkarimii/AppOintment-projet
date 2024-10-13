@@ -1,9 +1,8 @@
 const timeExtractor = (dateTimeString) => {
 	// This function extract time and date and return it in an array
 	// Input format should be like this: "2024-10-13T06:20:00Z"
-	// eslint-disable-next-line no-console
 	const splittedDateTime = dateTimeString.split("T");
-	// eslint-disable-next-line no-console
+
 	if (splittedDateTime.length === 2) {
 		const time = splittedDateTime[1].split("Z")[0];
 		const date = splittedDateTime[0];
