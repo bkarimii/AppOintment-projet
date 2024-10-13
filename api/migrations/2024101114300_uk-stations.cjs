@@ -16,7 +16,7 @@ const migration = {
 			sixteen_character_name: { notNull: true, type: "text" },
 			longitude: { notNull: true, type: "float8" },
 			latitude: { notNull: true, type: "float8" },
-			crs_code: { notNull: true, type: "text" },
+			crs_code: { notNull: true, type: "char(3)" },
 		});
 		pgm.sql(
 			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, longitude, latitude, crs_code) VALUES (1524, 'Manchester Piccadilly','MANCHESTER PIC',-2.228977818,53.47671998,'MAN')",
