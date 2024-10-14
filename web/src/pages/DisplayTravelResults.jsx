@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import travelData from "../assets/travelDetail.json";
+
 function DisplayTravelResults() {
 	const data = {
 		origins: [
@@ -23,12 +25,23 @@ function DisplayTravelResults() {
 		},
 		intervalTime: "15",
 	};
-
-	const [showData, setShowData] = useState(false);
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
+	const [showData, setShowData] = useState(false);
 	const url = "/api/compute-route";
 
-	const travelProcessedData = async (URL) => {
+	function extractDateTime(isoString) {
+		const dateObject = new Date(isoString);
+
+		const date = dateObject.toLocaleDateString("en-GB");
+		const time = dateObject.toLocaleTimeString("en-GB", {
+			hour: "2-digit",
+			minute: "2-digit",
+		});
+
+		return [date, time];
+	}
+
+	const fetchTravelData = async (URL) => {
 		const response = await fetch(URL, {
 			method: "POST",
 			headers: {
@@ -38,13 +51,14 @@ function DisplayTravelResults() {
 		});
 		if (response.ok) {
 			const result = await response.json();
-			setProcessedResultsStorage([...result]);
+			setProcessedResultsStorage(result);
 		} else console.error("An error happened!");
 	};
 	const handleShowResultClicks = () => {
 		setShowData((prevShowdata) => !prevShowdata);
-		if (!showData) {
-			travelProcessedData(url);
+		console.log(processedResultsStorage);
+		if (showData) {
+			fetchTravelData(url);
 		}
 	};
 
@@ -53,12 +67,13 @@ function DisplayTravelResults() {
 			<button onClick={handleShowResultClicks}>
 				{showData ? "Hide Data" : "Show Data"}
 			</button>
-			<div>
-				{showData && (
+			{showData && (
+				<div>
 					<div>
 						<table>
 							<thead>
 								<tr>
+									<th>Meeting Date</th>
 									<th>Meeting Time</th>
 									<th>Max Travel Time</th>
 									<th>Min Travel Time</th>
@@ -67,28 +82,29 @@ function DisplayTravelResults() {
 									<th>Latest Arrival</th>
 									<th>Earliest Departure</th>
 									<th>Latest Departure</th>
-									<th>Median Arrival Time</th>
 								</tr>
 							</thead>
 							<tbody>
-								{processedResultsStorage.map((result, index) => {
-									<tr key={index}>
-										<td>{result.meetingTime}</td>
-										<td>{result.maxTravelTime}</td>
-										<td>{result.minTravelTime}</td>
-										<td>{result.averageTravelTime}</td>
-										<td>{result.earliestArrival}</td>
-										<td>{result.latestArrival}</td>
-										<td>{result.earliestDeparture}</td>
-										<td>{result.latestDeparture}</td>
-										<td>{result.medianArrivalTime}</td>
-									</tr>;
+								{travelData.travelDetail.map((result, index) => {
+									return (
+										<tr key={index}>
+											<td>{extractDateTime(result.meetingTime)[0]}</td>
+											<td>{extractDateTime(result.meetingTime)[1]}</td>
+											<td>{result.maxTravelTime}</td>
+											<td>{result.minTravelTime}</td>
+											<td>{result.averageTravelTime}</td>
+											<td>{extractDateTime(result.earliestArrival)[1]}</td>
+											<td>{extractDateTime(result.latestArrival)[1]}</td>
+											<td>{extractDateTime(result.earliestDeparture)[1]}</td>
+											<td>{extractDateTime(result.latestDeparture)[1]}</td>
+										</tr>
+									);
 								})}
 							</tbody>
 						</table>
 					</div>
-				)}
-			</div>
+				</div>
+			)}
 		</>
 	);
 }
