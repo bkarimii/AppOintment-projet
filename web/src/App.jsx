@@ -12,6 +12,7 @@ function App() {
 			<Route path="/" element={<Home />} />
 			<Route path="/new-meeting" element={<NewMeeting />} />
 			<Route path="/nested/about/path" element={<About />} />
+
 		</Routes>
 	);
 }
