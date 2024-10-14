@@ -1,14 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 
-import "./App.css";
-import About from "./pages/About.jsx";
-import Home from "./pages/Home.jsx";
+import "./pages/DisplayComponent.css";
+import DisplayTravelResults from "./pages/DisplayTravelResults.jsx";
 
 function App() {
 	return (
 		<Routes>
-			<Route path="/" element={<Home />} />
-			<Route path="/nested/about/path" element={<About />} />
+			<Route path="/" element={<DisplayTravelResults />} />
 		</Routes>
 	);
 }
