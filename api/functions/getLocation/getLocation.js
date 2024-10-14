@@ -6,7 +6,7 @@ export const getLocation = async (crsCode) => {
 		[crsCode],
 	);
 
-	const location = {
+	const locationInfo = {
 		location: {
 			latLng: { ...result.rows[0] },
 		},
@@ -16,9 +16,9 @@ export const getLocation = async (crsCode) => {
 
 	const message = success
 		? `${crsCode} station exists in the list`
-		: `${crsCode} station exists in the list`;
+		: `${crsCode} station doesn't exist in the list`;
 
-	return { success: success, location: { ...location }, message: message };
+	return { success: success, ...locationInfo, message: message };
 
 	// return result.rowCount != 0
 	// 	? location
