@@ -1,7 +1,5 @@
 import { useState } from "react";
 
-import travelData from "../assets/travelDetail.json";
-
 function DisplayTravelResults() {
 	const data = {
 		origins: [
@@ -85,7 +83,7 @@ function DisplayTravelResults() {
 								</tr>
 							</thead>
 							<tbody>
-								{travelData.travelDetail.map((result, index) => {
+								{processedResultsStorage.map((result, index) => {
 									return (
 										<tr key={index}>
 											<td>{extractDateTime(result.meetingTime)[0]}</td>
@@ -93,10 +91,10 @@ function DisplayTravelResults() {
 											<td>{result.maxTravelTime}</td>
 											<td>{result.minTravelTime}</td>
 											<td>{result.averageTravelTime}</td>
-											<td>{extractDateTime(result.earliestArrival)[1]}</td>
-											<td>{extractDateTime(result.latestArrival)[1]}</td>
-											<td>{extractDateTime(result.earliestDeparture)[1]}</td>
-											<td>{extractDateTime(result.latestDeparture)[1]}</td>
+											<td>{result.earliestArrival}</td>
+											<td>{result.latestArrival}</td>
+											<td>{result.earliestDeparture}</td>
+											<td>{result.latestDepartur}</td>
 										</tr>
 									);
 								})}
