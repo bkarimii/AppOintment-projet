@@ -1,16 +1,17 @@
-const timeExtractor = (dateTimeString) => {
-	// This function extract time and date and return it in an array
+function timeExtractor(dateTimeString) {
+	// This function extracts time and date and returns it in an array
 	// Input format should be like this: "2024-10-13T06:20:00Z"
-	const splittedDateTime = dateTimeString.split("T");
+	const dt = new Date(dateTimeString);
 
-	if (splittedDateTime.length === 2) {
-		const time = splittedDateTime[1].split("Z")[0];
-		const date = splittedDateTime[0];
+	if (!isNaN(dt.getTime())) {
+		// Check if the date is valid
+		const date = dt.toISOString().split("T")[0];
+		const time = dt.toISOString().split("T")[1].split("Z")[0];
 		return [date, time];
 	} else {
 		return "IncorrectFormat";
 	}
-};
+}
 
 // convert time to minutes for mathmatical operation
 function timeToMinutes(time) {
@@ -27,13 +28,13 @@ function processTravelInfo(array) {
 	for (const item of array) {
 		for (const detail of item.details) {
 			// The difference between meeeting time and arrival time [waiting time in the train station]
-			const difference = Math.floor(
+			const finalWaitSeconds = Math.floor(
 				(new Date(meetingTime) - new Date(detail.lastArrivalTime)) / 1000,
 			);
 			const tripDuration = Number(detail.duration.split("s")[0]);
 			// Total of the time spent on this journey , travel time+ waiting time
 			const totalSpentTimeInMinutes = Math.floor(
-				(tripDuration + difference) / 60,
+				(tripDuration + finalWaitSeconds) / 60,
 			);
 			const totalSpentTimeInHours =
 				Math.round((totalSpentTimeInMinutes / 60) * 1000) / 1000;
@@ -62,12 +63,12 @@ function processTravelInfo(array) {
 }
 
 // This function does the statistical analysis on the user travel information we get back from processTravelInfo
-function statistics(array) {
+function statistics(arrayOfProcessedInfo) {
 	const difficultTravels = []; // Array to hold users info who needs to travel a day before
 	const tooLongTravel = []; // Array to hold travels longer than 8 hours
 	const travelStatsByMeeting = []; // Array to hold statistics grouped by meeting time
 
-	for (const object of array) {
+	for (const itemOfProcessedInfo of arrayOfProcessedInfo) {
 		let [
 			maxTravelTime,
 			minTravelTime,
@@ -81,18 +82,24 @@ function statistics(array) {
 		const arrivalTimesInMinutes = [];
 		let countOfTraveler = 0;
 
-		for (const element of object.analys) {
+		for (const element of itemOfProcessedInfo.analys) {
 			totalTravelTime += element.spentTimeInMinutes;
 			countOfTraveler++;
 
 			// Track difficult travels (arriving a day earlier)
 			if (element.durationInDays > 0) {
-				difficultTravels.push({ meetingTime: object.meetingTime, element });
+				difficultTravels.push({
+					meetingTime: itemOfProcessedInfo.meetingTime,
+					element,
+				});
 			}
 
 			// Track too long travels (longer than 10 hours)
 			if (element.durationInDays === 0 && element.spentTimeInHour > 10) {
-				tooLongTravel.push({ meetingTime: object.meetingTime, element });
+				tooLongTravel.push({
+					meetingTime: itemOfProcessedInfo.meetingTime,
+					element,
+				});
 			}
 
 			// Finding the max and min travel times
@@ -131,15 +138,15 @@ function statistics(array) {
 
 		// Push statistics for the current meeting time
 		travelStatsByMeeting.push({
-			meetingTime: object.meetingTime,
-			maxTravelTime: maxTravelTime / 60, // Convert to hours
-			minTravelTime: minTravelTime / 60, // Convert to hours
-			averageTravelTime: averageTravelTime / 60, // Convert to hours
+			meetingTime: itemOfProcessedInfo.meetingTime,
+			maxTravelTimeInHour: (maxTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
+			minTravelTimeInHour: (minTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
+			averageTravelTimeInHour: (averageTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			earliestArrival,
 			latestArrival,
 			earliestDeparture,
 			latestDeparture,
-			medianArrivalTime: minutesToTime(medianTravelTime),
+			medianArrivalTime: minutesToTime(medianTravelTime), // Assuming minutesToTime correctly converts minutes to time format
 			difficultTravels,
 			tooLongTravel,
 		});

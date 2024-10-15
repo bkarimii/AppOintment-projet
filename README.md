@@ -106,8 +106,4 @@ You can install Axios via npm. Open your terminal and run the following command:
 
 ```bash
 npm install axios
-
-Once Axios is installed, you can import it into your JavaScript files.
-
- import axios from 'axios';
 ```

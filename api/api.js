@@ -64,8 +64,8 @@ api.post("/compute-route", async (req, res) => {
 			fields,
 			apiKey,
 		);
-		const forProcess = processTravelInfo(travelInfo);
-		const stats = statistics(forProcess);
+		const processedInfo = processTravelInfo(travelInfo);
+		const stats = statistics(processedInfo);
 		res.status(200).json(stats);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
