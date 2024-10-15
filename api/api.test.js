@@ -3,7 +3,7 @@ import request from "supertest";
 import app from "./app.js";
 
 describe("/api", () => {
-	describe("GET /compute-route", () => {
+	describe("POST /compute-route", () => {
 		const body = {
 			origins: [
 				{
