@@ -8,7 +8,7 @@ export const transformFormData = async (formData) => {
 
 		origins.push({
 			name: attendee.name,
-			city: locationResult.station_name, // Changed city to station_name
+			city: locationResult.station_name, // Change city to station_name in the future
 			location: locationResult.location,
 		});
 	}
