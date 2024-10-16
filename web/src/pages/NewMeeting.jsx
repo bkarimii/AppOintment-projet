@@ -3,11 +3,27 @@ import "./NewMeeting.css";
 
 function NewMeeting() {
 	const [stations, setStations] = useState([]);
-	const [meetingStation, setMeetingStation] = useState();
-	const [meetingDate, setMeetingDate] = useState();
-	const [earliestStartTime, setEarliestStartTime] = useState();
-	const [latestStartTime, setLatestStartTime] = useState();
-	const [attendees, setAttendees] = useState([{ name: "", station: "" }]);
+	const [formData, setFormData] = useState(() => {
+		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
+		return (
+			savedData || {
+				meetingStation: "",
+				meetingDate: "",
+				earliestStartTime: "",
+				latestStartTime: "",
+				attendees: [{ name: "", station: "" }],
+			}
+		);
+	});
+	const [meetingStation, setMeetingStation] = useState(formData.meetingStation);
+	const [meetingDate, setMeetingDate] = useState(formData.meetingDate);
+	const [earliestStartTime, setEarliestStartTime] = useState(
+		formData.earliestStartTime,
+	);
+	const [latestStartTime, setLatestStartTime] = useState(
+		formData.latestStartTime,
+	);
+	const [attendees, setAttendees] = useState(formData.attendees);
 
 	useEffect(() => {
 		fetch("/api/station-list")
@@ -15,10 +31,53 @@ function NewMeeting() {
 			.then((stationList) => setStations(stationList));
 	}, []);
 
+	useEffect(() => {
+		const updateFormData = () => {
+			setFormData({
+				meetingStation,
+				meetingDate,
+				earliestStartTime,
+				latestStartTime,
+				attendees,
+			});
+		};
+
+		updateFormData();
+	}, [
+		meetingStation,
+		meetingDate,
+		earliestStartTime,
+		latestStartTime,
+		attendees,
+	]);
+
+	useEffect(() => {
+		localStorage.setItem("newMeetingData", JSON.stringify(formData));
+	}, [formData]);
+
 	const handleAttendeeChange = (index, field, value) => {
 		const updatedAttendees = [...attendees];
 		updatedAttendees[index][field] = value;
 		setAttendees(updatedAttendees);
+	};
+
+	const handleMeetingChange = (field, value) => {
+		switch (field) {
+			case "meetingStation":
+				setMeetingStation(value);
+				break;
+			case "meetingDate":
+				setMeetingDate(value);
+				break;
+			case "earliestStartTime":
+				setEarliestStartTime(value);
+				break;
+			case "latestStartTime":
+				setLatestStartTime(value);
+				break;
+			default:
+				break;
+		}
 	};
 
 	const addAttendee = () => {
@@ -33,15 +92,7 @@ function NewMeeting() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		const formData = {
-			meetingStation,
-			meetingDate,
-			earliestStartTime,
-			latestStartTime,
-			attendees,
-		};
-
-		console.log("Form submitted:", formData);
+		// fetch api form uploading form will be here
 	};
 
 	return (
@@ -51,8 +102,10 @@ function NewMeeting() {
 					<select
 						name="meetingStation"
 						id="meeting-station"
-						defaultValue=""
-						onChange={(e) => setMeetingStation(e.target.value)}
+						value={meetingStation}
+						onChange={(e) =>
+							handleMeetingChange("meetingStation", e.target.value)
+						}
 						required
 					>
 						<option value="" disabled>
@@ -73,8 +126,8 @@ function NewMeeting() {
 						id="meeting-date"
 						name="meetingDate"
 						required
-						placeholder=" "
-						onChange={(e) => setMeetingDate(e.target.value)}
+						value={meetingDate}
+						onChange={(e) => handleMeetingChange("meetingDate", e.target.value)}
 					/>
 					<label htmlFor="meeting-date">Meeting Date</label>
 				</div>
@@ -85,8 +138,10 @@ function NewMeeting() {
 						id="earliest-start-time"
 						name="earliestStartTime"
 						required
-						placeholder=" "
-						onChange={(e) => setEarliestStartTime(e.target.value)}
+						value={earliestStartTime}
+						onChange={(e) =>
+							handleMeetingChange("earliestStartTime", e.target.value)
+						}
 					/>
 					<label htmlFor="earliest-start-time">Earliest Start Time</label>
 				</div>
@@ -97,8 +152,10 @@ function NewMeeting() {
 						id="latest-start-time"
 						name="latestStartTime"
 						required
-						placeholder=" "
-						onChange={(e) => setLatestStartTime(e.target.value)}
+						value={latestStartTime}
+						onChange={(e) =>
+							handleMeetingChange("latestStartTime", e.target.value)
+						}
 					/>
 					<label htmlFor="latest-start-time">Latest Start Time</label>
 				</div>
@@ -127,7 +184,6 @@ function NewMeeting() {
 										<select
 											name="attendeesStation"
 											id={"attendees-station" + index}
-											defaultValue=""
 											value={attendees[index].station}
 											onChange={(e) =>
 												handleAttendeeChange(index, "station", e.target.value)
