@@ -12,6 +12,7 @@ function NewMeeting() {
 				earliestStartTime: "",
 				latestStartTime: "",
 				attendees: [{ name: "", station: "" }],
+				intervalTime: "15",
 			}
 		);
 	});
@@ -24,6 +25,7 @@ function NewMeeting() {
 		formData.latestStartTime,
 	);
 	const [attendees, setAttendees] = useState(formData.attendees);
+	const [intervalTime, setIntervalTime] = useState(formData.intervalTime);
 
 	useEffect(() => {
 		fetch("/api/station-list")
@@ -39,6 +41,7 @@ function NewMeeting() {
 				earliestStartTime,
 				latestStartTime,
 				attendees,
+				intervalTime,
 			});
 		};
 
@@ -49,6 +52,7 @@ function NewMeeting() {
 		earliestStartTime,
 		latestStartTime,
 		attendees,
+		intervalTime,
 	]);
 
 	useEffect(() => {
@@ -75,6 +79,10 @@ function NewMeeting() {
 			case "latestStartTime":
 				setLatestStartTime(value);
 				break;
+			case "intervalTime":
+				setIntervalTime(value);
+				break;
+
 			default:
 				break;
 		}

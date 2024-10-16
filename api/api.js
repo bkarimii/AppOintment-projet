@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import db from "./db.js";
 import messageRouter from "./messages/messageRouter.js";
+import { transformFormDataMiddleware } from "./middlewares/transformFormDataMiddleware.js";
 
 const api = Router();
 
@@ -14,21 +15,12 @@ api.get("/station-list", async (req, res) => {
 	res.status(200).json(stations.rows);
 });
 
-api.post("/compute-route", async (req, res) => {
-	const formData = req.body;
-	// req.body is given in this format
-	//
-	// {
-	// 	meetingStation: "BTL",
-	// 	meetingDate: "0111-11-11",
-	// 	earliestStartTime: "11:11",
-	// 	latestStartTime: "11:11",
-	// 	attendees: [
-	// 		{ name: "fikret", station: "AYW" },
-	// 		{ name: "behrouz", station: "AAT" },
-	// 	],
-	// };
-	res.send(formData);
+api.post("/compute-route", transformFormDataMiddleware, async (req, res) => {
+	// const { meetingRange, intervalTime, destination, origins } = req.body;
+
+	// behrouz this req.body is in the format you said as shown above
+
+	res.send(req.body);
 });
 
 export default api;
