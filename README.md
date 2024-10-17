@@ -103,7 +103,3 @@ To send HTTP requests to the Google API, we use Axios, a popular promise-based H
 ### Step 1: Install Axios
 
 You can install Axios via npm. Open your terminal and run the following command:
-
-```bash
-npm install axios
-```
