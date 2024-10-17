@@ -1,0 +1,37 @@
+{
+	"travelDetail": [
+		{
+			"meetingTime": "2024-10-13T10:00:00Z",
+			"maxTravelTime": "90 minutes",
+			"minTravelTime": "60 minutes",
+			"averageTravelTime": "75 minutes",
+			"earliestArrival": "2024-10-13T09:00:00Z",
+			"latestArrival": "2024-10-13T10:30:00Z",
+			"earliestDeparture": "2024-10-13T08:00:00Z",
+			"latestDeparture": "2024-10-13T09:30:00Z",
+			"medianArrivalTime": "2024-10-13T09:30:00Z"
+		},
+		{
+			"meetingTime": "2024-10-13T10:15:00Z",
+			"maxTravelTime": "85 minutes",
+			"minTravelTime": "55 minutes",
+			"averageTravelTime": "70 minutes",
+			"earliestArrival": "2024-10-13T09:15:00Z",
+			"latestArrival": "2024-10-13T10:00:00Z",
+			"earliestDeparture": "2024-10-13T08:15:00Z",
+			"latestDeparture": "2024-10-13T09:45:00Z",
+			"medianArrivalTime": "2024-10-13T09:30:00Z"
+		},
+		{
+			"meetingTime": "2024-10-13T10:30:00Z",
+			"maxTravelTime": "100 minutes",
+			"minTravelTime": "70 minutes",
+			"averageTravelTime": "85 minutes",
+			"earliestArrival": "2024-10-13T09:30:00Z",
+			"latestArrival": "2024-10-13T10:30:00Z",
+			"earliestDeparture": "2024-10-13T08:30:00Z",
+			"latestDeparture": "2024-10-13T09:00:00Z",
+			"medianArrivalTime": "2024-10-13T09:45:00Z"
+		}
+	]
+}

@@ -90,3 +90,7 @@ principles are followed:
 [Vitest]: https://vitest.dev/
 [wiki]: https://github.com/textbook/starter-kit/wiki
 [Winston]: https://github.com/winstonjs/winston
+
+## Install Jest in root project directory to run jest tests
+
+`npm install --save -dev jest`
