@@ -14,5 +14,4 @@ api.get("/station-list", async (req, res) => {
 	res.status(200).json(stations.rows);
 });
 
-
 export default api;

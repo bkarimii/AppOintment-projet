@@ -5,7 +5,6 @@ import About from "./pages/About.jsx";
 import Home from "./pages/Home.jsx";
 import NewMeeting from "./pages/NewMeeting.jsx";
 
-
 function App() {
 	return (
 		<Routes>
