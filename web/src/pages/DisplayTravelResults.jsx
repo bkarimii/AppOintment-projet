@@ -1,6 +1,11 @@
 import { useState } from "react";
 
+import DisplayDetailOfResults from "./DisplayTravelDetails";
+import Visualise from "./Visualise";
+import results from "./results.json";
+
 function DisplayTravelResults() {
+	const zero = 0; //Helper var, will be removed
 	const data = {
 		origins: [
 			{
@@ -23,8 +28,12 @@ function DisplayTravelResults() {
 		},
 		intervalTime: "15",
 	};
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState(
+		results.results,
+	);
 	const [showData, setShowData] = useState(false);
+	const [expandedRow, setExpandedRow] = useState(null);
+	const [showDiagram, setShowDiagram] = useState(false);
 	const url = "/api/compute-route";
 
 	function extractDateTime(isoString) {
@@ -52,12 +61,19 @@ function DisplayTravelResults() {
 			setProcessedResultsStorage(result);
 		} else console.error("An error happened!");
 	};
+	// Handle clicks on Show Data button
 	const handleShowResultClicks = () => {
 		setShowData((prevShowdata) => !prevShowdata);
-		console.log(processedResultsStorage);
-		if (showData) {
+		if (zero === 1) {
 			fetchTravelData(url);
 		}
+	};
+
+	const toggleRowExpansion = (index) => {
+		setExpandedRow(expandedRow === index ? null : index); // Toggle the expanded row
+	};
+	const handleDiagramButton = () => {
+		setShowDiagram((prevShowdiagram) => !prevShowdiagram);
 	};
 
 	return (
@@ -76,26 +92,46 @@ function DisplayTravelResults() {
 									<th>Max Travel Time</th>
 									<th>Min Travel Time</th>
 									<th>Average Travel Time</th>
-									<th>Earliest Arrival</th>
 									<th>Latest Arrival</th>
 									<th>Earliest Departure</th>
-									<th>Latest Departure</th>
 								</tr>
 							</thead>
 							<tbody>
 								{processedResultsStorage.map((result, index) => {
 									return (
-										<tr key={index}>
-											<td>{extractDateTime(result.meetingTime)[0]}</td>
-											<td>{extractDateTime(result.meetingTime)[1]}</td>
-											<td>{result.maxTravelTime}</td>
-											<td>{result.minTravelTime}</td>
-											<td>{result.averageTravelTime}</td>
-											<td>{result.earliestArrival}</td>
-											<td>{result.latestArrival}</td>
-											<td>{result.earliestDeparture}</td>
-											<td>{result.latestDepartur}</td>
-										</tr>
+										<>
+											<tr key={index} onClick={() => toggleRowExpansion(index)}>
+												<td data-label="Meeting Date">
+													{extractDateTime(result.meetingTime)[0]}
+												</td>
+												<td data-label="Meeting Time">
+													{extractDateTime(result.meetingTime)[1]}
+												</td>
+												<td data-label="Max Travel Time">
+													{result.maxTravelTimeInHour}
+												</td>
+												<td data-label="Min Travel Time">
+													{result.minTravelTimeInHour}
+												</td>
+												<td data-label="Average Travel Time">
+													{result.averageTravelTimeInHour}
+												</td>
+												<td data-label="Latest Arrival">
+													{result.latestArrival}
+												</td>
+												<td data-label="Earliest Departure">
+													{result.earliestDeparture}
+												</td>
+											</tr>
+											{/* Render the TravelDetails component when the row is expanded */}
+											{expandedRow === index && (
+												<tr key={-index}>
+													<td colSpan="9">
+														<DisplayDetailOfResults details={result} />
+													</td>
+												</tr>
+											)}
+										</>
 									);
 								})}
 							</tbody>
@@ -103,6 +139,12 @@ function DisplayTravelResults() {
 					</div>
 				</div>
 			)}
+			<div>
+				<button onClick={handleDiagramButton}>
+					{showDiagram ? "Hide Diagram" : "Show Diagram"}
+				</button>
+				{showDiagram && <Visualise travelData={processedResultsStorage} />}
+			</div>
 		</>
 	);
 }
