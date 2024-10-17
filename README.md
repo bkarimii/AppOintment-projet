@@ -94,3 +94,11 @@ principles are followed:
 ## Install Jest in root project directory to run jest tests
 
 `npm install --save -dev jest`
+
+## install prop-Types
+
+`npm install prop-types`
+
+## install chart.js
+
+npm install chart.js
