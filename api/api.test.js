@@ -1,6 +1,7 @@
 import request from "supertest";
 
 import app from "./app.js";
+
 describe("/api", () => {
 	describe("POST /compute-route", () => {
 		const body = {
@@ -8,28 +9,33 @@ describe("/api", () => {
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
-			attendees: ["MAN"],
+			attendees: ["MAN", "ACY"],
 			intervalTime: 15,
 		};
 		it("returns an array", async () => {
 			const response = await request(app).post("/api/compute-route").send(body);
+
 			// Validate the response body structure
 			expect(Array.isArray(response.body)).toBe(true); // Check if response body is an array
-		}, 30000);
+		}, 10000);
 	});
-	describe("POST /compute-route1", () => {
+
+	describe("POST /compute-route 2", () => {
 		const body = {
 			meetingStation: "ABW",
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
-			attendees: ["MAN"],
+			attendees: ["MAN", "ACY"],
 			intervalTime: 15,
 		};
+
 		it("returns an array of travel stats", async () => {
 			const response = await request(app).post("/api/compute-route").send(body);
+
 			expect(response.status).toBe(200);
+
 			// Validate the response body structure
-		});
+		}, 10000);
 	});
 });
