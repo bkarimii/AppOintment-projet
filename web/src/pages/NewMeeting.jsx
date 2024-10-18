@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
 
-function NewMeeting() {
+function NewMeeting({ onFormSubmit }) {
 	const [stations, setStations] = useState([]);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
@@ -100,26 +101,16 @@ function NewMeeting() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		fetch("/api/compute-route", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(formData),
-		})
-			.then((response) => {
-				if (!response.ok) {
-					throw new Error("Network response was not ok");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				// next page redirection will appear here
-				console.log("Response from API:", data);
-			})
-			.catch((error) => {
-				console.error("There was a problem with the fetch operation:", error);
-			});
+		const formData = {
+			meetingStation,
+			meetingDate,
+			earliestStartTime,
+			latestStartTime,
+			attendees,
+		};
+		// Pass form data to parent component
+		onFormSubmit(formData);
+		console.log("Form submitted:", formData);
 	};
 
 	return (
@@ -291,4 +282,8 @@ function NewMeeting() {
 	);
 }
 
+// Define propTypes for validation
+NewMeeting.propTypes = {
+	onFormSubmit: PropTypes.func,
+};
 export default NewMeeting;

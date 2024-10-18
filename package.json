@@ -60,5 +60,12 @@
 	"engines": {
 		"node": "^20.9 || ^22",
 		"npm": "^10"
+	},
+	"dependencies": {
+		"@googlemaps/google-maps-services-js": "^3.4.0",
+		"axios": "^1.7.7",
+		"chart.js": "^4.4.5",
+		"jest": "^29.7.0",
+		"prop-types": "^15.8.1"
 	}
 }

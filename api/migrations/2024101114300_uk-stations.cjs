@@ -21,6 +21,12 @@ const migration = {
 		pgm.sql(
 			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (1524, 'Manchester Piccadilly','MANCHESTER PIC',53.47671998,-2.228977818,'MAN')",
 		);
+		pgm.sql(
+			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (1, 'Abbey Wood', 'ABBEY WOOD.', 51.49077059, 0.12032557, 'ABW');",
+		);
+		pgm.sql(
+			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (3, 'Abercynon', 'ABERCYNON', 51.644706, -3.327000754, 'ACY')",
+		);
 	},
 
 	down(pgm) {
