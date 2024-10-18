@@ -91,15 +91,11 @@ principles are followed:
 [wiki]: https://github.com/textbook/starter-kit/wiki
 [Winston]: https://github.com/winstonjs/winston
 
+## Install Jest in root project directory to run jest tests
+
+`npm install --save -dev jest`
+
 ## Install Google Maps Services
 
 To use the Google Distance Matrix API (or other Google Maps services) in this project, install the official Node.js client library for Google Maps services by running the following command:
 npm install @googlemaps/google-maps-services-js
-
-## Installation of Axios
-
-To send HTTP requests to the Google API, we use Axios, a popular promise-based HTTP client. Follow the steps below to install Axios in your project:
-
-### Step 1: Install Axios
-
-You can install Axios via npm. Open your terminal and run the following command:
