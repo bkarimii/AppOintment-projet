@@ -28,14 +28,14 @@ function Visualise({ travelData }) {
 		const labels = travelData.map(
 			(result) => extractDateTime(result.meetingTime)[1],
 		);
-		const minTravelTimes = travelData.map(
-			(result) => result.minTravelTimeInHour,
+		const minTravelTimes = travelData.map((result) =>
+			Number(result.minTravelTimeInHour),
 		);
-		const maxTravelTimes = travelData.map(
-			(result) => result.maxTravelTimeInHour,
+		const maxTravelTimes = travelData.map((result) =>
+			Number(result.maxTravelTimeInHour),
 		);
-		const averageTravelTimes = travelData.map(
-			(result) => result.averageTravelTimeInHour,
+		const averageTravelTimes = travelData.map((result) =>
+			Number(result.averageTravelTimeInHour),
 		);
 
 		// Destroy the previous chart instance if it exists
@@ -122,9 +122,9 @@ Visualise.propTypes = {
 	travelData: PropTypes.arrayOf(
 		PropTypes.shape({
 			meetingTime: PropTypes.string.isRequired,
-			minTravelTimeInHour: PropTypes.number.isRequired,
-			maxTravelTimeInHour: PropTypes.number.isRequired,
-			averageTravelTimeInHour: PropTypes.number.isRequired,
+			minTravelTimeInHour: PropTypes.string.isRequired,
+			maxTravelTimeInHour: PropTypes.string.isRequired,
+			averageTravelTimeInHour: PropTypes.string.isRequired,
 		}),
 	).isRequired,
 };
