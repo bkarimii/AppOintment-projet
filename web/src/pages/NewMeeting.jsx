@@ -1,6 +1,7 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 
-function NewMeeting() {
+function NewMeeting({ onFormSubmit }) {
 	const [stations, setStations] = useState([]);
 	const [meetingStation, setMeetingStation] = useState();
 	const [meetingDate, setMeetingDate] = useState();
@@ -32,7 +33,9 @@ function NewMeeting() {
 			latestStartTime,
 			attendees,
 		};
-
+		console.log(attendees);
+		// Pass form data to parent component
+		onFormSubmit(formData);
 		console.log("Form submitted:", formData);
 	};
 
@@ -112,6 +115,7 @@ function NewMeeting() {
 								stations.find((station) => station.crs_code === stationCode)
 									?.station_name
 							}
+							{console.log(attendees, "<----attendees")}
 						</div>
 					))}
 				</div>
@@ -122,4 +126,8 @@ function NewMeeting() {
 	);
 }
 
+// Define propTypes for validation
+NewMeeting.propTypes = {
+	onFormSubmit: PropTypes.func.isRequired,
+};
 export default NewMeeting;
