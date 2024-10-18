@@ -95,6 +95,14 @@ principles are followed:
 
 `npm install --save -dev jest`
 
+## install prop-Types
+
+`npm install prop-types`
+
+## install chart.js
+
+npm install chart.js
+
 ## Install Google Maps Services
 
 To use the Google Distance Matrix API (or other Google Maps services) in this project, install the official Node.js client library for Google Maps services by running the following command:
