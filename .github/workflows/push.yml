@@ -86,8 +86,10 @@ jobs:
           echo 'PORT=4321' >> "$ENV_FILE"
           echo 'NODE_ENV=docker' >> "$ENV_FILE"
           echo "file=$ENV_FILE" >> "$GITHUB_OUTPUT"
+          echo "GOOGLE_MAPS_API_KEY_TWO=${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}" >> "$ENV_FILE"
         env:
           ENV_FILE: docker.env
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - id: docker-run
         run: |
           echo "id=$(docker run \
