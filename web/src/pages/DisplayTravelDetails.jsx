@@ -28,9 +28,9 @@ function DisplayDetailOfResults({ details }) {
 
 DisplayDetailOfResults.propTypes = {
 	details: PropTypes.shape({
-		maxTravelTimeInHour: PropTypes.string.isRequired,
-		minTravelTimeInHour: PropTypes.string.isRequired,
-		averageTravelTimeInHour: PropTypes.string.isRequired,
+		maxTravelTimeInHour: PropTypes.number.isRequired,
+		minTravelTimeInHour: PropTypes.number.isRequired,
+		averageTravelTimeInHour: PropTypes.number.isRequired,
 		earliestArrival: PropTypes.string.isRequired,
 		latestArrival: PropTypes.string.isRequired,
 		latestDeparture: PropTypes.string.isRequired,
