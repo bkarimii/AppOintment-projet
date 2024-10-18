@@ -45,6 +45,8 @@ jobs:
           FORCE_COLOR: true
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run migration up
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e
       - run: npm run e2e:dev
   docker:
