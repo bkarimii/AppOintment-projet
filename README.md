@@ -102,3 +102,8 @@ principles are followed:
 ## install chart.js
 
 npm install chart.js
+
+## Install Google Maps Services
+
+To use the Google Distance Matrix API (or other Google Maps services) in this project, install the official Node.js client library for Google Maps services by running the following command:
+npm install @googlemaps/google-maps-services-js
