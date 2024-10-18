@@ -40,9 +40,7 @@ jobs:
           node-version: ${{ matrix.node }}
       - uses: textbook/take-action@playwright
       - run: npm run lint
-      - run: |
-          echo "GOOGLE_MAPS_API_KEY_TWO starts with: ${GOOGLE_MAPS_API_KEY_TWO:0:4}"
-          npm run test:cover
+      - run: npm run test:cover
         env:
           FORCE_COLOR: true
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
