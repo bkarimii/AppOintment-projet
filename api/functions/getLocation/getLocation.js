@@ -2,13 +2,17 @@ import db from "../../db.js";
 
 export const getLocation = async (crsCode) => {
 	const result = await db.query(
-		"SELECT latitude, longitude FROM uk_stations WHERE crs_code = $1",
+		"SELECT station_name, latitude, longitude FROM uk_stations WHERE crs_code = $1",
 		[crsCode],
 	);
 
 	const locationInfo = {
+		station_name: result.rows[0].station_name,
 		location: {
-			latLng: { ...result.rows[0] },
+			latLng: {
+				latitude: result.rows[0].latitude,
+				longitude: result.rows[0].longitude,
+			},
 		},
 	};
 

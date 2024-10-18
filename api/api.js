@@ -147,14 +147,4 @@ async function fetchBodyMaker(body) {
 	}
 }
 
-api.post("/body-maker", async (req, res) => {
-	try {
-		const body = req.body;
-		const preparedBody = await fetchBodyMaker(body);
-		res.status(200).json(preparedBody);
-	} catch (error) {
-		res.status(500).json({ error: error });
-	}
-});
-
 export default api;
