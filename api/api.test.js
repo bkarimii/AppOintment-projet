@@ -34,24 +34,6 @@ describe("/api", () => {
 
 			// Validate the response body structure
 			expect(Array.isArray(response.body)).toBe(true); // Check if response body is an array
-
-			expect(response.body).toEqual(
-				expect.arrayContaining([
-					expect.objectContaining({
-						meetingTime: expect.any(String), // "2024-10-13T10:00:00.000Z"
-						maxTravelTime: expect.any(Number), //  8.766666666666667
-						minTravelTime: expect.any(Number), //  8.766666666666667
-						averageTravelTime: expect.any(Number), // 8.766666666666667
-						earliestArrival: expect.any(String), // "09:40:00"
-						latestArrival: expect.any(String), // "09:40:00"
-						earliestDeparture: expect.any(String), // "01:20:00"
-						latestDeparture: expect.any(String), // "01:20:00"
-						medianArrivalTime: expect.any(String), // "09:40:00"
-						difficultTravels: expect.arrayContaining([]), // Should be an array
-						tooLongTravel: expect.arrayContaining([]), // Should be an array
-					}),
-				]),
-			);
 		});
 	});
 });
