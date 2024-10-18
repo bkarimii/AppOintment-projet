@@ -10,6 +10,9 @@ globalThis.fetch = jest.fn(() =>
 			Promise.resolve({
 				travelResults: [{ city: "Liverpool", duration: "1 hour" }],
 			}),
+		clone: function () {
+			return this;
+		},
 	}),
 );
 
