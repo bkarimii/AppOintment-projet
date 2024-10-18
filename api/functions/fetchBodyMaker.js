@@ -1,20 +1,5 @@
-import { Router } from "express";
-
-import db from "./db.js";
-import messageRouter from "./messages/messageRouter.js";
-
-const api = Router();
-
-api.use("/message", messageRouter);
-
-api.get("/station-list", async (req, res) => {
-	const stations = await db.query(
-		"SELECT station_name, crs_code FROM uk_stations",
-	);
-	res.status(200).json(stations.rows);
-});
-
-async function fetchBodyMaker(body) {
+import db from "../db";
+export async function fetchBodyMaker(body) {
 	const destinationCrs = body.meetingStation;
 
 	const destinationsDBDetail = await db.query(
@@ -76,20 +61,3 @@ async function fetchBodyMaker(body) {
 
 	return formattedBody;
 }
-
-api.post("/body-maker", async (req, res) => {
-	try {
-		const body = req.body;
-		const preparedBody = await fetchBodyMaker(body);
-		res.status(200).json(preparedBody);
-	} catch (error) {
-		res.status(500).json({ error: error });
-	}
-});
-
-api.get("/database", async (req, res) => {
-	const stations = await db.query("SELECT * FROM uk_stations");
-	res.status(200).json(stations.rows);
-});
-
-export default api;
