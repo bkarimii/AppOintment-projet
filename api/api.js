@@ -1,10 +1,10 @@
 import { Router } from "express";
 
+import db from "./db.js";
 import { computeRoutesForOrigins } from "./functions/routeDirectionsAPI.js";
 import { statistics } from "./functions/statisticalAnalyse.js";
 import { processTravelInfo } from "./functions/statisticalAnalyse.js";
 import { generateTimeSlots } from "./functions/timeRangeMaker.js";
-import db from "./db.js";
 import messageRouter from "./messages/messageRouter.js";
 import { googleApiKey } from "./utils/config.cjs";
 
@@ -12,7 +12,6 @@ const api = Router();
 const apiKey = googleApiKey;
 
 api.use("/message", messageRouter);
-
 
 api.post("/compute-route", async (req, res) => {
 	const { meetingRange, intervalTime, destination, origins } = req.body;
@@ -68,13 +67,13 @@ api.post("/compute-route", async (req, res) => {
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
 	}
+});
 
 api.get("/station-list", async (req, res) => {
 	const stations = await db.query(
 		"SELECT station_name, crs_code FROM uk_stations",
 	);
 	res.status(200).json(stations.rows);
-
 });
 
 export default api;
