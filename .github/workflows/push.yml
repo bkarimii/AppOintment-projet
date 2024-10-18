@@ -43,9 +43,16 @@ jobs:
       - run: npm run test:cover
         env:
           FORCE_COLOR: true
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run migration up
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e:dev
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
   docker:
     runs-on: ubuntu-latest
     services:
@@ -79,8 +86,10 @@ jobs:
           echo 'PORT=4321' >> "$ENV_FILE"
           echo 'NODE_ENV=docker' >> "$ENV_FILE"
           echo "file=$ENV_FILE" >> "$GITHUB_OUTPUT"
+          echo "GOOGLE_MAPS_API_KEY_TWO=${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}" >> "$ENV_FILE"
         env:
           ENV_FILE: docker.env
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - id: docker-run
         run: |
           echo "id=$(docker run \
@@ -90,8 +99,11 @@ jobs:
             --network 'host' \
             textbook/starter-kit:v2)" >> $GITHUB_OUTPUT
       - run: npx --yes wait-on --log --timeout 30000 http-get://localhost:4321
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e
         env:
           PLAYWRIGHT_BASE_URL: http://localhost:4321
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - if: always() && steps.docker-run.outputs.id
         run: docker logs ${{ steps.docker-run.outputs.id }}
