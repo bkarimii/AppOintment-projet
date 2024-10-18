@@ -48,7 +48,11 @@ jobs:
         env:
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
       - run: npm run e2e:dev
+        env:
+          GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
   docker:
     runs-on: ubuntu-latest
     services:
