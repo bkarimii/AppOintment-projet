@@ -63,5 +63,7 @@
 	},
 	"dependencies": {
 		"jest": "^29.7.0"
+		"@googlemaps/google-maps-services-js": "^3.4.0",
+		"axios": "^1.7.7"
 	}
 }
