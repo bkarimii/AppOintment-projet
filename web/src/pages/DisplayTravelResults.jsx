@@ -3,16 +3,14 @@ import { useState } from "react";
 import DisplayDetailOfResults from "./DisplayTravelDetails";
 import NewMeeting from "./NewMeeting";
 import Visualise from "./Visualise";
-import results from "./results.json";
+// import results from "./results.json";
 
 function DisplayTravelResults() {
 	const zero = 0; //Helper var, will be removed
 
 	const [bodyHolder, setBodyHolder] = useState(null);
 
-	const [processedResultsStorage, setProcessedResultsStorage] = useState(
-		results.results,
-	);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
 	const [showData, setShowData] = useState(false);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [showDiagram, setShowDiagram] = useState(false);
@@ -33,6 +31,7 @@ function DisplayTravelResults() {
 	const fetchTravelData = async (URL) => {
 		try {
 			const bodyData = localStorage.getItem("meetingData");
+			console.log(bodyData, "<----BodyData");
 			const response = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -53,7 +52,7 @@ function DisplayTravelResults() {
 	// Handle clicks on Show Data button
 	const handleShowResultClicks = () => {
 		setShowData((prevShowdata) => !prevShowdata);
-		if (zero === 1) {
+		if (zero === 0) {
 			fetchTravelData(url);
 		}
 	};
