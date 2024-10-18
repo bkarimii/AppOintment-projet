@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
+import { useNavigate } from "react-router-dom";
 
-function NewMeeting({ onFormSubmit }) {
+function NewMeeting() {
 	const [stations, setStations] = useState([]);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
@@ -27,6 +28,7 @@ function NewMeeting({ onFormSubmit }) {
 	);
 	const [attendees, setAttendees] = useState(formData.attendees);
 	const [intervalTime, setIntervalTime] = useState(formData.intervalTime);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch("/api/station-list")
@@ -100,17 +102,7 @@ function NewMeeting({ onFormSubmit }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
-		const formData = {
-			meetingStation,
-			meetingDate,
-			earliestStartTime,
-			latestStartTime,
-			attendees,
-		};
-		// Pass form data to parent component
-		onFormSubmit(formData);
-		console.log("Form submitted:", formData);
+		navigate("/meeting-analysis");
 	};
 
 	return (
