@@ -1,33 +1,15 @@
 import { useState } from "react";
 
 import DisplayDetailOfResults from "./DisplayTravelDetails";
+import NewMeeting from "./NewMeeting";
 import Visualise from "./Visualise";
 import results from "./results.json";
 
 function DisplayTravelResults() {
 	const zero = 0; //Helper var, will be removed
-	const data = {
-		origins: [
-			{
-				city: "Liverpool",
-				location: {
-					latLng: {
-						latitude: 53.40461053,
-						longitude: -2.979159936,
-					},
-				},
-			},
-		],
-		destination: {
-			latitude: 52.1945746,
-			longitude: 0.137554552,
-		},
-		meetingRange: {
-			startingTime: "2024-10-13T10:00:00Z",
-			endingTime: "2024-10-13T13:00:00Z",
-		},
-		intervalTime: "15",
-	};
+
+	const [bodyHolder, setBodyHolder] = useState(null);
+
 	const [processedResultsStorage, setProcessedResultsStorage] = useState(
 		results.results,
 	);
@@ -49,17 +31,24 @@ function DisplayTravelResults() {
 	}
 
 	const fetchTravelData = async (URL) => {
-		const response = await fetch(URL, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(data),
-		});
-		if (response.ok) {
-			const result = await response.json();
-			setProcessedResultsStorage(result);
-		} else console.error("An error happened!");
+		try {
+			const bodyData = localStorage.getItem("meetingData");
+			const response = await fetch(URL, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: bodyData,
+			});
+			if (response.ok) {
+				const result = await response.json();
+				setProcessedResultsStorage(result);
+			} else {
+				console.error("An error happened!", response.status.error);
+			}
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	// Handle clicks on Show Data button
 	const handleShowResultClicks = () => {
@@ -76,8 +65,18 @@ function DisplayTravelResults() {
 		setShowDiagram((prevShowdiagram) => !prevShowdiagram);
 	};
 
+	const handleFormSubmit = (formData) => {
+		setBodyHolder(formData);
+		localStorage.setItem("meetingData", JSON.stringify(bodyHolder));
+	};
+
+	const handleFetchButton = () => {
+		fetchTravelData(url);
+	};
 	return (
 		<>
+			<button onClick={handleFetchButton}>Fetch Data</button>
+			<NewMeeting onFormSubmit={handleFormSubmit} />
 			<button onClick={handleShowResultClicks}>
 				{showData ? "Hide Data" : "Show Data"}
 			</button>
