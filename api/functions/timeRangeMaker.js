@@ -1,14 +1,15 @@
-export function generateTimeSlots(startTime, endTime, intervalMinutes = 15) {
+export function generateTimeSlots(startTime, endTime, intervalMinutes) {
 	const slots = [];
 	const start = new Date(startTime);
 	const end = new Date(endTime);
 
-	while (start <= end) {
-		// Format the current start time to ISO string with "Z" timezone
-		slots.push(start.toISOString());
+	intervalMinutes = Number(intervalMinutes);
+	let current = new Date(start);
 
-		// Add the interval (15 minutes) to the start time
-		start.setMinutes(start.getMinutes() + intervalMinutes);
+	while (current <= end) {
+		slots.push(current.toISOString());
+
+		current.setMinutes(current.getMinutes() + intervalMinutes);
 	}
 
 	return slots;

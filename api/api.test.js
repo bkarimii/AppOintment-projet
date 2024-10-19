@@ -9,7 +9,10 @@ describe("/api", () => {
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
-			attendees: ["MAN", "ACY"],
+			attendees: [
+				{ name: "fikret", station: "MAN" },
+				{ name: "behrouz", station: "ACY" },
+			],
 			intervalTime: 15,
 		};
 		it("returns an array", async () => {
@@ -26,7 +29,10 @@ describe("/api", () => {
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
-			attendees: ["MAN", "ACY"],
+			attendees: [
+				{ name: "fikret", station: "MAN" },
+				{ name: "behrouz", station: "ACY" },
+			],
 			intervalTime: 15,
 		};
 

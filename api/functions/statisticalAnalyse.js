@@ -20,7 +20,6 @@ function timeToMinutes(time) {
 }
 
 function processTravelInfo(array) {
-	const meetingTime = "2024-10-13T10:00:00Z";
 	const analys = [];
 	const bigArray = [];
 
@@ -29,7 +28,7 @@ function processTravelInfo(array) {
 		for (const detail of item.details) {
 			// The difference between meeeting time and arrival time [waiting time in the train station]
 			const finalWaitSeconds = Math.floor(
-				(new Date(meetingTime) - new Date(detail.lastArrivalTime)) / 1000,
+				(new Date(item.arrivalTime) - new Date(detail.lastArrivalTime)) / 1000,
 			);
 			const tripDuration = Number(detail.duration.split("s")[0]);
 			// Total of the time spent on this journey , travel time+ waiting time
@@ -63,12 +62,12 @@ function processTravelInfo(array) {
 }
 
 // This function does the statistical analysis on the user travel information we get back from processTravelInfo
-function statistics(arrayOfProcessedInfo) {
+function statistics(allMeetingTimes) {
 	const difficultTravels = []; // Array to hold users info who needs to travel a day before
 	const tooLongTravel = []; // Array to hold travels longer than 8 hours
 	const travelStatsByMeeting = []; // Array to hold statistics grouped by meeting time
 
-	for (const itemOfProcessedInfo of arrayOfProcessedInfo) {
+	for (const eachMeetingTime of allMeetingTimes) {
 		let [
 			maxTravelTime,
 			minTravelTime,
@@ -82,52 +81,53 @@ function statistics(arrayOfProcessedInfo) {
 		const arrivalTimesInMinutes = [];
 		let countOfTraveler = 0;
 
-		for (const element of itemOfProcessedInfo.analys) {
-			totalTravelTime += element.spentTimeInMinutes;
+		for (const journey of eachMeetingTime.analys) {
+			totalTravelTime += journey.spentTimeInMinutes;
 			countOfTraveler++;
 
 			// Track difficult travels (arriving a day earlier)
-			if (element.durationInDays > 0) {
+			if (journey.durationInDays > 0) {
 				difficultTravels.push({
-					meetingTime: itemOfProcessedInfo.meetingTime,
-					element,
+					meetingTime: eachMeetingTime.meetingTime,
+					element: journey,
 				});
 			}
 
 			// Track too long travels (longer than 10 hours)
-			if (element.durationInDays === 0 && element.spentTimeInHour > 10) {
+			if (journey.durationInDays === 0 && journey.spentTimeInHour > 10) {
 				tooLongTravel.push({
-					meetingTime: itemOfProcessedInfo.meetingTime,
-					element,
+					meetingTime: eachMeetingTime.meetingTime,
+					element: journey,
 				});
 			}
 
 			// Finding the max and min travel times
-			if (element.spentTimeInMinutes > maxTravelTime) {
-				maxTravelTime = element.spentTimeInMinutes;
+			if (journey.spentTimeInMinutes > maxTravelTime) {
+				maxTravelTime = journey.spentTimeInMinutes;
 			}
-			if (element.spentTimeInMinutes < minTravelTime) {
-				minTravelTime = element.spentTimeInMinutes;
+
+			if (journey.spentTimeInMinutes < minTravelTime) {
+				minTravelTime = journey.spentTimeInMinutes;
 			}
 
 			// Earliest and latest arrival times
-			if (element.arrivalTime < earliestArrival) {
-				earliestArrival = element.arrivalTime;
+			if (journey.arrivalTime < earliestArrival) {
+				earliestArrival = journey.arrivalTime;
 			}
-			if (element.arrivalTime > latestArrival) {
-				latestArrival = element.arrivalTime;
+			if (journey.arrivalTime > latestArrival) {
+				latestArrival = journey.arrivalTime;
 			}
 
 			// Earliest and latest departure times
-			if (element.departureTime < earliestDeparture) {
-				earliestDeparture = element.departureTime;
+			if (journey.departureTime < earliestDeparture) {
+				earliestDeparture = journey.departureTime;
 			}
-			if (element.departureTime > latestDeparture) {
-				latestDeparture = element.departureTime;
+			if (journey.departureTime > latestDeparture) {
+				latestDeparture = journey.departureTime;
 			}
 
 			// Add arrival times in minutes for median calculation
-			arrivalTimesInMinutes.push(timeToMinutes(element.arrivalTime));
+			arrivalTimesInMinutes.push(timeToMinutes(journey.arrivalTime));
 		}
 
 		// Calculate average travel time in minutes
@@ -138,7 +138,7 @@ function statistics(arrayOfProcessedInfo) {
 
 		// Push statistics for the current meeting time
 		travelStatsByMeeting.push({
-			meetingTime: itemOfProcessedInfo.meetingTime,
+			meetingTime: eachMeetingTime.meetingTime,
 			maxTravelTimeInHour: (maxTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			minTravelTimeInHour: (minTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			averageTravelTimeInHour: (averageTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
