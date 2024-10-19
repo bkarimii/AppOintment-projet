@@ -9,7 +9,11 @@ describe("/api", () => {
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
-			attendees: ["MAN", "ACY"],
+			attendees: [
+				{ name: "fikret", station: "MAN" },
+				{ name: "behrouz", station: "BHM" },
+				{ name: "david", station: "LDS" },
+			],
 			intervalTime: 15,
 		};
 		it("returns an array", async () => {
