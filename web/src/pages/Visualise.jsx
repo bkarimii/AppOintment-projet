@@ -29,13 +29,13 @@ function Visualise({ travelData }) {
 			(result) => extractDateTime(result.meetingTime)[1],
 		);
 		const minTravelTimes = travelData.map((result) =>
-			Number(result.minTravelTimeInHour),
+			Number(result.minTravelTimeInMinute),
 		);
 		const maxTravelTimes = travelData.map((result) =>
-			Number(result.maxTravelTimeInHour),
+			Number(result.maxTravelTimeInMinute),
 		);
 		const averageTravelTimes = travelData.map((result) =>
-			Number(result.averageTravelTimeInHour),
+			Number(result.averageTravelTimeInMinute),
 		);
 
 		// Destroy the previous chart instance if it exists

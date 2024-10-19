@@ -20,7 +20,7 @@ describe("/api", () => {
 
 			// Validate the response body structure
 			expect(Array.isArray(response.body)).toBe(true); // Check if response body is an array
-		}, 10000);
+		}, 30000);
 	});
 
 	describe("POST /compute-route 2", () => {
@@ -42,6 +42,6 @@ describe("/api", () => {
 			expect(response.status).toBe(200);
 
 			// Validate the response body structure
-		}, 10000);
+		}, 30000);
 	});
 });

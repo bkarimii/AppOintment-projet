@@ -69,9 +69,9 @@ function DisplayTravelResults() {
 							<tr>
 								<th>Meeting Date</th>
 								<th>Meeting Time</th>
-								<th>Max Travel Time</th>
 								<th>Min Travel Time</th>
 								<th>Average Travel Time</th>
+								<th>Max Travel Time</th>
 								<th>Latest Arrival</th>
 								<th>Earliest Departure</th>
 							</tr>
@@ -87,20 +87,21 @@ function DisplayTravelResults() {
 											<td data-label="Meeting Time">
 												{extractDateTime(result.meetingTime)[1]}
 											</td>
-											<td data-label="Max Travel Time">
-												{result.maxTravelTimeInHour}
-											</td>
+
 											<td data-label="Min Travel Time">
-												{result.minTravelTimeInHour}
+												{result.minTravelTimeInMinute}
 											</td>
 											<td data-label="Average Travel Time">
-												{result.averageTravelTimeInHour}
+												{result.averageTravelTimeInMinute}
+											</td>
+											<td data-label="Max Travel Time">
+												{result.maxTravelTimeInMinute}
 											</td>
 											<td data-label="Latest Arrival">
-												{result.latestArrival}
+												{result.latestArrival.split(".")[0]}
 											</td>
 											<td data-label="Earliest Departure">
-												{result.earliestDeparture}
+												{result.earliestDeparture.split(".")[0]}
 											</td>
 										</tr>
 										{/* Render the TravelDetails component when the row is expanded */}
