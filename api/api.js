@@ -62,6 +62,7 @@ api.post("/compute-route", async (req, res) => {
 			fields,
 			apiKey,
 		);
+
 		const processedInfo = processTravelInfo(travelInfo);
 		const stats = statistics(processedInfo);
 		res.status(200).json(stats);
@@ -108,7 +109,7 @@ async function fetchBodyMaker(body) {
 			// Parameterized queries for each origin station
 			const originDBDetail = await db.query(
 				"SELECT * FROM uk_stations WHERE crs_code = $1",
-				[originCrs],
+				[originCrs.station],
 			);
 			if (originDBDetail.rows.length === 0) {
 				throw new Error(`Origin CRS code ${originCrs} not found.`);
