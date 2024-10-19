@@ -20,11 +20,11 @@ function timeToMinutes(time) {
 }
 
 function processTravelInfo(array) {
-	const analys = [];
 	const bigArray = [];
 
 	// Iterate through the array param
 	for (const item of array) {
+		const analys = [];
 		for (const detail of item.details) {
 			// The difference between meeeting time and arrival time [waiting time in the train station]
 			const finalWaitSeconds = Math.floor(
