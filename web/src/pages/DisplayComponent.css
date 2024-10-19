@@ -1,44 +1,75 @@
+/* Basic table styles */
 table {
 	width: 100%;
 	border-collapse: collapse;
-	margin: 20px 0;
-	font-size: 18px;
-	text-align: left;
-}
-
-th,
-td {
-	padding: 12px 15px;
-	border: 1px solid #ddd;
+	margin: 1rem 0;
+	font-size: 1rem;
+	background-color: #f9f9f9; /* Light background */
 }
 
 th {
-	background-color: #f4f4f4;
-	color: #333;
-	font-weight: bold;
+	background-color: #4caf50; /* Table header background */
+	color: white; /* Header text color */
+	padding: 1rem;
+}
+
+td {
+	padding: 0.75rem;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
 }
 
 tr:nth-child(even) {
-	background-color: #f9f9f9;
+	background-color: #f2f2f2; /* Alternate row colors */
 }
 
 tr:hover {
-	background-color: #f1f1f1;
+	background-color: #ddd; /* Row hover effect */
 }
 
-table tbody tr td {
-	text-align: center;
+/* Expandable row style */
+.expandable-content {
+	background-color: #e8f5e9; /* Light green background for expanded content */
+	padding: 1rem;
+	font-size: 0.9rem;
+	border-left: 4px solid #4caf50; /* Green border to highlight expanded section */
 }
 
-thead {
-	background-color: #4caf50;
-	color: white;
-}
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+	table,
+	thead,
+	tbody,
+	th,
+	td,
+	tr {
+		display: block;
+	}
 
-tbody tr {
-	transition: background-color 0.3s ease;
-}
+	thead {
+		display: none;
+	}
 
-tbody tr:hover {
-	background-color: #e9f5e9;
+	tr {
+		margin-bottom: 1rem;
+		border: 1px solid #ddd;
+	}
+
+	td {
+		padding: 1rem;
+		position: relative;
+		text-align: right;
+		border: none;
+		border-bottom: 1px solid #ddd;
+	}
+
+	td:before {
+		content: attr(data-label);
+		position: absolute;
+		left: 0;
+		width: 50%;
+		padding-left: 1rem;
+		font-weight: bold;
+		text-align: left;
+	}
 }

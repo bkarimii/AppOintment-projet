@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import DisplayDetailOfResults from "./DisplayTravelDetails";
 import Visualise from "./Visualise";
+import "./DisplayComponent.css";
 // import results from "./results.json";
 
 function DisplayTravelResults() {
