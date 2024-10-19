@@ -11,6 +11,7 @@ th {
 	background-color: #4caf50; /* Table header background */
 	color: white; /* Header text color */
 	padding: 1rem;
+	text-align: left;
 }
 
 td {
