@@ -5,10 +5,11 @@ function DisplayDetailOfResults({ details }) {
 		<div>
 			<p>
 				<strong>Earliest Arrival Time: </strong>
-				{details.earliestArrival}
+				{details.earliestArrival.split(".")[0]}
 			</p>
 			<p>
-				<strong>Latest Departure: </strong> {details.latestDeparture}
+				<strong>Latest Departure: </strong>{" "}
+				{details.latestDeparture.split(".")[0]}
 			</p>
 			<p>
 				<strong>Median Arrival Time: </strong>
