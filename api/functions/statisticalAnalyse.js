@@ -142,6 +142,9 @@ function statistics(allMeetingTimes) {
 			maxTravelTimeInHour: (maxTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			minTravelTimeInHour: (minTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			averageTravelTimeInHour: (averageTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
+			maxTravelTimeInMinute: maxTravelTime,
+			minTravelTimeInMinute: minTravelTime,
+			averageTravelTimeInMinute: averageTravelTime,
 			earliestArrival,
 			latestArrival,
 			earliestDeparture,

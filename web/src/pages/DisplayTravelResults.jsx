@@ -89,13 +89,13 @@ function DisplayTravelResults() {
 											</td>
 
 											<td data-label="Min Travel Time">
-												{result.minTravelTimeInHour}
+												{result.minTravelTimeInMinute}
 											</td>
 											<td data-label="Average Travel Time">
-												{result.averageTravelTimeInHour}
+												{result.averageTravelTimeInMinute}
 											</td>
 											<td data-label="Max Travel Time">
-												{result.maxTravelTimeInHour}
+												{result.maxTravelTimeInMinute}
 											</td>
 											<td data-label="Latest Arrival">
 												{result.latestArrival.split(".")[0]}
