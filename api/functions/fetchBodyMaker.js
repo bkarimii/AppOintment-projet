@@ -44,7 +44,7 @@ export async function fetchBodyMaker(body) {
 	}
 
 	// Default interval time to 15 if not provided
-	let intervalTime = body.intervalTime ?? 15;
+	let intervalTime = body.intervalTime ?? 20;
 
 	const formattedBody = {
 		origins: origins,

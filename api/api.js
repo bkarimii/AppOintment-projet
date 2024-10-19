@@ -48,6 +48,7 @@ api.post("/compute-route", async (req, res) => {
 			endingMeetingTime,
 			intervalTime,
 		);
+
 		const destination = body.destination;
 		const arrayOfOrigins = body.origins;
 

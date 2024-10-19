@@ -14,7 +14,7 @@ function NewMeeting() {
 				earliestStartTime: "",
 				latestStartTime: "",
 				attendees: [{ name: "", station: "" }],
-				intervalTime: "15",
+				intervalTime: 20,
 			}
 		);
 	});
