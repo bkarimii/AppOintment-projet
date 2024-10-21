@@ -40,7 +40,8 @@ function DisplayTravelResults() {
 				body: bodyData,
 			});
 			if (response.ok) {
-				const result = await response.json();
+				const totalInformation = await response.json();
+				const result = totalInformation[0];
 				setProcessedResultsStorage(result);
 			} else {
 				console.error("An error happened!", response.status.error);
