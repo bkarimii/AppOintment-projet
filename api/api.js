@@ -1,6 +1,7 @@
 import { Router } from "express";
 
 import db from "./db.js";
+import { overalReport, prepareDataForReport } from "./functions/reportMaker.js";
 import { computeRoutesForOrigins } from "./functions/routeDirectionsAPI.js";
 import { statistics } from "./functions/statisticalAnalyse.js";
 import { processTravelInfo } from "./functions/statisticalAnalyse.js";
@@ -66,7 +67,10 @@ api.post("/compute-route", async (req, res) => {
 
 		const processedInfo = processTravelInfo(travelInfo);
 		const stats = statistics(processedInfo);
-		res.status(200).json(stats);
+		const reportDataShape = prepareDataForReport(processedInfo);
+		const report = overalReport(reportDataShape);
+		const totalInformation = [stats, report];
+		res.status(200).json(totalInformation);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
 	}
