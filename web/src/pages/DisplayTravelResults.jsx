@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import DisplayDetailOfResults from "./DisplayTravelDetails";
+import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 import "./DisplayComponent.css";
+
 // import results from "./results.json";
 
 function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
+	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
@@ -42,7 +45,10 @@ function DisplayTravelResults() {
 			if (response.ok) {
 				const totalInformation = await response.json();
 				const result = totalInformation[0];
+				const reports = totalInformation[1];
 				setProcessedResultsStorage(result);
+				setProcessedReport(reports);
+				console.log(reports, "<-------reports from API");
 			} else {
 				console.error("An error happened!", response.status.error);
 			}
@@ -123,6 +129,9 @@ function DisplayTravelResults() {
 
 			<div>
 				<Visualise travelData={processedResultsStorage} />
+			</div>
+			<div>
+				<ReportMaker arrayOfReport={processedReport} />
 			</div>
 		</>
 	);
