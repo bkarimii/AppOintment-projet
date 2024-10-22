@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import { Router } from "express";
 
 import db from "./db.js";
-import { overalReport, prepareDataForReport } from "./functions/reportMaker.js";
+import { prepareDataForReport } from "./functions/reportMaker.js";
 import { computeRoutesForOrigins } from "./functions/routeDirectionsAPI.js";
 import { statistics } from "./functions/statisticalAnalyse.js";
 import { processTravelInfo } from "./functions/statisticalAnalyse.js";
@@ -66,10 +67,12 @@ api.post("/compute-route", async (req, res) => {
 		);
 
 		const processedInfo = processTravelInfo(travelInfo);
+
 		const stats = statistics(processedInfo);
-		const reportDataShape = prepareDataForReport(processedInfo);
-		const report = overalReport(reportDataShape);
-		const totalInformation = [stats, report];
+		const reportDataArray = prepareDataForReport("10:00:00", processedInfo);
+		console.log(JSON.stringify(reportDataArray), "-------------------");
+
+		const totalInformation = [stats, reportDataArray, processedInfo];
 		res.status(200).json(totalInformation);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
