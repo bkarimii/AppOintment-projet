@@ -1,9 +1,12 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 import "./ReportMaker.css";
 
 export function ReportMaker({ arrayOfReport }) {
 	const [inputValueHolder, setInputValueHolder] = useState("");
+	const [searchForAttendee, setSearchForAttendee] = useState(false);
+	const [showGeneralReport, setShowGeneralReport] = useState(true);
 
 	const copyReportToClipboard = async (reportText) => {
 		try {
@@ -18,20 +21,17 @@ export function ReportMaker({ arrayOfReport }) {
 		copyReportToClipboard(reportText);
 	};
 
-	const searchForAttendees = (attendeeName) => {
+	const functionToSearchForAttendee = (attendeeName) => {
 		if (attendeeName.length) {
-			// Create an array to hold the filtered results
 			const filteredAttendee = arrayOfReport.reduce(
 				(accumulator, meetingSlotTimeObject) => {
 					const attendeeTravelInfo = meetingSlotTimeObject.personalReports;
 
-					// Check if the specified attendee is in the current meeting's reports
 					const attendeeFound = attendeeTravelInfo.find(
 						(attendee) =>
 							attendee.name.toLowerCase() === attendeeName.toLowerCase(),
 					);
 
-					// If the attendee is found, push the relevant meeting information to the accumulator
 					if (attendeeFound) {
 						accumulator.push({
 							meetingDate: meetingSlotTimeObject.meetingDate,
@@ -40,66 +40,80 @@ export function ReportMaker({ arrayOfReport }) {
 						});
 					}
 
-					return accumulator; // Return the accumulator
+					return accumulator;
 				},
 				[],
-			); // Initialize the accumulator as an empty array
-			return filteredAttendee; // Return the array of filtered attendees
+			);
+			return filteredAttendee;
 		}
-		if (attendeeName.length == 0) {
-			alert("Search box is empty!");
-			return "";
-		} else {
-			alert("No result found for the search!");
-		}
+		return [];
 	};
 
 	const handleSearchButton = () => {
-		const results = searchForAttendees(inputValueHolder);
-		if (results.length > 0) {
-			// Do something with results, like updating state or displaying them
-			console.log(JSON.stringify(results)); // You may want to update your UI with these results
+		if (inputValueHolder.trim().length === 0) {
+			// If input is empty, show general report
+			alert("Search box is empty! Showing general report.");
+			setSearchForAttendee(false);
+			setShowGeneralReport(true);
 		} else {
-			alert("No result found for the search!");
+			const results = functionToSearchForAttendee(inputValueHolder);
+			setSearchForAttendee(true);
+			setShowGeneralReport(false);
+			if (results.length > 0) {
+				console.log(JSON.stringify(results));
+			} else {
+				alert("No result found for the search!");
+				setSearchForAttendee(false);
+				setShowGeneralReport(true);
+			}
 		}
 	};
 
-	// This loop returns the report item in the array in browser and HTML format
-	const textOfReport = arrayOfReport.map((personTravel, index) => {
-		const personalReports = personTravel.personalReports;
+	// Function to clear input box and reset to general report
+	const handleClearInput = () => {
+		setInputValueHolder(""); // Clear the input box
+		setSearchForAttendee(false); // Stop showing search results
+		setShowGeneralReport(true); // Show general report
+	};
 
-		// Create the report text for copying
-		const reportText =
-			`Meeting on ${personTravel.meetingDate} at ${personTravel.meetingTime}\n` +
-			personalReports
-				.map(
-					(personalInfo) =>
-						`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, Departure: ${personalInfo.departureTime}, Arrival: ${personalInfo.arrivalTime}, Duration: ${personalInfo.approximateTravelTime} minutes`,
-				)
-				.join("\n");
+	function generateReportText(arrayOfReport) {
+		return arrayOfReport.map((personTravel, index) => {
+			const personalReports = personTravel.personalReports;
 
-		return (
-			<div key={index} className="report-container">
-				<button onClick={() => handleCopyButton(reportText)}>Copy</button>
-				<h3>
-					Meeting on {personTravel.meetingDate} at {personTravel.meetingTime}
-				</h3>
-				{personalReports.map((personalInfo, innerIndex) => (
-					<div key={innerIndex}>
-						<h4>Attendee: {personalInfo.name}</h4>
-						<h5>From: {personalInfo.origin}</h5>
-						<p>
-							It is on <bold>{personTravel.meetingDate}</bold> at{" "}
-							{personTravel.meetingTime} in {personalInfo.origin}. Departure
-							time is {personalInfo.departureTime} and expected to arrive at{" "}
-							{personalInfo.arrivalTime}. It lasts around{" "}
-							{personalInfo.approximateTravelTime} minutes.
-						</p>
-					</div>
-				))}
-			</div>
-		);
-	});
+			const reportText =
+				`Meeting on ${personTravel.meetingDate} at ${personTravel.meetingTime}\n` +
+				personalReports
+					.map(
+						(personalInfo) =>
+							`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, Departure: ${personalInfo.departureTime}, Arrival: ${personalInfo.arrivalTime}, Duration: ${personalInfo.approximateTravelTime} minutes`,
+					)
+					.join("\n");
+
+			return (
+				<div key={index} className="report-container">
+					<button onClick={() => handleCopyButton(reportText)}>Copy</button>
+					<h3>
+						Meeting on {personTravel.meetingDate} at {personTravel.meetingTime}
+					</h3>
+					{personalReports.map((personalInfo, innerIndex) => (
+						<div key={innerIndex}>
+							<h4>Attendee: {personalInfo.name}</h4>
+							<h5>From: {personalInfo.origin}</h5>
+							<p>
+								It is on <b>{personTravel.meetingDate}</b> at{" "}
+								{personTravel.meetingTime} in {personalInfo.origin}. Departure
+								time is {personalInfo.departureTime} and expected to arrive at{" "}
+								{personalInfo.arrivalTime}. It lasts around{" "}
+								{personalInfo.approximateTravelTime} minutes.
+							</p>
+						</div>
+					))}
+				</div>
+			);
+		});
+	}
+
+	const textOfReport = generateReportText(arrayOfReport);
 
 	return (
 		<>
@@ -113,8 +127,32 @@ export function ReportMaker({ arrayOfReport }) {
 					}}
 				/>
 				<button onClick={handleSearchButton}>Search</button>
+				<button onClick={handleClearInput}>Clear</button> {/* Clear button */}
 			</div>
-			<div>{textOfReport}</div>
+			{/* Conditionally display search results or general report */}
+			<div>
+				{searchForAttendee
+					? functionToSearchForAttendee(inputValueHolder).map(
+							(result, index) => (
+								<div key={index}>
+									<h3>
+										Meeting on {result.meetingDate} at {result.meetingTime}
+									</h3>
+									<div>
+										<h4>Attendee: {result.personalReports.name}</h4>
+										<h5>From: {result.personalReports.origin}</h5>
+										<p>
+											Departure: {result.personalReports.departureTime},
+											Arrival:
+											{result.personalReports.arrivalTime}, Duration:{" "}
+											{result.personalReports.approximateTravelTime} minutes
+										</p>
+									</div>
+								</div>
+							),
+						)
+					: textOfReport}
+			</div>
 		</>
 	);
 }
