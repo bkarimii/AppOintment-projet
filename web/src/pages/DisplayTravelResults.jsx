@@ -6,15 +6,14 @@ import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 import "./DisplayComponent.css";
 
-// import results from "./results.json";
-
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
-	const [processedReport, setProcessedReport] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState([]); // No more static data
+	const [processedReport, setProcessedReport] = useState([]); // No more static data
 	const [expandedRow, setExpandedRow] = useState(null);
 	const navigate = useNavigate();
-	const url = "/api/compute-route";
+	const url = "/api/compute-route"; // API URL
 
+	// Fetch travel data when the component is mounted
 	useEffect(() => {
 		fetchTravelData(url);
 	}, []);
@@ -31,21 +30,25 @@ function DisplayTravelResults() {
 		return [date, time];
 	}
 
+	// Function to fetch travel data from API
 	const fetchTravelData = async (URL) => {
 		try {
 			const bodyData = localStorage.getItem("newMeetingData");
 			console.log(bodyData);
+
 			const response = await fetch(URL, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
 				},
-				body: bodyData,
+				body: bodyData, // Sending the stored meeting data
 			});
+
 			if (response.ok) {
 				const totalInformation = await response.json();
-				const result = totalInformation[0];
-				const reports = totalInformation[1];
+				const result = totalInformation[0]; // Assuming the first part is results
+				const reports = totalInformation[1]; // Assuming the second part is reports
+
 				setProcessedResultsStorage(result);
 				setProcessedReport(reports);
 				console.log(reports, "<-------reports from API");
@@ -65,6 +68,7 @@ function DisplayTravelResults() {
 		e.preventDefault();
 		navigate("/new-meeting");
 	};
+
 	return (
 		<>
 			<button onClick={handleGoBackButton}>Go Back</button>
@@ -84,44 +88,42 @@ function DisplayTravelResults() {
 							</tr>
 						</thead>
 						<tbody>
-							{processedResultsStorage.map((result, index) => {
-								return (
-									<>
-										<tr key={index} onClick={() => toggleRowExpansion(index)}>
-											<td data-label="Meeting Date">
-												{extractDateTime(result.meetingTime)[0]}
-											</td>
-											<td data-label="Meeting Time">
-												{extractDateTime(result.meetingTime)[1]}
-											</td>
+							{processedResultsStorage.map((result, index) => (
+								<>
+									<tr key={index} onClick={() => toggleRowExpansion(index)}>
+										<td data-label="Meeting Date">
+											{extractDateTime(result.meetingTime)[0]}
+										</td>
+										<td data-label="Meeting Time">
+											{extractDateTime(result.meetingTime)[1]}
+										</td>
 
-											<td data-label="Min Travel Time">
-												{result.minTravelTimeInMinute}
-											</td>
-											<td data-label="Average Travel Time">
-												{result.averageTravelTimeInMinute}
-											</td>
-											<td data-label="Max Travel Time">
-												{result.maxTravelTimeInMinute}
-											</td>
-											<td data-label="Latest Arrival">
-												{result.latestArrival.split(".")[0]}
-											</td>
-											<td data-label="Earliest Departure">
-												{result.earliestDeparture.split(".")[0]}
+										<td data-label="Min Travel Time">
+											{result.minTravelTimeInMinute}
+										</td>
+										<td data-label="Average Travel Time">
+											{result.averageTravelTimeInMinute}
+										</td>
+										<td data-label="Max Travel Time">
+											{result.maxTravelTimeInMinute}
+										</td>
+										<td data-label="Latest Arrival">
+											{result.latestArrival.split(".")[0]}
+										</td>
+										<td data-label="Earliest Departure">
+											{result.earliestDeparture.split(".")[0]}
+										</td>
+									</tr>
+									{/* Render the TravelDetails component when the row is expanded */}
+									{expandedRow === index && (
+										<tr key={-index}>
+											<td colSpan="9">
+												<DisplayDetailOfResults details={result} />
 											</td>
 										</tr>
-										{/* Render the TravelDetails component when the row is expanded */}
-										{expandedRow === index && (
-											<tr key={-index}>
-												<td colSpan="9">
-													<DisplayDetailOfResults details={result} />
-												</td>
-											</tr>
-										)}
-									</>
-								);
-							})}
+									)}
+								</>
+							))}
 						</tbody>
 					</table>
 				</div>
