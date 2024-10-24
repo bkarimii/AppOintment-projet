@@ -2,36 +2,24 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import DisplayDetailOfResults from "./DisplayTravelDetails";
+import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
+
 import "./DisplayComponent.css";
-// import results from "./results.json";
 
 function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
+	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
+	const [loading, setLoading] = useState(false); // Loading state
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
 
-	useEffect(() => {
-		fetchTravelData(url);
-	}, []);
-
-	function extractDateTime(isoString) {
-		const dateObject = new Date(isoString);
-
-		const date = dateObject.toLocaleDateString("en-GB");
-		const time = dateObject.toLocaleTimeString("en-GB", {
-			hour: "2-digit",
-			minute: "2-digit",
-		});
-
-		return [date, time];
-	}
-
 	const fetchTravelData = async (URL) => {
+		setLoading(true); // Set loading to true when starting to fetch data
 		try {
 			const bodyData = localStorage.getItem("newMeetingData");
-			console.log(bodyData);
+
 			const response = await fetch(URL, {
 				method: "POST",
 				headers: {
@@ -39,16 +27,38 @@ function DisplayTravelResults() {
 				},
 				body: bodyData,
 			});
+
 			if (response.ok) {
-				const result = await response.json();
+				const totalInformation = await response.json();
+				const result = totalInformation[0];
+				const reports = totalInformation[1];
 				setProcessedResultsStorage(result);
+				setProcessedReport(reports);
 			} else {
 				console.error("An error happened!", response.status.error);
 			}
 		} catch (error) {
 			console.error(error);
+		} finally {
+			setLoading(false); // Set loading to false when done
 		}
 	};
+
+	useEffect(() => {
+		fetchTravelData(url);
+	}, []);
+
+	const extractDateTime = (isoString) => {
+		const dateObject = new Date(isoString);
+		const date = dateObject.toLocaleDateString("en-GB");
+		const time = dateObject.toLocaleTimeString("en-GB", {
+			hour: "2-digit",
+			minute: "2-digit",
+		});
+		return [date, time];
+	};
+
+	// Function to fetch travel data from API
 
 	const toggleRowExpansion = (index) => {
 		setExpandedRow(expandedRow === index ? null : index); // Toggle the expanded row
@@ -58,27 +68,32 @@ function DisplayTravelResults() {
 		e.preventDefault();
 		navigate("/new-meeting");
 	};
+
 	return (
 		<>
 			<button onClick={handleGoBackButton}>Go Back</button>
 
 			<div>
-				<div>
-					<table>
-						<thead>
-							<tr>
-								<th>Meeting Date</th>
-								<th>Meeting Time</th>
-								<th>Min Travel Time</th>
-								<th>Average Travel Time</th>
-								<th>Max Travel Time</th>
-								<th>Latest Arrival</th>
-								<th>Earliest Departure</th>
-							</tr>
-						</thead>
-						<tbody>
-							{processedResultsStorage.map((result, index) => {
-								return (
+				{loading ? ( // Conditional rendering for loading indicator
+					<p>
+						<strong>Loading data, please wait...</strong>
+					</p>
+				) : (
+					<div>
+						<table>
+							<thead>
+								<tr>
+									<th>Meeting Date</th>
+									<th>Meeting Time</th>
+									<th>Min Travel Time</th>
+									<th>Average Travel Time</th>
+									<th>Max Travel Time</th>
+									<th>Latest Arrival</th>
+									<th>Earliest Departure</th>
+								</tr>
+							</thead>
+							<tbody>
+								{processedResultsStorage.map((result, index) => (
 									<>
 										<tr key={index} onClick={() => toggleRowExpansion(index)}>
 											<td data-label="Meeting Date">
@@ -108,16 +123,27 @@ function DisplayTravelResults() {
 										{expandedRow === index && (
 											<tr key={-index}>
 												<td colSpan="9">
-													<DisplayDetailOfResults details={result} />
+													{/* Flex container to show details and report side by side */}
+													<div className="container">
+														{/* Display details on the left */}
+														<div className="details">
+															<DisplayDetailOfResults details={result} />
+														</div>
+
+														{/* Display report on the right */}
+														<div className="report">
+															<ReportMaker arrayOfReport={processedReport} />
+														</div>
+													</div>
 												</td>
 											</tr>
 										)}
 									</>
-								);
-							})}
-						</tbody>
-					</table>
-				</div>
+								))}
+							</tbody>
+						</table>
+					</div>
+				)}
 			</div>
 
 			<div>
