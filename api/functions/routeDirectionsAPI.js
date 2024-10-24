@@ -1,11 +1,6 @@
-/* eslint-disable no-console */
 import axios from "axios";
 
-import { runTheFetch } from "../utils/config.cjs";
-
 import { fakeData } from "./fakeData.js";
-
-// console.log(typeof runTheFetch,'<---run the fetch value')
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
@@ -15,7 +10,8 @@ export async function computeRoutesForOrigins(
 	fields,
 	apiKey,
 ) {
-	if (runTheFetch !== "false") {
+	const runTheFetch = false;
+	if (runTheFetch) {
 		const userTravelInfoContainer = [];
 
 		for (const arrivalTime of meetingTimeArray) {
@@ -109,7 +105,6 @@ export async function computeRoutesForOrigins(
 
 		return userTravelInfoContainer;
 	} else {
-		console.log("-------------------NO fetch");
 		return fakeData;
 	}
 }

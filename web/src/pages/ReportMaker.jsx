@@ -1,10 +1,10 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+
 import { useState } from "react";
+
 import "./ReportMaker.css";
 
 export function ReportMaker({ arrayOfReport }) {
-	const [showGeneralReport, setShowGeneralReport] = useState(true);
 	const [isCopied, setIsCopied] = useState(false);
 
 	// Extract destination from local storage
