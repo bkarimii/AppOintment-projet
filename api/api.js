@@ -70,9 +70,13 @@ api.post("/compute-route", async (req, res) => {
 
 		const stats = statistics(processedInfo);
 		const reportDataArray = prepareDataForReport("10:00:00", processedInfo);
-		console.log(JSON.stringify(reportDataArray), "-------------------");
 
-		const totalInformation = [stats, reportDataArray, processedInfo];
+		const totalInformation = [
+			stats,
+			reportDataArray,
+			processedInfo,
+			travelInfo,
+		];
 		res.status(200).json(totalInformation);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });

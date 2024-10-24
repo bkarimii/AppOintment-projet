@@ -1,4 +1,11 @@
+/* eslint-disable no-console */
 import axios from "axios";
+
+import { runTheFetch } from "../utils/config.cjs";
+
+import { fakeData } from "./fakeData.js";
+
+// console.log(typeof runTheFetch,'<---run the fetch value')
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
@@ -8,96 +15,101 @@ export async function computeRoutesForOrigins(
 	fields,
 	apiKey,
 ) {
-	const userTravelInfoContainer = [];
+	if (runTheFetch !== "false") {
+		const userTravelInfoContainer = [];
 
-	for (const arrivalTime of meetingTimeArray) {
-		const arrivalDetail = {
-			arrivalTime: arrivalTime,
-			details: [],
-		};
+		for (const arrivalTime of meetingTimeArray) {
+			const arrivalDetail = {
+				arrivalTime: arrivalTime,
+				details: [],
+			};
 
-		for (const originElement of arrayOfOrigins) {
-			try {
-				const requestBody = {
-					origin: {
-						location: {
-							latLng: originElement.location.latLng,
-						},
-					},
-					destination: {
-						location: {
-							latLng: {
-								latitude: destinationParam.latitude,
-								longitude: destinationParam.longitude,
+			for (const originElement of arrayOfOrigins) {
+				try {
+					const requestBody = {
+						origin: {
+							location: {
+								latLng: originElement.location.latLng,
 							},
 						},
-					},
-					travelMode,
-					arrivalTime, // Use the current arrival time from the loop
-				};
-
-				// Send request to Google Routes API
-				const response = await axios.post(
-					"https://routes.googleapis.com/directions/v2:computeRoutes",
-					requestBody,
-					{
-						headers: {
-							"Content-Type": "application/json",
-							"X-Goog-Api-Key": apiKey,
-							"X-Goog-FieldMask": fields,
+						destination: {
+							location: {
+								latLng: {
+									latitude: destinationParam.latitude,
+									longitude: destinationParam.longitude,
+								},
+							},
 						},
-					},
-				);
+						travelMode,
+						arrivalTime, // Use the current arrival time from the loop
+					};
 
-				// Ensure routes exist before accessing them
-				if (response.data.routes && response.data.routes.length > 0) {
-					const route = response.data.routes[0];
-					let firstDepartureTime = null;
-					let lastArrivalTime = null;
-					let duration = null;
-					let staticDuration = null;
+					// Send request to Google Routes API
+					const response = await axios.post(
+						"https://routes.googleapis.com/directions/v2:computeRoutes",
+						requestBody,
+						{
+							headers: {
+								"Content-Type": "application/json",
+								"X-Goog-Api-Key": apiKey,
+								"X-Goog-FieldMask": fields,
+							},
+						},
+					);
 
-					for (const leg of route.legs) {
-						duration = leg.duration || duration;
-						staticDuration = leg.staticDuration || staticDuration;
+					// Ensure routes exist before accessing them
+					if (response.data.routes && response.data.routes.length > 0) {
+						const route = response.data.routes[0];
+						let firstDepartureTime = null;
+						let lastArrivalTime = null;
+						let duration = null;
+						let staticDuration = null;
 
-						for (const step of leg.steps) {
-							if (step.transitDetails) {
-								if (!firstDepartureTime) {
-									firstDepartureTime =
-										step.transitDetails.stopDetails.departureTime;
+						for (const leg of route.legs) {
+							duration = leg.duration || duration;
+							staticDuration = leg.staticDuration || staticDuration;
+
+							for (const step of leg.steps) {
+								if (step.transitDetails) {
+									if (!firstDepartureTime) {
+										firstDepartureTime =
+											step.transitDetails.stopDetails.departureTime;
+									}
+									lastArrivalTime =
+										step.transitDetails.stopDetails.arrivalTime ||
+										lastArrivalTime;
 								}
-								lastArrivalTime =
-									step.transitDetails.stopDetails.arrivalTime ||
-									lastArrivalTime;
 							}
 						}
-					}
 
-					// Add route details to the arrivalDetail object after processing all legs
+						// Add route details to the arrivalDetail object after processing all legs
+						arrivalDetail.details.push({
+							city: originElement.city,
+							arrivalTime, // Add current arrival time
+							firstDepartureTime,
+							lastArrivalTime,
+							duration,
+							staticDuration,
+						});
+					} else {
+						arrivalDetail.details.push({
+							city: originElement.city,
+							error: "No routes found",
+						});
+					}
+				} catch (error) {
 					arrivalDetail.details.push({
 						city: originElement.city,
-						arrivalTime, // Add current arrival time
-						firstDepartureTime,
-						lastArrivalTime,
-						duration,
-						staticDuration,
-					});
-				} else {
-					arrivalDetail.details.push({
-						city: originElement.city,
-						error: "No routes found",
+						error: "Failed to compute the route",
 					});
 				}
-			} catch (error) {
-				arrivalDetail.details.push({
-					city: originElement.city,
-					error: "Failed to compute the route",
-				});
 			}
+			userTravelInfoContainer.push(arrivalDetail);
 		}
-		userTravelInfoContainer.push(arrivalDetail);
-	}
 
-	return userTravelInfoContainer;
+		return userTravelInfoContainer;
+	} else {
+		console.log("-------------------NO fetch");
+		return fakeData;
+	}
 }
