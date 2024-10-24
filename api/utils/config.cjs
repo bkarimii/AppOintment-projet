@@ -9,10 +9,9 @@ const dotenvPath = resolve(
 
 configDotenv({ path: dotenvPath });
 
-requireArgs(["DATABASE_URL", "GOOGLE_MAPS_API_KEY_TWO", "DEVELOPING"]);
+requireArgs(["DATABASE_URL", "GOOGLE_MAPS_API_KEY_TWO"]);
 // Get the API key from the environment
 const googleApiKey = process.env.GOOGLE_MAPS_API_KEY_TWO;
-const runTheFetch = process.env.DEVELOPING;
 
 const databaseUrl = new URL(process.env.DATABASE_URL);
 
@@ -35,7 +34,6 @@ const sslMode = ["prefer", "require", "verify-ca", "verify-full"].includes(
  */
 module.exports = {
 	googleApiKey, // Export the API key
-	runTheFetch,
 	dbConfig: {
 		connectionString: databaseUrl.toString(),
 		connectionTimeoutMillis: 5_000,

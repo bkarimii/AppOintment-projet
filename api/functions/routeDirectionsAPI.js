@@ -1,11 +1,6 @@
-/* eslint-disable no-console */
 import axios from "axios";
 
-import { runTheFetch } from "../utils/config.cjs";
-
 import { fakeData } from "./fakeData.js";
-
-// console.log(typeof runTheFetch,'<---run the fetch value')
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
