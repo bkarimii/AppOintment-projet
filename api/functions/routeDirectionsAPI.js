@@ -8,15 +8,13 @@ export async function computeRoutesForOrigins(
 	fields,
 	apiKey,
 ) {
-	const userTravelInfoContainer = [];
-
-	for (const arrivalTime of meetingTimeArray) {
+	const meetingTimePromises = meetingTimeArray.map(async (arrivalTime) => {
 		const arrivalDetail = {
 			arrivalTime: arrivalTime,
 			details: [],
 		};
 
-		for (const originElement of arrayOfOrigins) {
+		const originPromises = arrayOfOrigins.map(async (originElement) => {
 			try {
 				const requestBody = {
 					origin: {
@@ -33,10 +31,9 @@ export async function computeRoutesForOrigins(
 						},
 					},
 					travelMode,
-					arrivalTime, // Use the current arrival time from the loop
+					arrivalTime,
 				};
 
-				// Send request to Google Routes API
 				const response = await axios.post(
 					"https://routes.googleapis.com/directions/v2:computeRoutes",
 					requestBody,
@@ -49,7 +46,6 @@ export async function computeRoutesForOrigins(
 					},
 				);
 
-				// Ensure routes exist before accessing them
 				if (response.data.routes && response.data.routes.length > 0) {
 					const route = response.data.routes[0];
 					let firstDepartureTime = null;
@@ -74,30 +70,33 @@ export async function computeRoutesForOrigins(
 						}
 					}
 
-					// Add route details to the arrivalDetail object after processing all legs
-					arrivalDetail.details.push({
+					return {
 						city: originElement.city,
-						arrivalTime, // Add current arrival time
+						arrivalTime,
 						firstDepartureTime,
 						lastArrivalTime,
 						duration,
 						staticDuration,
-					});
+					};
 				} else {
-					arrivalDetail.details.push({
+					return {
 						city: originElement.city,
 						error: "No routes found",
-					});
+					};
 				}
 			} catch (error) {
-				arrivalDetail.details.push({
+				return {
 					city: originElement.city,
 					error: "Failed to compute the route",
-				});
+				};
 			}
-		}
-		userTravelInfoContainer.push(arrivalDetail);
-	}
+		});
 
+		const details = await Promise.all(originPromises);
+		arrivalDetail.details.push(...details);
+		return arrivalDetail;
+	});
+
+	const userTravelInfoContainer = await Promise.all(meetingTimePromises);
 	return userTravelInfoContainer;
 }
