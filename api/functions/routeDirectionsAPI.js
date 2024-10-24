@@ -1,4 +1,11 @@
+/* eslint-disable no-console */
 import axios from "axios";
+
+import { runTheFetch } from "../utils/config.cjs";
+
+import { fakeData } from "./fakeData.js";
+
+// console.log(typeof runTheFetch,'<---run the fetch value')
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
@@ -53,22 +60,22 @@ export async function computeRoutesForOrigins(
 					let duration = null;
 					let staticDuration = null;
 
-					for (const leg of route.legs) {
-						duration = leg.duration || duration;
-						staticDuration = leg.staticDuration || staticDuration;
+						for (const leg of route.legs) {
+							duration = leg.duration || duration;
+							staticDuration = leg.staticDuration || staticDuration;
 
-						for (const step of leg.steps) {
-							if (step.transitDetails) {
-								if (!firstDepartureTime) {
-									firstDepartureTime =
-										step.transitDetails.stopDetails.departureTime;
+							for (const step of leg.steps) {
+								if (step.transitDetails) {
+									if (!firstDepartureTime) {
+										firstDepartureTime =
+											step.transitDetails.stopDetails.departureTime;
+									}
+									lastArrivalTime =
+										step.transitDetails.stopDetails.arrivalTime ||
+										lastArrivalTime;
 								}
-								lastArrivalTime =
-									step.transitDetails.stopDetails.arrivalTime ||
-									lastArrivalTime;
 							}
 						}
-					}
 
 					return {
 						city: originElement.city,
