@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import { Router } from "express";
 
 import db from "./db.js";
@@ -69,12 +68,13 @@ api.post("/compute-route", async (req, res) => {
 		const processedInfo = processTravelInfo(travelInfo);
 
 		const stats = statistics(processedInfo);
-		const reportDataArray = prepareDataForReport("10:00:00", processedInfo);
+
+		const reportDataArray = prepareDataForReport(processedInfo);
 
 		const totalInformation = [
 			stats,
-			reportDataArray,
 			processedInfo,
+			reportDataArray,
 			travelInfo,
 		];
 		res.status(200).json(totalInformation);
