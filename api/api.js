@@ -73,8 +73,9 @@ api.post("/compute-route", async (req, res) => {
 
 		const totalInformation = [
 			stats,
-			processedInfo,
 			reportDataArray,
+			processedInfo,
+
 			travelInfo,
 		];
 		res.status(200).json(totalInformation);
