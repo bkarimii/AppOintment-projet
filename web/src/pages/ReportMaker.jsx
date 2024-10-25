@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-
+import PropTypes from "prop-types";
 import { useState } from "react";
 
 import "./ReportMaker.css";
@@ -107,3 +107,22 @@ export function ReportMaker({ arrayOfReport }) {
 		</>
 	);
 }
+
+// PropTypes for ReportMaker
+ReportMaker.propTypes = {
+	arrayOfReport: PropTypes.arrayOf(
+		PropTypes.shape({
+			meetingDate: PropTypes.string.isRequired,
+			meetingTime: PropTypes.string.isRequired,
+			personalReports: PropTypes.arrayOf(
+				PropTypes.shape({
+					name: PropTypes.string.isRequired,
+					origin: PropTypes.string.isRequired,
+					departureTime: PropTypes.string.isRequired,
+					arrivalTime: PropTypes.string.isRequired,
+					approximateTravelTime: PropTypes.number.isRequired,
+				}),
+			).isRequired,
+		}),
+	).isRequired,
+};
