@@ -32,9 +32,9 @@ function prepareDataForReport(suggestedMeetingTime, processedInfo) {
 			// Create a report entry for this meeting time slot
 			const timeSlotReport = {
 				meetingDate: timeExtractor(anySlotTimeMeeting.meetingTime)[0], // Meeting Date
-				meetingTime: timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(
-					".",
-				)[0], // Meeting Time
+				meetingTime: extractHourAndMinute(
+					timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(".")[0],
+				), // Meeting Time
 				personalReports: [], // Array to hold individual person reports
 			};
 			// Iterate over each person's travel details
