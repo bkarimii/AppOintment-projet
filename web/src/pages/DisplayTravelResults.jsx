@@ -1,3 +1,4 @@
+import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -74,7 +75,7 @@ function DisplayTravelResults() {
 			<button onClick={handleGoBackButton}>Go Back</button>
 
 			<div>
-				{loading ? ( // Conditional rendering for loading indicator
+				{loading ? (
 					<p>
 						<strong>Loading data, please wait...</strong>
 					</p>
@@ -94,15 +95,17 @@ function DisplayTravelResults() {
 							</thead>
 							<tbody>
 								{processedResultsStorage.map((result, index) => (
-									<>
-										<tr key={index} onClick={() => toggleRowExpansion(index)}>
+									<React.Fragment key={index}>
+										<tr
+											key={`main-row-${index}`}
+											onClick={() => toggleRowExpansion(index)}
+										>
 											<td data-label="Meeting Date">
 												{extractDateTime(result.meetingTime)[0]}
 											</td>
 											<td data-label="Meeting Time">
 												{extractDateTime(result.meetingTime)[1]}
 											</td>
-
 											<td data-label="Min Travel Time">
 												{result.minTravelTimeInMinute}
 											</td>
@@ -119,18 +122,13 @@ function DisplayTravelResults() {
 												{result.earliestDeparture.split(".")[0]}
 											</td>
 										</tr>
-										{/* Render the TravelDetails component when the row is expanded */}
 										{expandedRow === index && (
-											<tr key={-index}>
+											<tr key={`expanded-row-${index}`}>
 												<td colSpan="9">
-													{/* Flex container to show details and report side by side */}
 													<div className="container">
-														{/* Display details on the left */}
 														<div className="details">
 															<DisplayDetailOfResults details={result} />
 														</div>
-
-														{/* Display report on the right */}
 														<div className="report">
 															<ReportMaker arrayOfReport={processedReport} />
 														</div>
@@ -138,7 +136,7 @@ function DisplayTravelResults() {
 												</td>
 											</tr>
 										)}
-									</>
+									</React.Fragment>
 								))}
 							</tbody>
 						</table>
