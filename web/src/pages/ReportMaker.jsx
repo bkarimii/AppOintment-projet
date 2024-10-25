@@ -1,10 +1,11 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import PropTypes from "prop-types";
 import { useState } from "react";
 
 import "./ReportMaker.css";
 
-export function ReportMaker({ arrayOfReport }) {
+export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [isCopied, setIsCopied] = useState(false);
 
 	// Extract destination from local storage
@@ -32,74 +33,72 @@ export function ReportMaker({ arrayOfReport }) {
 		});
 	};
 
-	function generateReportText(arrayOfReport) {
-		return arrayOfReport.map((personTravel, index) => {
-			const personalReports = personTravel.personalReports;
+	const eachReportObject = arrayOfReport.find(
+		(eachTimeSlotObject) => eachTimeSlotObject.meetingTime == timeOfReport,
+	);
 
-			const reportText =
-				`Meeting on ${personTravel.meetingDate} at ${personTravel.meetingTime}\n` +
-				`Destination: ${destinationTrainStation}\n` + // Add destination to report text
-				personalReports
-					.map(
-						(personalInfo) =>
-							`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, ` +
-							`Departure: ${personalInfo.departureTime}, ` +
-							`Arrival: ${personalInfo.arrivalTime}, ` +
-							`Duration: ${personalInfo.approximateTravelTime} minutes`,
-					)
-					.join("\n");
+	function generateReportText(eachReportObject) {
+		// Extract necessary details
+		const { meetingDate, meetingTime, personalReports } = eachReportObject;
 
-			return (
-				<div key={index} className="report-container">
-					{isCopied ? (
-						<button onClick={() => handleCopyButton(reportText)}>Copied</button>
-					) : (
-						<button onClick={() => handleCopyButton(reportText)}>
-							Copy report
-						</button>
-					)}
+		// Generate the report text for each person's travel details
+		const reportText =
+			`Meeting on ${meetingDate} at ${meetingTime}\n` +
+			`Destination: ${destinationTrainStation}\n` +
+			personalReports
+				.map(
+					(personalInfo) =>
+						`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, ` +
+						`Departure: ${personalInfo.departureTime}, ` +
+						`Arrival: ${personalInfo.arrivalTime}, ` +
+						`Duration: ${personalInfo.approximateTravelTime} minutes`,
+				)
+				.join("\n");
 
-					<h3> Meeting Report</h3>
-					{personalReports.map((personalInfo, innerIndex) => (
-						<div key={innerIndex} className="each-person-report">
-							<h4>Attendee: {personalInfo.name}</h4>
-							<h4>From: {personalInfo.origin}</h4>
-							<p>
-								<strong>Date of Meeting:</strong>{" "}
-								<strong>{personTravel.meetingDate}</strong>
-							</p>
-							<p>
-								<strong>Time of Meeting:</strong>{" "}
-								<strong>{personTravel.meetingTime}</strong>
-							</p>
-							<p>
-								<strong>Departure Location:</strong>{" "}
-								<strong>{personalInfo.origin}</strong>
-							</p>
-							<p>
-								<strong>Travel Details:</strong>
-							</p>
-							<ul>
-								<li>
-									<strong>Departure Time:</strong> {personalInfo.departureTime}
-								</li>
-								<li>
-									<strong>Expected Arrival Time:</strong>{" "}
-									{personalInfo.arrivalTime}
-								</li>
-								<li>
-									<strong>Approximate Duration:</strong>{" "}
-									{personalInfo.approximateTravelTime} minutes
-								</li>
-							</ul>
-						</div>
-					))}
-				</div>
-			);
-		});
+		// Render the report UI
+		return (
+			<div className="report-container">
+				{isCopied ? (
+					<button onClick={() => handleCopyButton(reportText)}>Copied</button>
+				) : (
+					<button onClick={() => handleCopyButton(reportText)}>
+						Copy report
+					</button>
+				)}
+				<h3>Meeting Report</h3>
+				<h4>
+					<strong>Date of Meeting:</strong> {meetingDate}
+				</h4>
+				<h4>
+					<strong>Time of Meeting:</strong> {meetingTime}
+				</h4>
+				{personalReports.map((personalInfo, index) => (
+					<div key={index} className="each-person-report">
+						<h4>Attendee: {personalInfo.name}</h4>
+						<h4>From: {personalInfo.origin}</h4>
+						<p>
+							<strong>Departure Location:</strong> {personalInfo.origin}
+						</p>
+						<ul>
+							<li>
+								<strong>Departure Time:</strong> {personalInfo.departureTime}
+							</li>
+							<li>
+								<strong>Expected Arrival Time:</strong>{" "}
+								{personalInfo.arrivalTime}
+							</li>
+							<li>
+								<strong>Approximate Duration:</strong>{" "}
+								{personalInfo.approximateTravelTime} minutes
+							</li>
+						</ul>
+					</div>
+				))}
+			</div>
+		);
 	}
 
-	const textOfReport = generateReportText(arrayOfReport);
+	const textOfReport = generateReportText(eachReportObject);
 
 	return (
 		<>
