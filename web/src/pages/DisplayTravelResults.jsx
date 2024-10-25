@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import DisplayDetailOfResults from "./DisplayTravelDetails";
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 
@@ -51,10 +50,12 @@ function DisplayTravelResults() {
 
 	const extractDateTime = (isoString) => {
 		const dateObject = new Date(isoString);
-		const date = dateObject.toLocaleDateString("en-GB");
+		const date = dateObject.toLocaleDateString("en-GB", { timeZone: "UTC" });
 		const time = dateObject.toLocaleTimeString("en-GB", {
 			hour: "2-digit",
 			minute: "2-digit",
+			hour12: false,
+			timeZone: "UTC",
 		});
 		return [date, time];
 	};
@@ -126,11 +127,13 @@ function DisplayTravelResults() {
 											<tr key={`expanded-row-${index}`}>
 												<td colSpan="9">
 													<div className="container">
-														<div className="details">
-															<DisplayDetailOfResults details={result} />
-														</div>
 														<div className="report">
-															<ReportMaker arrayOfReport={processedReport} />
+															<ReportMaker
+																timeOfReport={
+																	extractDateTime(result.meetingTime)[1]
+																}
+																arrayOfReport={processedReport}
+															/>
 														</div>
 													</div>
 												</td>
