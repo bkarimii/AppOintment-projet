@@ -7,6 +7,7 @@ function timeExtractor(dateTimeString) {
 		// Check if the date is valid
 		const date = dt.toISOString().split("T")[0];
 		const time = dt.toISOString().split("T")[1].split("Z")[0];
+
 		return [date, time];
 	} else {
 		return "IncorrectFormat";
@@ -17,6 +18,29 @@ function timeExtractor(dateTimeString) {
 function timeToMinutes(time) {
 	const [hours, minutes, seconds] = time.split(":").map(Number);
 	return hours * 60 + minutes + seconds / 60;
+}
+
+// function timeExtractor(dateTimeString) {
+// 	// This function extracts date and time in hh:mm format and returns it in an array
+// 	// Input format should be like this: "2024-10-13T06:20:00Z"
+// 	const dt = new Date(dateTimeString);
+
+// 	if (!isNaN(dt.getTime())) {
+// 		// Check if the date is valid
+// 		const date = dt.toISOString().split("T")[0];
+// 		const hours = dt.getUTCHours().toString().padStart(2, "0");
+
+// 		const minutes = dt.getUTCMinutes().toString().padStart(2, "0");
+// 		const time = `${hours}:${minutes}`;
+
+// 		return [date, time];
+// 	} else {
+// 		return "IncorrectFormat";
+// 	}
+// }
+
+function extractHourAndMinute(timeString) {
+	return timeString.split(":").slice(0, 2).join(":");
 }
 
 function processTravelInfo(array) {
@@ -145,11 +169,11 @@ function statistics(allMeetingTimes) {
 			maxTravelTimeInMinute: maxTravelTime,
 			minTravelTimeInMinute: minTravelTime,
 			averageTravelTimeInMinute: averageTravelTime,
-			earliestArrival,
-			latestArrival,
-			earliestDeparture,
-			latestDeparture,
-			medianArrivalTime: minutesToTime(medianTravelTime), // Assuming minutesToTime correctly converts minutes to time format
+			earliestArrival: extractHourAndMinute(earliestArrival),
+			latestArrival: extractHourAndMinute(latestArrival),
+			earliestDeparture: extractHourAndMinute(earliestDeparture),
+			latestDeparture: extractHourAndMinute(latestDeparture),
+			medianArrivalTime: extractHourAndMinute(minutesToTime(medianTravelTime)), // Assuming minutesToTime correctly converts minutes to time format
 			difficultTravels,
 			tooLongTravel,
 		});
