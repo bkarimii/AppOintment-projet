@@ -140,5 +140,10 @@ button:hover {
 	padding: 4px 3px;
 	margin-bottom: 2px;
 	border: 1px solid black;
+	border-radius: 6px;
+	padding: 1rem;
+}
+
+.each-person-report > ul {
 	list-style: none;
 }
