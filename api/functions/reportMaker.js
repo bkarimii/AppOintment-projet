@@ -7,54 +7,46 @@ function timeExtractor(dateTimeString) {
 		// Check if the date is valid
 		const date = dt.toISOString().split("T")[0];
 		const time = dt.toISOString().split("T")[1].split("Z")[0];
+
 		return [date, time];
 	} else {
 		return "IncorrectFormat";
 	}
 }
-
 function extractHourAndMinute(timeString) {
 	return timeString.split(":").slice(0, 2).join(":");
 }
 
-function prepareDataForReport(suggestedMeetingTime, processedInfo) {
+function prepareDataForReport(processedInfo) {
 	const reports = [];
 	// Loop through each time slot (meeting)
 	for (const anySlotTimeMeeting of processedInfo) {
-		// Check if the current meeting time matches the suggested time
-		if (
-			suggestedMeetingTime ===
-			timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(".")[0]
-		) {
-			// Extract attendees' travel info for this meeting slot
-			const attendeesTravelInfo = anySlotTimeMeeting.analys;
+		// Extract attendees' travel info for this meeting slot
+		const attendeesTravelInfo = anySlotTimeMeeting.analys;
 
-			// Create a report entry for this meeting time slot
-			const timeSlotReport = {
-				meetingDate: timeExtractor(anySlotTimeMeeting.meetingTime)[0], // Meeting Date
-				meetingTime: extractHourAndMinute(
-					timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(".")[0],
-				), // Meeting Time
-				personalReports: [], // Array to hold individual person reports
+		// Create a report entry for this meeting time slot
+		const timeSlotReport = {
+			meetingDate: timeExtractor(anySlotTimeMeeting.meetingTime)[0], // Meeting Date
+			meetingTime: extractHourAndMinute(
+				timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(".")[0],
+			), // Meeting Time
+			personalReports: [], // Array to hold individual person reports
+		};
+		// Iterate over each person's travel details
+		attendeesTravelInfo.forEach((eachPerson) => {
+			const personalReport = {
+				name: eachPerson.city.name,
+				origin: eachPerson.city.station,
+				approximateTravelTime: eachPerson.spentTimeInMinutes,
+				departureTime: extractHourAndMinute(
+					eachPerson.departureTime.split(".")[0],
+				),
+				arrivalTime: extractHourAndMinute(eachPerson.arrivalTime.split(".")[0]),
 			};
-			// Iterate over each person's travel details
-			attendeesTravelInfo.forEach((eachPerson) => {
-				const personalReport = {
-					name: eachPerson.city.name,
-					origin: eachPerson.city.station,
-					approximateTravelTime: eachPerson.spentTimeInMinutes,
-					departureTime: extractHourAndMinute(
-						eachPerson.departureTime.split(".")[0],
-					),
-					arrivalTime: extractHourAndMinute(
-						eachPerson.arrivalTime.split(".")[0],
-					),
-				};
-				timeSlotReport.personalReports.push(personalReport);
-			});
+			timeSlotReport.personalReports.push(personalReport);
+		});
 
-			reports.push(timeSlotReport);
-		}
+		reports.push(timeSlotReport);
 	}
 
 	return reports;
