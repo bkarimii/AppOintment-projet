@@ -149,7 +149,7 @@ function statistics(allMeetingTimes) {
 			averageTravelTimeInHour: (averageTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			maxTravelTimeInMinute: maxTravelTime,
 			minTravelTimeInMinute: minTravelTime,
-			averageTravelTimeInMinute: Math.round(averageTravelTime),
+			averageTravelTimeInMinute: averageTravelTime,
 			earliestArrival: extractHourAndMinute(earliestArrival),
 			latestArrival: extractHourAndMinute(latestArrival),
 			earliestDeparture: extractHourAndMinute(earliestDeparture),

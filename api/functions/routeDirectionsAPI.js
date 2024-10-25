@@ -60,7 +60,22 @@ export async function computeRoutesForOrigins(
 						for (const leg of route.legs) {
 							duration = leg.duration || duration;
 							staticDuration = leg.staticDuration || staticDuration;
+							for (const leg of route.legs) {
+								duration = leg.duration || duration;
+								staticDuration = leg.staticDuration || staticDuration;
 
+								for (const step of leg.steps) {
+									if (step.transitDetails) {
+										if (!firstDepartureTime) {
+											firstDepartureTime =
+												step.transitDetails.stopDetails.departureTime;
+										}
+										lastArrivalTime =
+											step.transitDetails.stopDetails.arrivalTime ||
+											lastArrivalTime;
+									}
+								}
+							}
 							for (const step of leg.steps) {
 								if (step.transitDetails) {
 									if (!firstDepartureTime) {
