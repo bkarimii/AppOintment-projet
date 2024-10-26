@@ -5,12 +5,24 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./ReportMaker.css";
 
 export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [isCopied, setIsCopied] = useState(false);
+	const [reportDestination, setReportDestination] = useState(
+		"Unknown Destination",
+	);
+
+	useEffect(() => {
+		const meetingData = localStorage.getItem("newMeetingData");
+		setReportDestination(
+			meetingData
+				? JSON.parse(meetingData).meetingStation
+				: "Unknown Destination",
+		);
+	}, []);
 
 	// Extract destination from local storage
 	const meetingData = localStorage.getItem("newMeetingData");
@@ -86,6 +98,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 						<h4>
 							<strong>Date of Meeting:</strong> {meetingDate}
 						</h4>
+						<h4>Meeting Location: {reportDestination}</h4>
 						<h4>
 							<strong>Time of Meeting:</strong> {meetingTime}
 						</h4>
