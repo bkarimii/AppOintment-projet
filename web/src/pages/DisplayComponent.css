@@ -148,3 +148,51 @@ button:hover {
 .each-person-report > ul {
 	list-style: none;
 }
+
+/* Radio Buttons Container */
+.radio-buttons-container {
+	display: flex;
+	align-items: flex-start;
+	flex-direction: column;
+	margin: 20px 0;
+	padding: 10px;
+	border: 1px solid #ddd; /* Border around the container */
+	border-radius: 8px; /* Rounded corners */
+	background-color: #f9f9f9; /* Light background for the container */
+}
+
+/* Individual Radio Button Styling */
+.radio-buttons-container div {
+	margin-bottom: 10px; /* Space between each radio button */
+	display: flex;
+	justify-content: space-around;
+	align-items: center; /* Align items vertically */
+	width: 22rem;
+}
+
+/* Radio Button Input */
+.radio-buttons-container input[type="radio"] {
+	margin-right: 10px; /* Space between radio button and label */
+	cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Label Styling */
+.radio-buttons-container label {
+	font-size: 16px; /* Adjust label font size */
+	color: #333; /* Text color */
+}
+
+/* Legend Styling */
+.radio-buttons-container legend {
+	font-size: 18px; /* Size for the legend */
+	font-weight: bold; /* Bold text for emphasis */
+	margin-bottom: 2rem; /* Space below legend */
+}
+
+/* Display selected option */
+.selected-option {
+	margin-top: 10px; /* Space above selected option text */
+	font-style: italic; /* Italics for emphasis */
+	color: #00350a; /* Color for the selected option text */
+	font-weight: bolder;
+}
