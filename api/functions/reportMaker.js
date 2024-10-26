@@ -13,6 +13,7 @@ function timeExtractor(dateTimeString) {
 		return "IncorrectFormat";
 	}
 }
+
 function extractHourAndMinute(timeString) {
 	return timeString.split(":").slice(0, 2).join(":");
 }
@@ -42,6 +43,7 @@ function prepareDataForReport(processedInfo) {
 					eachPerson.departureTime.split(".")[0],
 				),
 				arrivalTime: extractHourAndMinute(eachPerson.arrivalTime.split(".")[0]),
+				difficultJourney: eachPerson.durationInDays,
 			};
 			timeSlotReport.personalReports.push(personalReport);
 		});
