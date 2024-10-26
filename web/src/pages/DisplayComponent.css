@@ -74,3 +74,77 @@ tr:hover {
 		text-align: left;
 	}
 }
+
+/* ======================================================================= */
+.container {
+	display: flex;
+	justify-content: space-between;
+	height: 300px; /* Set height to match the details section */
+	gap: 20px; /* Spacing between details and report */
+}
+
+.details {
+	flex: 1;
+	background-color: #f9f9f9;
+	padding: 15px;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	font-family: "Arial", sans-serif;
+	line-height: 1.6;
+	color: #333;
+}
+
+.details h4 {
+	font-size: 18px;
+	color: #007bff; /* Adjust color to make titles pop */
+	margin-bottom: 10px;
+}
+
+.details p {
+	margin: 5px 0;
+	font-size: 16px;
+}
+
+.report {
+	flex: 1;
+	padding: 15px;
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	max-height: 300px; /* Set same height as details */
+	overflow-y: auto; /* Enable scrolling if report is long */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button {
+	margin-top: 10px;
+	padding: 5px 10px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+button:hover {
+	background-color: #0056b3;
+}
+
+.table-row {
+	display: block; /* Ensures table rows aren't affected by flex containers */
+	clear: both; /* Prevents overlap */
+}
+
+.each-person-report {
+	padding: 4px 3px;
+	margin-bottom: 2px;
+	border: 1px solid black;
+	border-radius: 6px;
+	padding: 1rem;
+	background-color: #53c057;
+}
+
+.each-person-report > ul {
+	list-style: none;
+}
