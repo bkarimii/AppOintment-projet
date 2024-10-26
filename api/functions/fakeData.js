@@ -8,10 +8,10 @@ const fakeData = [
 					station: "MAN",
 				},
 				arrivalTime: "2024-10-25T10:00:00.000Z",
-				firstDepartureTime: "2024-10-25T07:35:00Z",
+				firstDepartureTime: "2024-10-25T01:35:00Z",
 				lastArrivalTime: "2024-10-25T09:41:00Z",
-				duration: "8637s",
-				staticDuration: "8637s",
+				duration: "28637s",
+				staticDuration: "28637s",
 			},
 			{
 				city: {
