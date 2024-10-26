@@ -85,7 +85,6 @@ function DisplayTravelResults() {
 				return 0; // Default, no sorting
 		}
 	});
-	console.log(sortedResults, "<-------Sorted result");
 
 	const toggleRowExpansion = (index) => {
 		setExpandedRow(expandedRow === index ? null : index); // Toggle the expanded row
