@@ -31,10 +31,26 @@
 		sans-serif; /* Set a nice font */
 }
 
+/* Flex container for copy button and report title */
+.copy-button-container {
+	display: flex; /* Use flexbox for layout */
+	align-items: flex-start; /* Center items vertically */
+	margin-bottom: 15px; /* Space below the container */
+	height: 2rem;
+}
+
+/* Flex container for date and time info */
+.date-time-info {
+	display: flex; /* Use flexbox for layout */
+	justify-content: flex-start; /* Space out items evenly */
+	margin-top: 10px; /* Space above the date-time section */
+}
+
 /* Attendee heading */
 .report-container h4 {
-	margin: 10px 0; /* Space above and below the heading */
+	margin: 10px 5px; /* Space above and below the heading, adjusted for side-by-side */
 	color: #000000; /* Dark gray color for better readability */
+	margin-right: 2rem;
 }
 
 /* Subheading for origin */
@@ -60,7 +76,7 @@
 }
 
 .report-container button:hover {
-	background-color: #077b01; /* Darker blue on hover */
+	background-color: #077b01; /* Darker green on hover */
 }
 
 .icon-button {
@@ -71,6 +87,7 @@
 	display: inline-flex;
 	align-items: center;
 	transition: transform 0.1s ease;
+	margin-right: 1rem;
 }
 
 .icon-button:active {
@@ -78,8 +95,8 @@
 }
 
 .date-time-report {
-	background-color: #4caf50;
-	border-radius: 5px;
-	padding: 1rem;
-	margin: 0.5rem;
+	background-color: #4caf50; /* Green background for the report section */
+	border-radius: 5px; /* Rounded corners */
+	padding: 1rem; /* Padding inside the report section */
+	margin: 0.5rem; /* Space around the report section */
 }
