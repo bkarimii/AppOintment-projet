@@ -147,7 +147,6 @@ function DisplayTravelResults() {
 					<label htmlFor="minslack">Min Slack Travel Time</label>
 					<p>Table Ranked by {}</p>
 				</div>
-				{console.log(selectedOption)}
 			</div>
 
 			<div>
@@ -165,9 +164,9 @@ function DisplayTravelResults() {
 									<th>Min Travel Time</th>
 									<th>Average Travel Time</th>
 									<th>Max Travel Time</th>
+									<th>Departures</th>
 									<th>Arrivals</th>
 									<th>Arrival Slack</th>
-									<th>Departures</th>
 									<th>Warnings</th>
 								</tr>
 							</thead>
@@ -193,13 +192,13 @@ function DisplayTravelResults() {
 											<td data-label="Max Travel Time">
 												{result.maxTravelTimeInMinute}
 											</td>
+											<td data-label="Departure">
+												{result.earliestDeparture} : {result.latestDeparture}
+											</td>
 											<td data-label="Arrivals">
 												{result.earliestArrival} : {result.latestArrival}
 											</td>
 											<td data-label="Arrival Slack">{result.arrivalSlack}</td>
-											<td data-label="Departure">
-												{result.earliestDeparture} : {result.latestDeparture}
-											</td>
 											<td data-label="Warnings">
 												{result.difficultTravels.length > 0 ||
 												result.tooLongTravels.length > 0 ? (
