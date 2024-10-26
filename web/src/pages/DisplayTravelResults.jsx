@@ -159,6 +159,7 @@ function DisplayTravelResults() {
 						<table>
 							<thead>
 								<tr>
+									<th>Rank</th>
 									<th>Meeting Date</th>
 									<th>Meeting Time</th>
 									<th>Min Travel Time</th>
@@ -177,6 +178,7 @@ function DisplayTravelResults() {
 											key={`main-row-${index}`}
 											onClick={() => toggleRowExpansion(index)}
 										>
+											<td data-label="Rank"># {index + 1}</td>
 											<td data-label="Meeting Date">
 												{extractDateTime(result.meetingTime)[0]}
 											</td>
