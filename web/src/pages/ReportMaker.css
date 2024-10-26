@@ -34,7 +34,7 @@
 /* Flex container for copy button and report title */
 .copy-button-container {
 	display: flex; /* Use flexbox for layout */
-	align-items: flex-start; /* Center items vertically */
+	align-items: center; /* Center items vertically */
 	margin-bottom: 15px; /* Space below the container */
 	height: 2rem;
 }
@@ -43,7 +43,6 @@
 .date-time-info {
 	display: flex; /* Use flexbox for layout */
 	justify-content: flex-start; /* Space out items evenly */
-	margin-top: 10px; /* Space above the date-time section */
 }
 
 /* Attendee heading */
@@ -99,4 +98,6 @@
 	border-radius: 5px; /* Rounded corners */
 	padding: 1rem; /* Padding inside the report section */
 	margin: 0.5rem; /* Space around the report section */
+	display: flex;
+	justify-content: space-between;
 }
