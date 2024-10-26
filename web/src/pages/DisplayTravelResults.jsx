@@ -1,3 +1,8 @@
+import {
+	faExclamationTriangle,
+	faCheckCircle,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -90,8 +95,10 @@ function DisplayTravelResults() {
 									<th>Min Travel Time</th>
 									<th>Average Travel Time</th>
 									<th>Max Travel Time</th>
-									<th>Latest Arrival</th>
-									<th>Earliest Departure</th>
+									<th>Arrivals</th>
+									<th>Arrival Slack</th>
+									<th>Departures</th>
+									<th>Warnings</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -116,11 +123,29 @@ function DisplayTravelResults() {
 											<td data-label="Max Travel Time">
 												{result.maxTravelTimeInMinute}
 											</td>
-											<td data-label="Latest Arrival">
-												{result.latestArrival.split(".")[0]}
+											<td data-label="Arrivals">
+												{result.earliestArrival} : {result.latestArrival}
 											</td>
-											<td data-label="Earliest Departure">
-												{result.earliestDeparture.split(".")[0]}
+											<td data-label="Arrival Slack">{result.arrivalSlack}</td>
+											<td data-label="Departure">
+												{result.earliestDeparture} : {result.latestDeparture}
+											</td>
+											<td data-label="Warnings">
+												{result.difficultTravels.length > 0 ||
+												result.tooLongTravels.length > 0 ? (
+													<FontAwesomeIcon
+														icon={faExclamationTriangle}
+														style={{ color: "orange", fontSize: "1.5em" }}
+														title="Warning"
+														data-tip="Warning: you have long travel"
+													/>
+												) : (
+													<FontAwesomeIcon
+														icon={faCheckCircle}
+														style={{ color: "green", fontSize: "1.5em" }}
+														title="All Good"
+													/>
+												)}
 											</td>
 										</tr>
 										{expandedRow === index && (
