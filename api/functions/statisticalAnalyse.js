@@ -136,7 +136,9 @@ function statistics(allMeetingTimes) {
 		}
 
 		// Calculate average travel time in minutes
-		const averageTravelTime = totalTravelTime / countOfTraveler;
+		const averageTravelTime = Number(
+			(totalTravelTime / countOfTraveler).toFixed(),
+		);
 
 		// Calculate median arrival time
 		const medianTravelTime = calculateMedian(arrivalTimesInMinutes);
