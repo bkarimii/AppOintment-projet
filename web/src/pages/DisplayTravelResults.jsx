@@ -19,6 +19,17 @@ function DisplayTravelResults() {
 	const [loading, setLoading] = useState(false); // Loading page state
 	const [selectedOption, setSelectedOption] = useState("default");
 
+	const rankingDescriptions = {
+		default: "Default sorting (original order)",
+		min: " Minimum Travel Time",
+		max: " Maximum Travel Time",
+		minSlack: " Minimum Slack in Travel Time",
+	};
+
+	// Display meaningful ranking message based on selected option
+	const getRankingDescription = (option) =>
+		rankingDescriptions[option] || "Default sorting";
+
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
 
@@ -78,7 +89,7 @@ function DisplayTravelResults() {
 			case "min":
 				return a.minTravelTimeInMinute - b.minTravelTimeInMinute;
 			case "max":
-				return b.maxTravelTimeInMinute - a.maxTravelTimeInMinute;
+				return a.maxTravelTimeInMinute - b.maxTravelTimeInMinute;
 			case "minSlack":
 				return a.arrivalSlack - b.arrivalSlack;
 			default:
@@ -103,13 +114,13 @@ function DisplayTravelResults() {
 				<div>
 					<input
 						type="radio"
-						id="minSlack"
+						id="default"
 						name="ranking"
 						value="default"
 						checked={selectedOption === "default"}
 						onChange={handleOptionChange}
 					/>
-					<label htmlFor="minslack">Default</label>
+					<label htmlFor="default">Default</label>
 				</div>
 
 				<div>
@@ -121,7 +132,7 @@ function DisplayTravelResults() {
 						checked={selectedOption === "min"}
 						onChange={handleOptionChange}
 					/>
-					<label htmlFor="min">Min Trave Time</label>
+					<label htmlFor="min">Min Travel Time</label>
 				</div>
 
 				<div>
@@ -135,6 +146,7 @@ function DisplayTravelResults() {
 					/>
 					<label htmlFor="max">Max Travel Time</label>
 				</div>
+
 				<div>
 					<input
 						type="radio"
@@ -144,9 +156,13 @@ function DisplayTravelResults() {
 						checked={selectedOption === "minSlack"}
 						onChange={handleOptionChange}
 					/>
-					<label htmlFor="minslack">Min Slack Travel Time</label>
-					<p>Table Ranked by {}</p>
+					<label htmlFor="minSlack">Min Slack Travel Time</label>
 				</div>
+
+				{/* Display the selected option */}
+				<p className="selected-option">
+					Table Ranked by: {getRankingDescription(selectedOption)}
+				</p>
 			</div>
 
 			<div>
