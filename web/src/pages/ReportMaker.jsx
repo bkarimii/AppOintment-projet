@@ -1,8 +1,5 @@
-/* eslint-disable import/order */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -131,6 +128,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 
 // PropTypes for ReportMaker
 ReportMaker.propTypes = {
+	timeOfReport: PropTypes.string.isRequired,
 	arrayOfReport: PropTypes.arrayOf(
 		PropTypes.shape({
 			meetingDate: PropTypes.string.isRequired,
