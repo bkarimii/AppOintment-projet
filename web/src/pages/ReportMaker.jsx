@@ -1,5 +1,8 @@
+/* eslint-disable import/order */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -59,19 +62,38 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 		return (
 			<div className="report-container">
 				{isCopied ? (
-					<button onClick={() => handleCopyButton(reportText)}>Copied</button>
+					<button
+						onClick={() => handleCopyButton(reportText)}
+						className="icon-button"
+					>
+						<FontAwesomeIcon
+							icon={faCheck}
+							style={{ color: "white", size: "large" }}
+						/>
+						{"  "}
+						Copied!
+						{/* "Copied" icon */}
+					</button>
 				) : (
-					<button onClick={() => handleCopyButton(reportText)}>
-						Copy report
+					<button
+						onClick={() => handleCopyButton(reportText)}
+						className="icon-button"
+					>
+						<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />{" "}
+						{/* "Copy" icon */}
 					</button>
 				)}
-				<h3>Meeting Report</h3>
-				<h4>
-					<strong>Date of Meeting:</strong> {meetingDate}
-				</h4>
-				<h4>
-					<strong>Time of Meeting:</strong> {meetingTime}
-				</h4>
+
+				<div className="date-time-report">
+					<h3>Meeting Report</h3>
+					<h4>
+						<strong>Date of Meeting:</strong> {meetingDate}
+					</h4>
+					<h4>
+						<strong>Time of Meeting:</strong> {meetingTime}
+					</h4>
+				</div>
+
 				{personalReports.map((personalInfo, index) => (
 					<div key={index} className="each-person-report">
 						<h4>Attendee: {personalInfo.name}</h4>
