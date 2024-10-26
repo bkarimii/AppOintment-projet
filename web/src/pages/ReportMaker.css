@@ -52,7 +52,7 @@
 /* Button styles */
 .report-container button {
 	padding: 10px 15px; /* Padding inside the button */
-	background-color: #007bff; /* Button background color */
+	background-color: #0a3000; /* Button background color */
 	color: white; /* Button text color */
 	border: none; /* No border */
 	border-radius: 5px; /* Rounded corners for the button */
@@ -60,5 +60,26 @@
 }
 
 .report-container button:hover {
-	background-color: #0056b3; /* Darker blue on hover */
+	background-color: #077b01; /* Darker blue on hover */
+}
+
+.icon-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	display: inline-flex;
+	align-items: center;
+	transition: transform 0.1s ease;
+}
+
+.icon-button:active {
+	transform: scale(0.95);
+}
+
+.date-time-report {
+	background-color: #4caf50;
+	border-radius: 5px;
+	padding: 1rem;
+	margin: 0.5rem;
 }
