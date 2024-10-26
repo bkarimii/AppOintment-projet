@@ -16,7 +16,9 @@ function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
 	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
-	const [loading, setLoading] = useState(false); // Loading state
+	const [loading, setLoading] = useState(false); // Loading page state
+	const [selectedOption, setSelectedOption] = useState("default");
+
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
 
@@ -65,7 +67,25 @@ function DisplayTravelResults() {
 		return [date, time];
 	};
 
-	// Function to fetch travel data from API
+	// Handle sorting when radio button changes
+	const handleOptionChange = (e) => {
+		setSelectedOption(e.target.value);
+	};
+
+	// Sort based on selectedOption
+	const sortedResults = [...processedResultsStorage].sort((a, b) => {
+		switch (selectedOption) {
+			case "min":
+				return a.minTravelTimeInMinute - b.minTravelTimeInMinute;
+			case "max":
+				return b.maxTravelTimeInMinute - a.maxTravelTimeInMinute;
+			case "minSlack":
+				return a.arrivalSlack - b.arrivalSlack;
+			default:
+				return 0; // Default, no sorting
+		}
+	});
+	console.log(sortedResults, "<-------Sorted result");
 
 	const toggleRowExpansion = (index) => {
 		setExpandedRow(expandedRow === index ? null : index); // Toggle the expanded row
@@ -79,6 +99,57 @@ function DisplayTravelResults() {
 	return (
 		<>
 			<button onClick={handleGoBackButton}>Go Back</button>
+			<div className="radio-buttons-container">
+				<legend>Rank the table by:</legend>
+				<div>
+					<input
+						type="radio"
+						id="minSlack"
+						name="ranking"
+						value="default"
+						checked={selectedOption === "default"}
+						onChange={handleOptionChange}
+					/>
+					<label htmlFor="minslack">Default</label>
+				</div>
+
+				<div>
+					<input
+						type="radio"
+						id="min"
+						name="ranking"
+						value="min"
+						checked={selectedOption === "min"}
+						onChange={handleOptionChange}
+					/>
+					<label htmlFor="min">Min Trave Time</label>
+				</div>
+
+				<div>
+					<input
+						type="radio"
+						id="max"
+						name="ranking"
+						value="max"
+						checked={selectedOption === "max"}
+						onChange={handleOptionChange}
+					/>
+					<label htmlFor="max">Max Travel Time</label>
+				</div>
+				<div>
+					<input
+						type="radio"
+						id="minSlack"
+						name="ranking"
+						value="minSlack"
+						checked={selectedOption === "minSlack"}
+						onChange={handleOptionChange}
+					/>
+					<label htmlFor="minslack">Min Slack Travel Time</label>
+					<p>Table Ranked by {}</p>
+				</div>
+				{console.log(selectedOption)}
+			</div>
 
 			<div>
 				{loading ? (
@@ -102,7 +173,7 @@ function DisplayTravelResults() {
 								</tr>
 							</thead>
 							<tbody>
-								{processedResultsStorage.map((result, index) => (
+								{sortedResults.map((result, index) => (
 									<React.Fragment key={index}>
 										<tr
 											key={`main-row-${index}`}
