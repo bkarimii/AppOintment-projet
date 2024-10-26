@@ -59,67 +59,6 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 				)
 				.join("\n");
 
-		// Render the report UI
-		// return (
-		// 	<div className="report-container">
-		// 		{isCopied ? (
-		// 			<button
-		// 				onClick={() => handleCopyButton(reportText)}
-		// 				className="icon-button"
-		// 			>
-		// 				<FontAwesomeIcon
-		// 					icon={faCheck}
-		// 					style={{ color: "white", size: "large" }}
-		// 				/>
-		// 				{"  "}
-		// 				Copied!
-		// 				{/* "Copied" icon */}
-		// 			</button>
-		// 		) : (
-		// 			<button
-		// 				onClick={() => handleCopyButton(reportText)}
-		// 				className="icon-button"
-		// 			>
-		// 				<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />{" "}
-		// 				{/* "Copy" icon */}
-		// 			</button>
-		// 		)}
-
-		// 		<div className="date-time-report">
-		// 			<h3>Meeting Report</h3>
-		// 			<h4>
-		// 				<strong>Date of Meeting:</strong> {meetingDate}
-		// 			</h4>
-		// 			<h4>
-		// 				<strong>Time of Meeting:</strong> {meetingTime}
-		// 			</h4>
-		// 		</div>
-
-		// 		{personalReports.map((personalInfo, index) => (
-		// 			<div key={index} className="each-person-report">
-		// 				<h4>Attendee: {personalInfo.name}</h4>
-		// 				<h4>From: {personalInfo.origin}</h4>
-		// 				<p>
-		// 					<strong>Departure Location:</strong> {personalInfo.origin}
-		// 				</p>
-		// 				<ul>
-		// 					<li>
-		// 						<strong>Departure Time:</strong> {personalInfo.departureTime}
-		// 					</li>
-		// 					<li>
-		// 						<strong>Expected Arrival Time:</strong>{" "}
-		// 						{personalInfo.arrivalTime}
-		// 					</li>
-		// 					<li>
-		// 						<strong>Approximate Duration:</strong>{" "}
-		// 						{personalInfo.approximateTravelTime} minutes
-		// 					</li>
-		// 				</ul>
-		// 			</div>
-		// 		))}
-		// 	</div>
-		// );
-
 		return (
 			<div className="report-container">
 				{isCopied ? (
