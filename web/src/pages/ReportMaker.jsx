@@ -1,8 +1,9 @@
-/* eslint-disable import/order */
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
+import {
+	faExclamationTriangle,
+	faCopy,
+	faCheck,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCopy, faCheck } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
@@ -59,6 +60,66 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 				.join("\n");
 
 		// Render the report UI
+		// return (
+		// 	<div className="report-container">
+		// 		{isCopied ? (
+		// 			<button
+		// 				onClick={() => handleCopyButton(reportText)}
+		// 				className="icon-button"
+		// 			>
+		// 				<FontAwesomeIcon
+		// 					icon={faCheck}
+		// 					style={{ color: "white", size: "large" }}
+		// 				/>
+		// 				{"  "}
+		// 				Copied!
+		// 				{/* "Copied" icon */}
+		// 			</button>
+		// 		) : (
+		// 			<button
+		// 				onClick={() => handleCopyButton(reportText)}
+		// 				className="icon-button"
+		// 			>
+		// 				<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />{" "}
+		// 				{/* "Copy" icon */}
+		// 			</button>
+		// 		)}
+
+		// 		<div className="date-time-report">
+		// 			<h3>Meeting Report</h3>
+		// 			<h4>
+		// 				<strong>Date of Meeting:</strong> {meetingDate}
+		// 			</h4>
+		// 			<h4>
+		// 				<strong>Time of Meeting:</strong> {meetingTime}
+		// 			</h4>
+		// 		</div>
+
+		// 		{personalReports.map((personalInfo, index) => (
+		// 			<div key={index} className="each-person-report">
+		// 				<h4>Attendee: {personalInfo.name}</h4>
+		// 				<h4>From: {personalInfo.origin}</h4>
+		// 				<p>
+		// 					<strong>Departure Location:</strong> {personalInfo.origin}
+		// 				</p>
+		// 				<ul>
+		// 					<li>
+		// 						<strong>Departure Time:</strong> {personalInfo.departureTime}
+		// 					</li>
+		// 					<li>
+		// 						<strong>Expected Arrival Time:</strong>{" "}
+		// 						{personalInfo.arrivalTime}
+		// 					</li>
+		// 					<li>
+		// 						<strong>Approximate Duration:</strong>{" "}
+		// 						{personalInfo.approximateTravelTime} minutes
+		// 					</li>
+		// 				</ul>
+		// 			</div>
+		// 		))}
+		// 	</div>
+		// );
+
 		return (
 			<div className="report-container">
 				{isCopied ? (
@@ -66,21 +127,16 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 						onClick={() => handleCopyButton(reportText)}
 						className="icon-button"
 					>
-						<FontAwesomeIcon
-							icon={faCheck}
-							style={{ color: "white", size: "large" }}
-						/>
+						<FontAwesomeIcon icon={faCheck} style={{ color: "white" }} />
 						{"  "}
 						Copied!
-						{/* "Copied" icon */}
 					</button>
 				) : (
 					<button
 						onClick={() => handleCopyButton(reportText)}
 						className="icon-button"
 					>
-						<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />{" "}
-						{/* "Copy" icon */}
+						<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />
 					</button>
 				)}
 
@@ -94,28 +150,60 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 					</h4>
 				</div>
 
-				{personalReports.map((personalInfo, index) => (
-					<div key={index} className="each-person-report">
-						<h4>Attendee: {personalInfo.name}</h4>
-						<h4>From: {personalInfo.origin}</h4>
-						<p>
-							<strong>Departure Location:</strong> {personalInfo.origin}
-						</p>
-						<ul>
-							<li>
-								<strong>Departure Time:</strong> {personalInfo.departureTime}
-							</li>
-							<li>
-								<strong>Expected Arrival Time:</strong>{" "}
-								{personalInfo.arrivalTime}
-							</li>
-							<li>
-								<strong>Approximate Duration:</strong>{" "}
-								{personalInfo.approximateTravelTime} minutes
-							</li>
-						</ul>
-					</div>
-				))}
+				<table className="report-table">
+					<thead>
+						<tr>
+							<th>Attendee</th>
+							<th>From</th>
+							<th>Departure Time</th>
+							<th>Expected Arrival Time</th>
+							<th>Duration (minutes)</th>
+							<th>Notes</th>
+						</tr>
+					</thead>
+					<tbody>
+						{personalReports.map((personalInfo, index) => (
+							<tr key={index} className="each-person-report">
+								{/* Attendee Name with conditional styling */}
+								<td>
+									{personalInfo.durationIndays > 0 ||
+									personalInfo.approximateTravelTime > 360 ? (
+										<strong>
+											<FontAwesomeIcon
+												icon={faExclamationTriangle}
+												style={{ color: "orange", fontSize: "1.5em" }}
+												title="Warning: you have a long travel"
+											/>
+											<i> {personalInfo.name}</i>
+										</strong>
+									) : (
+										personalInfo.name
+									)}
+								</td>
+
+								{/* From */}
+								<td>{personalInfo.origin}</td>
+
+								{/* Departure Time */}
+								<td>{personalInfo.departureTime}</td>
+
+								{/* Expected Arrival Time */}
+								<td>{personalInfo.arrivalTime}</td>
+
+								{/* Duration */}
+								<td>{personalInfo.approximateTravelTime}</td>
+
+								{/* Notes */}
+								<td>
+									{personalInfo.durationIndays > 0 ||
+									personalInfo.approximateTravelTime > 360
+										? "This is a long Journey!"
+										: ""}
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
 			</div>
 		);
 	}
@@ -131,6 +219,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 
 // PropTypes for ReportMaker
 ReportMaker.propTypes = {
+	timeOfReport: PropTypes.string.isRequired,
 	arrayOfReport: PropTypes.arrayOf(
 		PropTypes.shape({
 			meetingDate: PropTypes.string.isRequired,
