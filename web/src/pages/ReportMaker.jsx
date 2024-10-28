@@ -7,8 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
-import "./ReportMaker.css";
-
 export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [isCopied, setIsCopied] = useState(false);
 	const [reportDestination, setReportDestination] = useState(
