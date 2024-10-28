@@ -249,11 +249,16 @@ button:hover {
 
 .spinner {
 	border: 4px solid rgba(0, 0, 0, 0.1);
-	width: 36px;
-	height: 36px;
+	width: 49px;
+	height: 49px;
 	border-radius: 50%;
-	border-left-color: #09f;
-	animation: spin 1s ease infinite;
+	border-left-color: rgb(5, 81, 18);
+	animation: spin 2s ease infinite;
+}
+
+.spinner > p {
+	font-size: larger;
+	font-weight: bold;
 }
 
 @keyframes spin {
