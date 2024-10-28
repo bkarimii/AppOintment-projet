@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-
 import {
 	faExclamationTriangle,
 	faCheckCircle,
@@ -15,6 +13,112 @@ import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 
 import "./DisplayComponent.css";
+
+function TableContent({
+	sortedResults,
+	toggleRowExpansion,
+	expandedRow,
+	extractDateTime,
+	processedReport,
+}) {
+	return (
+		<table>
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Meeting Date</th>
+					<th>Meeting Time</th>
+					<th>Min Travel Time</th>
+					<th>Average Travel Time</th>
+					<th>Max Travel Time</th>
+					<th>Departures</th>
+					<th>Arrivals</th>
+					<th>Arrival Slack</th>
+					<th>Warnings</th>
+				</tr>
+			</thead>
+			<tbody>
+				{sortedResults.map((result, index) => (
+					<React.Fragment key={index}>
+						<tr onClick={() => toggleRowExpansion(index)}>
+							<td data-label="Rank"># {index + 1}</td>
+							<td data-label="Meeting Date">
+								{extractDateTime(result.meetingTime)[0]}
+							</td>
+							<td data-label="Meeting Time">
+								{extractDateTime(result.meetingTime)[1]}
+							</td>
+							<td data-label="Min Travel Time">
+								{result.minTravelTimeInMinute}
+							</td>
+							<td data-label="Average Travel Time">
+								{result.averageTravelTimeInMinute}
+							</td>
+							<td data-label="Max Travel Time">
+								{result.maxTravelTimeInMinute}
+							</td>
+							<td data-label="Departures">
+								{result.earliestDeparture} : {result.latestDeparture}
+							</td>
+							<td data-label="Arrivals">
+								{result.earliestArrival} : {result.latestArrival}
+							</td>
+							<td data-label="Arrival Slack">{result.arrivalSlack}</td>
+							<td data-label="Warnings">
+								{result.difficultTravels.length > 0 ||
+								result.tooLongTravels.length > 0 ? (
+									<FontAwesomeIcon
+										icon={faExclamationTriangle}
+										style={{ color: "orange", fontSize: "1.5em" }}
+										title="Warning"
+									/>
+								) : (
+									<FontAwesomeIcon
+										icon={faCheckCircle}
+										style={{ color: "green", fontSize: "1.5em" }}
+										title="All Good"
+									/>
+								)}
+							</td>
+						</tr>
+						{expandedRow === index && (
+							<tr>
+								<td colSpan="10">
+									<ReportMaker
+										timeOfReport={extractDateTime(result.meetingTime)[1]}
+										arrayOfReport={processedReport}
+									/>
+								</td>
+							</tr>
+						)}
+					</React.Fragment>
+				))}
+			</tbody>
+		</table>
+	);
+}
+
+TableContent.propTypes = {
+	sortedResults: PropTypes.arrayOf(
+		PropTypes.shape({
+			meetingTime: PropTypes.string.isRequired,
+			minTravelTimeInMinute: PropTypes.number.isRequired,
+			averageTravelTimeInMinute: PropTypes.number.isRequired,
+			maxTravelTimeInMinute: PropTypes.number.isRequired,
+			earliestDeparture: PropTypes.string.isRequired,
+			latestDeparture: PropTypes.string.isRequired,
+			earliestArrival: PropTypes.string.isRequired,
+			latestArrival: PropTypes.string.isRequired,
+			arrivalSlack: PropTypes.number.isRequired,
+			difficultTravels: PropTypes.array.isRequired,
+			tooLongTravels: PropTypes.array.isRequired,
+		}),
+	).isRequired,
+	toggleRowExpansion: PropTypes.func.isRequired,
+	expandedRow: PropTypes.number,
+	extractDateTime: PropTypes.func.isRequired,
+	processedReport: PropTypes.array.isRequired,
+};
 
 function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
@@ -80,84 +184,6 @@ function DisplayTravelResults() {
 		navigate("/");
 	};
 
-	function TableContent({ sortedResults }) {
-		return (
-			<table>
-				<thead>
-					<tr>
-						<th>Rank</th>
-						<th>Meeting Date</th>
-						<th>Meeting Time</th>
-						<th>Min Travel Time</th>
-						<th>Average Travel Time</th>
-						<th>Max Travel Time</th>
-						<th>Departures</th>
-						<th>Arrivals</th>
-						<th>Arrival Slack</th>
-						<th>Warnings</th>
-					</tr>
-				</thead>
-				<tbody>
-					{sortedResults.map((result, index) => (
-						<React.Fragment key={index}>
-							<tr onClick={() => toggleRowExpansion(index)}>
-								<td data-label="Rank"># {index + 1}</td>
-								<td data-label="Meeting Date">
-									{extractDateTime(result.meetingTime)[0]}
-								</td>
-								<td data-label="Meeting Time">
-									{extractDateTime(result.meetingTime)[1]}
-								</td>
-								<td data-label="Min Travel Time">
-									{result.minTravelTimeInMinute}
-								</td>
-								<td data-label="Average Travel Time">
-									{result.averageTravelTimeInMinute}
-								</td>
-								<td data-label="Max Travel Time">
-									{result.maxTravelTimeInMinute}
-								</td>
-								<td data-label="Departures">
-									{result.earliestDeparture} : {result.latestDeparture}
-								</td>
-								<td data-label="Arrivals">
-									{result.earliestArrival} : {result.latestArrival}
-								</td>
-								<td data-label="Arrival Slack">{result.arrivalSlack}</td>
-								<td data-label="Warnings">
-									{result.difficultTravels.length > 0 ||
-									result.tooLongTravels.length > 0 ? (
-										<FontAwesomeIcon
-											icon={faExclamationTriangle}
-											style={{ color: "orange", fontSize: "1.5em" }}
-											title="Warning"
-										/>
-									) : (
-										<FontAwesomeIcon
-											icon={faCheckCircle}
-											style={{ color: "green", fontSize: "1.5em" }}
-											title="All Good"
-										/>
-									)}
-								</td>
-							</tr>
-							{expandedRow === index && (
-								<tr>
-									<td colSpan="10">
-										<ReportMaker
-											timeOfReport={extractDateTime(result.meetingTime)[1]}
-											arrayOfReport={processedReport}
-										/>
-									</td>
-								</tr>
-							)}
-						</React.Fragment>
-					))}
-				</tbody>
-			</table>
-		);
-	}
-
 	const getSortedResults = () => {
 		const results = [...processedResultsStorage];
 		switch (selectedOption) {
@@ -212,16 +238,40 @@ function DisplayTravelResults() {
 							</TabList>
 
 							<TabPanel>
-								<TableContent sortedResults={getSortedResults()} />
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
 							</TabPanel>
 							<TabPanel>
-								<TableContent sortedResults={getSortedResults()} />
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
 							</TabPanel>
 							<TabPanel>
-								<TableContent sortedResults={getSortedResults()} />
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
 							</TabPanel>
 							<TabPanel>
-								<TableContent sortedResults={getSortedResults()} />
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
 							</TabPanel>
 						</Tabs>
 					</div>
@@ -235,21 +285,3 @@ function DisplayTravelResults() {
 }
 
 export default DisplayTravelResults;
-
-TableContent.propTypes = {
-	sortedResults: PropTypes.arrayOf(
-		PropTypes.shape({
-			meetingTime: PropTypes.string.isRequired, // assuming it's an ISO string
-			minTravelTimeInMinute: PropTypes.number.isRequired,
-			averageTravelTimeInMinute: PropTypes.number.isRequired,
-			maxTravelTimeInMinute: PropTypes.number.isRequired,
-			earliestDeparture: PropTypes.string.isRequired,
-			latestDeparture: PropTypes.string.isRequired,
-			earliestArrival: PropTypes.string.isRequired,
-			latestArrival: PropTypes.string.isRequired,
-			arrivalSlack: PropTypes.number.isRequired,
-			difficultTravels: PropTypes.array.isRequired,
-			tooLongTravels: PropTypes.array.isRequired,
-		}),
-	).isRequired,
-};
