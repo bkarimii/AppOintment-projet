@@ -111,3 +111,7 @@ npm install @googlemaps/google-maps-services-js
 ## Install Font Awesome packages
 
 `npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons`
+
+## Install react tabs
+
+`npm install react-tabs`
