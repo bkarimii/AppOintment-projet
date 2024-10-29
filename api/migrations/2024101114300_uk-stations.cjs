@@ -1,3 +1,9 @@
+const fs = require("fs");
+const path = require("path");
+
+const { parse } = require("csv-parse/sync");
+const format = require("pg-format");
+
 /**
  * Template for
  * {@link https://salsita.github.io/node-pg-migrate/#/migrations?id=defining-migrations defining migrations}.
@@ -8,30 +14,53 @@
  *   up: (pgm: import("node-pg-migrate").MigrationBuilder) => void | Promise<void>;
  * }}
  */
+
 const migration = {
-	up(pgm) {
+	async up(pgm) {
 		pgm.createTable("uk_stations", {
-			station_id: { notNull: true, primaryKey: true, type: "int8" },
+			station_id: { notNull: true, primaryKey: true, type: "bigserial" },
 			station_name: { notNull: true, type: "text" },
 			sixteen_character_name: { notNull: true, type: "text" },
 			longitude: { notNull: true, type: "float8" },
 			latitude: { notNull: true, type: "float8" },
 			crs_code: { notNull: true, type: "char(3)" },
 		});
-		pgm.sql(
-			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (1524, 'Manchester Piccadilly','MANCHESTER PIC',53.47671998,-2.228977818,'MAN')",
+
+		const filePath = path.join(__dirname, "../ukStations.csv");
+		const fileContent = fs.readFileSync(filePath, "utf8");
+		const records = parse(fileContent, {
+			columns: true,
+			skip_empty_lines: true,
+		});
+
+		// Prepare data for bulk insertion
+		const values = records.map(
+			({
+				station_name,
+				sixteen_character_name,
+				latitude,
+				longitude,
+				crs_code,
+			}) => [
+				station_name,
+				sixteen_character_name,
+				latitude,
+				longitude,
+				crs_code,
+			],
 		);
-		pgm.sql(
-			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (1, 'Abbey Wood', 'ABBEY WOOD.', 51.49077059, 0.12032557, 'ABW');",
+
+		const query = format(
+			`INSERT INTO uk_stations (station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES %L`,
+			values,
 		);
-		pgm.sql(
-			"INSERT INTO uk_stations (station_id, station_name, sixteen_character_name, latitude, longitude, crs_code) VALUES (3, 'Abercynon', 'ABERCYNON', 51.644706, -3.327000754, 'ACY')",
-		);
+		pgm.sql(query);
 	},
 
 	down(pgm) {
 		pgm.dropTable("uk_stations");
 	},
+
 	shorthands: undefined,
 };
 
