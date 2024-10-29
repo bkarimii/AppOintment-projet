@@ -58,10 +58,10 @@ function TableContent({
 								{result.maxTravelTimeInMinute}
 							</td>
 							<td data-label="Departures">
-								{result.earliestDeparture} : {result.latestDeparture}
+								{result.earliestDeparture} - {result.latestDeparture}
 							</td>
 							<td data-label="Arrivals">
-								{result.earliestArrival} : {result.latestArrival}
+								{result.earliestArrival} - {result.latestArrival}
 							</td>
 							<td data-label="Arrival Slack">{result.arrivalSlack}</td>
 							<td data-label="Warnings">
