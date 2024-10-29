@@ -104,10 +104,18 @@ export async function computeRoutesForOrigins(
 						};
 					}
 				} catch (error) {
-					return {
-						city: originElement.city,
-						error: "Failed to compute the route",
-					};
+					// Check if the error response is due to too many requests (status 429)
+					if (error.response && error.response.status === 429) {
+						return {
+							city: originElement.city,
+							error: "Too many requests. Please try again later.",
+						};
+					} else {
+						return {
+							city: originElement.city,
+							error: "Failed to compute the route",
+						};
+					}
 				}
 			});
 
