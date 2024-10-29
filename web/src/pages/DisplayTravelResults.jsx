@@ -150,6 +150,11 @@ function DisplayTravelResults() {
 				setProcessedResultsStorage(result);
 				setProcessedReport(reports);
 			} else {
+				if (response.status === 429) {
+					alert(
+						"The app has reached its request limitation! Please try again later!",
+					);
+				}
 				console.error("An error occurred!", response.status.error);
 			}
 		} catch (error) {
