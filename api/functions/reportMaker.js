@@ -37,7 +37,8 @@ function prepareDataForReport(processedInfo) {
 		attendeesTravelInfo.forEach((eachPerson) => {
 			const personalReport = {
 				name: eachPerson.city.name,
-				origin: eachPerson.city.station,
+				origin: eachPerson.city.stationName,
+				originCrc: eachPerson.city.station,
 				approximateTravelTime: eachPerson.spentTimeInMinutes,
 				departureTime: extractHourAndMinute(
 					eachPerson.departureTime.split(".")[0],
