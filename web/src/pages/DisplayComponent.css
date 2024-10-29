@@ -124,10 +124,18 @@ button {
 }
 
 #back-button {
-	display: "flex";
-	align-items: "center";
-	margin: 1rem 0 0 2rem;
+	margin: 1rem 95% 0 2%;
 	font-size: larger;
+}
+
+#warning-button {
+	color: orange;
+	font-size: 1.5em;
+}
+
+#check-tick-button {
+	color: green;
+	font-size: 1.5em;
 }
 
 button:hover {
