@@ -11,7 +11,7 @@ describe("Home component", () => {
 		server.use(http.get("/api/message", () => HttpResponse.text(""))),
 	);
 
-	it.skip("shows a link", () => {
+	it("shows a link", () => {
 		render(<Home />);
 
 		expect(screen.getByRole("link", { name: "React logo" })).toHaveAttribute(
@@ -20,7 +20,7 @@ describe("Home component", () => {
 		);
 	});
 
-	it.skip("has a click counter", async () => {
+	it("has a click counter", async () => {
 		const user = userEvent.setup();
 		render(<Home />);
 
