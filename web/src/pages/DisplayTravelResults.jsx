@@ -69,14 +69,14 @@ function TableContent({
 								result.tooLongTravels.length > 0 ? (
 									<FontAwesomeIcon
 										icon={faExclamationTriangle}
-										style={{ color: "orange", fontSize: "1.5em" }}
 										title="Warning"
+										id="warning-button"
 									/>
 								) : (
 									<FontAwesomeIcon
 										icon={faCheckCircle}
-										style={{ color: "green", fontSize: "1.5em" }}
 										title="All Good"
+										id="check-tick-button"
 									/>
 								)}
 							</td>
@@ -125,7 +125,7 @@ function DisplayTravelResults() {
 	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
-	const [selectedOption, setSelectedOption] = useState("default");
+	const [selectedOption, setSelectedOption] = useState("meeting-time");
 
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
@@ -151,9 +151,7 @@ function DisplayTravelResults() {
 				setProcessedReport(reports);
 			} else {
 				if (response.status === 429) {
-					alert(
-						"The app has reached its request limitation! Please try again later!",
-					);
+					alert("Google API Quota exceeded - please try again later");
 				}
 				console.error("An error occurred!", response.status.error);
 			}
@@ -219,24 +217,20 @@ function DisplayTravelResults() {
 					<button
 						onClick={handleGoBackButton}
 						aria-label="Go Back"
-						style={{ display: "flex", alignItems: "center" }}
 						id="back-button"
 					>
-						<FontAwesomeIcon
-							icon={faArrowLeft}
-							style={{ marginRight: "8px" }}
-						/>
+						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
 					<div className="table-container">
 						<Tabs
 							selectedTabClassName="active-tab"
 							onSelect={(index) => {
-								const options = ["default", "min", "max", "minSlack"];
+								const options = ["meeting-time", "min", "max", "minSlack"];
 								setSelectedOption(options[index]);
 							}}
 						>
 							<TabList className="tabs">
-								<Tab className="tab">Default</Tab>
+								<Tab className="tab">Meeting Time</Tab>
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
 								<Tab className="tab">Min Slack</Tab>
