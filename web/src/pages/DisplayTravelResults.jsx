@@ -240,6 +240,7 @@ function DisplayTravelResults() {
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
 								<Tab className="tab">Min Slack</Tab>
+								<Tab className="tab">Diagram</Tab>
 							</TabList>
 
 							<TabPanel>
@@ -278,10 +279,12 @@ function DisplayTravelResults() {
 									processedReport={processedReport}
 								/>
 							</TabPanel>
+							<TabPanel>
+								<div>
+									<Visualise travelData={processedResultsStorage} />
+								</div>
+							</TabPanel>
 						</Tabs>
-					</div>
-					<div>
-						<Visualise travelData={processedResultsStorage} />
 					</div>
 				</>
 			)}
