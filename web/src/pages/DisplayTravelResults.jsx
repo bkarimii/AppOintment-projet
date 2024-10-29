@@ -225,7 +225,13 @@ function DisplayTravelResults() {
 						<Tabs
 							selectedTabClassName="active-tab"
 							onSelect={(index) => {
-								const options = ["meeting-time", "min", "max", "minSlack"];
+								const options = [
+									"meeting-time",
+									"min",
+									"max",
+									"minSlack",
+									"diagram",
+								];
 								setSelectedOption(options[index]);
 							}}
 						>
@@ -238,45 +244,19 @@ function DisplayTravelResults() {
 							</TabList>
 
 							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<div>
-									<Visualise travelData={processedResultsStorage} />
-								</div>
+								{selectedOption === "diagram" ? (
+									<div>
+										<Visualise travelData={processedResultsStorage} />
+									</div>
+								) : (
+									<TableContent
+										sortedResults={getSortedResults()}
+										toggleRowExpansion={toggleRowExpansion}
+										expandedRow={expandedRow}
+										extractDateTime={extractDateTime}
+										processedReport={processedReport}
+									/>
+								)}
 							</TabPanel>
 						</Tabs>
 					</div>
