@@ -1,0 +1,85 @@
+.report-header {
+	border-bottom: 1px solid #ccc; /* Bottom border for the header */
+	padding-bottom: 8px; /* Padding below the header */
+	margin-bottom: 12px; /* Space below the header */
+}
+
+.attendee-info {
+	margin-bottom: 12px; /* Space between attendee info */
+}
+
+/* Report container */
+.report-container {
+	border: 1px solid #ddd; /* Light gray border */
+	border-radius: 8px; /* Rounded corners */
+	padding: 20px; /* Padding inside the box */
+	margin: 20px 0; /* Space above and below the report */
+	background-color: #f9f9f9; /* Light background color */
+	font-family:
+		"Arial",
+		sans-serif,
+		system-ui,
+		-apple-system,
+		BlinkMacSystemFont,
+		"Segoe UI",
+		Roboto,
+		Oxygen,
+		Ubuntu,
+		Cantarell,
+		"Open Sans",
+		"Helvetica Neue",
+		sans-serif; /* Set a nice font */
+}
+
+/* Attendee heading */
+.report-container h4 {
+	margin: 10px 0; /* Space above and below the heading */
+	color: #000000; /* Dark gray color for better readability */
+}
+
+/* Subheading for origin */
+.report-container h5 {
+	margin: 5px 0; /* Space above and below the subheading */
+	color: #000000; /* Medium gray color */
+}
+
+/* Paragraph styles */
+.report-container p {
+	line-height: 1.6; /* Increased line height for readability */
+	color: #000000; /* Lighter gray for paragraph text */
+}
+
+/* Button styles */
+.report-container button {
+	padding: 10px 15px; /* Padding inside the button */
+	background-color: #0a3000; /* Button background color */
+	color: white; /* Button text color */
+	border: none; /* No border */
+	border-radius: 5px; /* Rounded corners for the button */
+	cursor: pointer; /* Pointer cursor on hover */
+}
+
+.report-container button:hover {
+	background-color: #077b01; /* Darker blue on hover */
+}
+
+.icon-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 5px;
+	display: inline-flex;
+	align-items: center;
+	transition: transform 0.1s ease;
+}
+
+.icon-button:active {
+	transform: scale(0.95);
+}
+
+.date-time-report {
+	background-color: #4caf50;
+	border-radius: 5px;
+	padding: 1rem;
+	margin: 0.5rem;
+}
