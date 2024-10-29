@@ -128,7 +128,10 @@ async function fetchBodyMaker(body) {
 				throw new Error(`Origin CRS code ${originCrs} not found.`);
 			}
 			const originObject = {
-				city: originCrs,
+				city: {
+					...originCrs,
+					stationName: originDBDetail.rows[0]?.station_name,
+				},
 				location: {
 					latLng: {
 						latitude: originDBDetail.rows[0]?.latitude,
