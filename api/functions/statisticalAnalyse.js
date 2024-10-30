@@ -36,6 +36,7 @@ function processTravelInfo(array) {
 				(new Date(item.arrivalTime) - new Date(detail.lastArrivalTime)) / 1000,
 			);
 			const tripDuration = Number(detail.duration.split("s")[0]);
+			// console.log(tripDuration,'Trip duration that caused the error========================')
 			// Total of the time spent on this journey , travel time+ waiting time
 			const totalSpentTimeInMinutes = Math.floor(
 				(tripDuration + finalWaitSeconds) / 60,
@@ -60,7 +61,11 @@ function processTravelInfo(array) {
 				durationInDays: durationInDays,
 			});
 		}
-		bigArray.push({ meetingTime: item.arrivalTime, analys });
+		bigArray.push({
+			meetingTime: item.arrivalTime,
+			destination: item.destinationName,
+			analys,
+		});
 	}
 
 	return bigArray;
@@ -158,6 +163,7 @@ function statistics(allMeetingTimes) {
 		// Push statistics for the current meeting time
 		travelStatsByMeeting.push({
 			meetingTime: eachMeetingTime.meetingTime,
+			destination: eachMeetingTime.destination,
 			maxTravelTimeInHour: (maxTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			minTravelTimeInHour: (minTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
 			averageTravelTimeInHour: (averageTravelTime / 60).toFixed(2), // Convert to hours and round to 2 decimals
