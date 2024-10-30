@@ -5,7 +5,16 @@ import app from "./app.js";
 describe("/api", () => {
 	describe("POST /compute-route", () => {
 		const body = {
-			meetingStation: "ABW",
+			meetingStation: [
+				{
+					name: "eus",
+					station: "EUS",
+				},
+				{
+					name: "abw",
+					station: "ABW",
+				},
+			],
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
@@ -25,7 +34,16 @@ describe("/api", () => {
 
 	describe("POST /compute-route 2", () => {
 		const body = {
-			meetingStation: "ABW",
+			meetingStation: [
+				{
+					name: "London Euston",
+					station: "EUS",
+				},
+				{
+					name: "Abbey Wood",
+					station: "ABW",
+				},
+			],
 			meetingDate: "2024-10-18",
 			earliestStartTime: "05:29",
 			latestStartTime: "06:29",
