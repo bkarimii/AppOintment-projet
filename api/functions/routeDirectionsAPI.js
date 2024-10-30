@@ -1,132 +1,124 @@
 import axios from "axios";
 
-import { fakeData } from "./fakeData.js";
+import fetchedDataGoogle from "./staticData/fetchedDataGoogle.js";
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
 	arrayOfOrigins,
 	travelMode,
-	destinationParam,
+	arrayOfDestination,
 	fields,
 	apiKey,
 ) {
-	const runTheFetch = false;
-	if (runTheFetch) {
-		const meetingTimePromises = meetingTimeArray.map(async (arrivalTime) => {
-			const arrivalDetail = {
-				arrivalTime: arrivalTime,
-				details: [],
-			};
-
-			const originPromises = arrayOfOrigins.map(async (originElement) => {
-				try {
-					const requestBody = {
-						origin: {
-							location: {
-								latLng: originElement.location.latLng,
-							},
-						},
-						destination: {
-							location: {
-								latLng: {
-									latitude: destinationParam.latitude,
-									longitude: destinationParam.longitude,
-								},
-							},
-						},
-						travelMode,
-						arrivalTime,
-					};
-
-					const response = await axios.post(
-						"https://routes.googleapis.com/directions/v2:computeRoutes",
-						requestBody,
-						{
-							headers: {
-								"Content-Type": "application/json",
-								"X-Goog-Api-Key": apiKey,
-								"X-Goog-FieldMask": fields,
-							},
-						},
-					);
-
-					if (response.data.routes && response.data.routes.length > 0) {
-						const route = response.data.routes[0];
-						let firstDepartureTime = null;
-						let lastArrivalTime = null;
-						let duration = null;
-						let staticDuration = null;
-
-						for (const leg of route.legs) {
-							duration = leg.duration || duration;
-							staticDuration = leg.staticDuration || staticDuration;
-							for (const leg of route.legs) {
-								duration = leg.duration || duration;
-								staticDuration = leg.staticDuration || staticDuration;
-
-								for (const step of leg.steps) {
-									if (step.transitDetails) {
-										if (!firstDepartureTime) {
-											firstDepartureTime =
-												step.transitDetails.stopDetails.departureTime;
-										}
-										lastArrivalTime =
-											step.transitDetails.stopDetails.arrivalTime ||
-											lastArrivalTime;
-									}
-								}
-							}
-							for (const step of leg.steps) {
-								if (step.transitDetails) {
-									if (!firstDepartureTime) {
-										firstDepartureTime =
-											step.transitDetails.stopDetails.departureTime;
-									}
-									lastArrivalTime =
-										step.transitDetails.stopDetails.arrivalTime ||
-										lastArrivalTime;
-								}
-							}
-						}
-
-						return {
-							city: originElement.city,
+	const runFetch = false;
+	if (runFetch) {
+		const multiDestinationData = arrayOfDestination.map(
+			async (meetingLocation) => {
+				const destinationDetails = await Promise.all(
+					meetingTimeArray.map(async (arrivalTime) => {
+						const arrivalDetail = {
+							destination: meetingLocation.stationCode,
+							destinationName: meetingLocation.stationName,
 							arrivalTime,
-							firstDepartureTime,
-							lastArrivalTime,
-							duration,
-							staticDuration,
+							details: [],
 						};
-					} else {
-						return {
-							city: originElement.city,
-							error: "No routes found",
-						};
-					}
-				} catch (error) {
-					// Check if the error response is due to too many requests (status 429)
-					if (error.response && error.response.status === 429) {
-						return {
-							city: originElement.city,
-							error: "Too many requests. Please try again later.",
-						};
-					} else {
-						return {
-							city: originElement.city,
-							error: "Failed to compute the route",
-						};
-					}
-				}
-			});
 
-			const details = await Promise.all(originPromises);
-			arrivalDetail.details.push(...details);
-			return arrivalDetail;
-		});
+						const originPromises = arrayOfOrigins.map(async (originElement) => {
+							try {
+								const requestBody = {
+									origin: {
+										location: {
+											latLng: originElement.location.latLng,
+										},
+									},
+									destination: {
+										location: {
+											latLng: {
+												latitude: meetingLocation.latitude,
+												longitude: meetingLocation.longitude,
+											},
+										},
+									},
+									travelMode,
+									arrivalTime,
+								};
 
-		const userTravelInfoContainer = await Promise.all(meetingTimePromises);
-		return userTravelInfoContainer;
+								const response = await axios.post(
+									"https://routes.googleapis.com/directions/v2:computeRoutes",
+									requestBody,
+									{
+										headers: {
+											"Content-Type": "application/json",
+											"X-Goog-Api-Key": apiKey,
+											"X-Goog-FieldMask": fields,
+										},
+									},
+								);
+
+								if (response.data.routes && response.data.routes.length > 0) {
+									const route = response.data.routes[0];
+									let firstDepartureTime = null;
+									let lastArrivalTime = null;
+									let duration = null;
+									let staticDuration = null;
+
+									for (const leg of route.legs) {
+										duration = leg.duration || duration;
+										staticDuration = leg.staticDuration || staticDuration;
+										for (const step of leg.steps) {
+											if (step.transitDetails) {
+												if (!firstDepartureTime) {
+													firstDepartureTime =
+														step.transitDetails.stopDetails.departureTime;
+												}
+												lastArrivalTime =
+													step.transitDetails.stopDetails.arrivalTime ||
+													lastArrivalTime;
+											}
+										}
+									}
+
+									return {
+										city: originElement.city,
+										arrivalTime,
+										firstDepartureTime,
+										lastArrivalTime,
+										duration,
+										staticDuration,
+									};
+								} else {
+									return {
+										city: originElement.city,
+										error: "No routes found",
+									};
+								}
+							} catch (error) {
+								if (error.response && error.response.status === 429) {
+									return {
+										city: originElement.city,
+										error: "Too many requests. Please try again later.",
+									};
+								} else {
+									return {
+										city: originElement.city,
+										error: "Failed to compute the route",
+									};
+								}
+							}
+						});
+
+						arrivalDetail.details = await Promise.all(originPromises);
+						return arrivalDetail;
+					}),
+				);
+				return destinationDetails;
+			},
+		);
+
+		const userTravelInfoContainer = await Promise.all(multiDestinationData);
+		const flattenedUserTravelInfoContainer = userTravelInfoContainer.flat();
+		return flattenedUserTravelInfoContainer;
 	} else {
-		return fakeData;
+		return fetchedDataGoogle;
 	}
 }
