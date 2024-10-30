@@ -1,82 +1,1227 @@
 {
 	"results": [
 		{
-			"meetingTime": "2024-10-13T10:00:00.000Z",
-			"maxTravelTimeInHour": "8.77",
-			"minTravelTimeInHour": "8.77",
-			"averageTravelTimeInHour": "8.77",
-			"earliestArrival": "09:40:00",
-			"latestArrival": "09:40:00",
-			"earliestDeparture": "01:20:00",
-			"latestDeparture": "01:20:00",
-			"medianArrivalTime": "09:40:00",
+			"meetingTime": "2024-10-29T10:00:00.000Z",
+			"destination": "Abbey Wood",
+			"maxTravelTimeInHour": "10.38",
+			"minTravelTimeInHour": "2.17",
+			"averageTravelTimeInHour": "3.88",
+			"maxTravelTimeInMinute": 623,
+			"minTravelTimeInMinute": 130,
+			"averageTravelTimeInMinute": 233,
+			"earliestArrival": "07:58",
+			"latestArrival": "09:52",
+			"earliestDeparture": "06:28",
+			"latestDeparture": "23:40",
+			"medianArrivalTime": "09:34",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 623,
+						"spentTimeInHour": 10.383,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "07:58:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 623,
+						"spentTimeInHour": 10.383,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "07:58:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [],
+			"arrivalSlack": 8,
+			"departureSlack": 212
+		},
+		{
+			"meetingTime": "2024-10-29T10:20:00.000Z",
+			"destination": "Abbey Wood",
+			"maxTravelTimeInHour": "5.92",
+			"minTravelTimeInHour": "1.93",
+			"averageTravelTimeInHour": "3.27",
+			"maxTravelTimeInMinute": 355,
+			"minTravelTimeInMinute": 116,
+			"averageTravelTimeInMinute": 196,
+			"earliestArrival": "09:52",
+			"latestArrival": "10:16",
+			"earliestDeparture": "04:28",
+			"latestDeparture": "08:27",
+			"medianArrivalTime": "10:16",
 			"difficultTravels": [],
-			"tooLongTravel": []
+			"tooLongTravels": [],
+			"arrivalSlack": 4,
+			"departureSlack": 352
 		},
 		{
-			"meetingTime": "2024-10-13T10:15:00.000Z",
-			"maxTravelTimeInHour": "8.77",
-			"minTravelTimeInHour": "8.77",
-			"averageTravelTimeInHour": "8.77",
-			"earliestArrival": "09:40:00",
-			"latestArrival": "09:40:00",
-			"earliestDeparture": "01:20:00",
-			"latestDeparture": "01:20:00",
-			"medianArrivalTime": "09:40:00",
+			"meetingTime": "2024-10-29T10:40:00.000Z",
+			"destination": "Abbey Wood",
+			"maxTravelTimeInHour": "6.25",
+			"minTravelTimeInHour": "1.72",
+			"averageTravelTimeInHour": "3.33",
+			"maxTravelTimeInMinute": 375,
+			"minTravelTimeInMinute": 103,
+			"averageTravelTimeInMinute": 200,
+			"earliestArrival": "09:58",
+			"latestArrival": "10:35",
+			"earliestDeparture": "04:28",
+			"latestDeparture": "09:00",
+			"medianArrivalTime": "10:22",
 			"difficultTravels": [],
-			"tooLongTravel": []
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 375,
+						"spentTimeInHour": 6.25,
+						"departureTime": "04:28:00.000",
+						"arrivalTime": "09:58:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 375,
+						"spentTimeInHour": 6.25,
+						"departureTime": "04:28:00.000",
+						"arrivalTime": "09:58:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 5,
+			"departureSlack": 372
 		},
 		{
-			"meetingTime": "2024-10-13T10:30:00.000Z",
-			"maxTravelTimeInHour": "7.50",
-			"minTravelTimeInHour": "7.30",
-			"averageTravelTimeInHour": "7.40",
-			"earliestArrival": "09:15:00",
-			"latestArrival": "09:25:00",
-			"earliestDeparture": "01:05:00",
-			"latestDeparture": "01:15:00",
-			"medianArrivalTime": "09:20:00",
-			"difficultTravels": ["CityA", "CityB"],
-			"tooLongTravel": ["CityB"]
-		},
-		{
-			"meetingTime": "2024-10-13T10:45:00.000Z",
-			"maxTravelTimeInHour": "9.00",
-			"minTravelTimeInHour": "8.50",
-			"averageTravelTimeInHour": "8.75",
-			"earliestArrival": "10:05:00",
-			"latestArrival": "10:10:00",
-			"earliestDeparture": "01:30:00",
-			"latestDeparture": "01:35:00",
-			"medianArrivalTime": "10:07:00",
+			"meetingTime": "2024-10-29T11:00:00.000Z",
+			"destination": "Abbey Wood",
+			"maxTravelTimeInHour": "6.58",
+			"minTravelTimeInHour": "1.78",
+			"averageTravelTimeInHour": "3.58",
+			"maxTravelTimeInMinute": 395,
+			"minTravelTimeInMinute": 107,
+			"averageTravelTimeInMinute": 215,
+			"earliestArrival": "09:58",
+			"latestArrival": "10:50",
+			"earliestDeparture": "04:28",
+			"latestDeparture": "09:16",
+			"medianArrivalTime": "10:22",
 			"difficultTravels": [],
-			"tooLongTravel": ["CityC"]
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 395,
+						"spentTimeInHour": 6.583,
+						"departureTime": "04:28:00.000",
+						"arrivalTime": "09:58:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Miya",
+							"station": "GLC",
+							"stationName": "Glasgow Central"
+						},
+						"spentTimeInMinutes": 395,
+						"spentTimeInHour": 6.583,
+						"departureTime": "04:28:00.000",
+						"arrivalTime": "09:58:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 10,
+			"departureSlack": 392
 		},
 		{
-			"meetingTime": "2024-10-13T11:00:00.000Z",
-			"maxTravelTimeInHour": "6.90",
-			"minTravelTimeInHour": "6.50",
-			"averageTravelTimeInHour": "6.70",
-			"earliestArrival": "10:50:00",
-			"latestArrival": "10:55:00",
-			"earliestDeparture": "02:00:00",
-			"latestDeparture": "02:10:00",
-			"medianArrivalTime": "10:52:00",
-			"difficultTravels": ["CityD"],
-			"tooLongTravel": ["CityD"]
+			"meetingTime": "2024-10-29T11:20:00.000Z",
+			"destination": "Abbey Wood",
+			"maxTravelTimeInHour": "5.83",
+			"minTravelTimeInHour": "1.85",
+			"averageTravelTimeInHour": "3.32",
+			"maxTravelTimeInMinute": 350,
+			"minTravelTimeInMinute": 111,
+			"averageTravelTimeInMinute": 199,
+			"earliestArrival": "10:50",
+			"latestArrival": "11:12",
+			"earliestDeparture": "05:33",
+			"latestDeparture": "09:32",
+			"medianArrivalTime": "11:05",
+			"difficultTravels": [],
+			"tooLongTravels": [],
+			"arrivalSlack": 8,
+			"departureSlack": 347
 		},
 		{
-			"meetingTime": "2024-10-13T11:15:00.000Z",
-			"maxTravelTimeInHour": "5.80",
-			"minTravelTimeInHour": "5.60",
-			"averageTravelTimeInHour": "5.70",
-			"earliestArrival": "10:55:00",
-			"latestArrival": "11:00:00",
-			"earliestDeparture": "02:15:00",
-			"latestDeparture": "02:20:00",
-			"medianArrivalTime": "10:57:00",
-			"difficultTravels": ["CityE"],
-			"tooLongTravel": []
+			"meetingTime": "2024-10-29T10:00:00.000Z",
+			"destination": "Aberdour",
+			"maxTravelTimeInHour": "13.62",
+			"minTravelTimeInHour": "1.88",
+			"averageTravelTimeInHour": "9.32",
+			"maxTravelTimeInMinute": 817,
+			"minTravelTimeInMinute": 113,
+			"averageTravelTimeInMinute": 559,
+			"earliestArrival": "08:37",
+			"latestArrival": "09:38",
+			"earliestDeparture": "02:00",
+			"latestDeparture": "23:40",
+			"medianArrivalTime": "09:08",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 768,
+						"spentTimeInHour": 12.8,
+						"departureTime": "21:12:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 719,
+						"spentTimeInHour": 11.983,
+						"departureTime": "22:16:43.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 629,
+						"spentTimeInHour": 10.483,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 727,
+						"spentTimeInHour": 12.117,
+						"departureTime": "21:53:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 817,
+						"spentTimeInHour": 13.617,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 768,
+						"spentTimeInHour": 12.8,
+						"departureTime": "21:12:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 719,
+						"spentTimeInHour": 11.983,
+						"departureTime": "22:16:43.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 629,
+						"spentTimeInHour": 10.483,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 727,
+						"spentTimeInHour": 12.117,
+						"departureTime": "21:53:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 817,
+						"spentTimeInHour": 13.617,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "David",
+							"station": "SHF",
+							"stationName": "Sheffield"
+						},
+						"spentTimeInMinutes": 484,
+						"spentTimeInHour": 8.067,
+						"departureTime": "02:00:00.000",
+						"arrivalTime": "08:37:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Toba",
+							"station": "LDS",
+							"stationName": "Leeds"
+						},
+						"spentTimeInMinutes": 470,
+						"spentTimeInHour": 7.833,
+						"departureTime": "02:11:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "David",
+							"station": "SHF",
+							"stationName": "Sheffield"
+						},
+						"spentTimeInMinutes": 484,
+						"spentTimeInHour": 8.067,
+						"departureTime": "02:00:00.000",
+						"arrivalTime": "08:37:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Toba",
+							"station": "LDS",
+							"stationName": "Leeds"
+						},
+						"spentTimeInMinutes": 470,
+						"spentTimeInHour": 7.833,
+						"departureTime": "02:11:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 22,
+			"departureSlack": 480
+		},
+		{
+			"meetingTime": "2024-10-29T10:20:00.000Z",
+			"destination": "Aberdour",
+			"maxTravelTimeInHour": "13.95",
+			"minTravelTimeInHour": "1.72",
+			"averageTravelTimeInHour": "8.33",
+			"maxTravelTimeInMinute": 837,
+			"minTravelTimeInMinute": 103,
+			"averageTravelTimeInMinute": 500,
+			"earliestArrival": "08:05",
+			"latestArrival": "10:09",
+			"earliestDeparture": "00:50",
+			"latestDeparture": "23:36",
+			"medianArrivalTime": "10:09",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 800,
+						"spentTimeInHour": 13.333,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 659,
+						"spentTimeInHour": 10.983,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 700,
+						"spentTimeInHour": 11.667,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 837,
+						"spentTimeInHour": 13.95,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 800,
+						"spentTimeInHour": 13.333,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 659,
+						"spentTimeInHour": 10.983,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 700,
+						"spentTimeInHour": 11.667,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 837,
+						"spentTimeInHour": 13.95,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 579,
+						"spentTimeInHour": 9.65,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 579,
+						"spentTimeInHour": 9.65,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 11,
+			"departureSlack": 570
+		},
+		{
+			"meetingTime": "2024-10-29T10:40:00.000Z",
+			"destination": "Aberdour",
+			"maxTravelTimeInHour": "14.28",
+			"minTravelTimeInHour": "1.55",
+			"averageTravelTimeInHour": "8.62",
+			"maxTravelTimeInMinute": 857,
+			"minTravelTimeInMinute": 93,
+			"averageTravelTimeInMinute": 517,
+			"earliestArrival": "08:05",
+			"latestArrival": "10:34",
+			"earliestDeparture": "00:50",
+			"latestDeparture": "23:36",
+			"medianArrivalTime": "10:09",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 820,
+						"spentTimeInHour": 13.667,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 679,
+						"spentTimeInHour": 11.317,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 720,
+						"spentTimeInHour": 12,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 857,
+						"spentTimeInHour": 14.283,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 820,
+						"spentTimeInHour": 13.667,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 679,
+						"spentTimeInHour": 11.317,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 720,
+						"spentTimeInHour": 12,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 857,
+						"spentTimeInHour": 14.283,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 599,
+						"spentTimeInHour": 9.983,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T10:40:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 599,
+						"spentTimeInHour": 9.983,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 6,
+			"departureSlack": 590
+		},
+		{
+			"meetingTime": "2024-10-29T11:00:00.000Z",
+			"destination": "Aberdour",
+			"maxTravelTimeInHour": "14.62",
+			"minTravelTimeInHour": "1.88",
+			"averageTravelTimeInHour": "8.95",
+			"maxTravelTimeInMinute": 877,
+			"minTravelTimeInMinute": 113,
+			"averageTravelTimeInMinute": 537,
+			"earliestArrival": "08:05",
+			"latestArrival": "10:34",
+			"earliestDeparture": "00:50",
+			"latestDeparture": "23:36",
+			"medianArrivalTime": "10:09",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 840,
+						"spentTimeInHour": 14,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 699,
+						"spentTimeInHour": 11.65,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 740,
+						"spentTimeInHour": 12.333,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 877,
+						"spentTimeInHour": 14.617,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 840,
+						"spentTimeInHour": 14,
+						"departureTime": "21:00:00.000",
+						"arrivalTime": "08:05:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 699,
+						"spentTimeInHour": 11.65,
+						"departureTime": "23:36:46.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 740,
+						"spentTimeInHour": 12.333,
+						"departureTime": "22:40:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 877,
+						"spentTimeInHour": 14.617,
+						"departureTime": "20:23:00.000",
+						"arrivalTime": "09:08:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 619,
+						"spentTimeInHour": 10.317,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:00:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 619,
+						"spentTimeInHour": 10.317,
+						"departureTime": "00:50:00.000",
+						"arrivalTime": "10:09:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 26,
+			"departureSlack": 610
+		},
+		{
+			"meetingTime": "2024-10-29T11:20:00.000Z",
+			"destination": "Aberdour",
+			"maxTravelTimeInHour": "12.00",
+			"minTravelTimeInHour": "1.72",
+			"averageTravelTimeInHour": "7.73",
+			"maxTravelTimeInMinute": 720,
+			"minTravelTimeInMinute": 103,
+			"averageTravelTimeInMinute": 464,
+			"earliestArrival": "11:10",
+			"latestArrival": "11:10",
+			"earliestDeparture": "00:31",
+			"latestDeparture": "23:40",
+			"medianArrivalTime": "11:10",
+			"difficultTravels": [
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 720,
+						"spentTimeInHour": 12,
+						"departureTime": "23:20:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 712,
+						"spentTimeInHour": 11.867,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Leah",
+							"station": "NRW",
+							"stationName": "Norwich"
+						},
+						"spentTimeInMinutes": 720,
+						"spentTimeInHour": 12,
+						"departureTime": "23:20:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Anna",
+							"station": "SWA",
+							"stationName": "Swansea"
+						},
+						"spentTimeInMinutes": 712,
+						"spentTimeInHour": 11.867,
+						"departureTime": "23:40:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-28",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 86400000
+					}
+				}
+			],
+			"tooLongTravels": [
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 619,
+						"spentTimeInHour": 10.317,
+						"departureTime": "01:16:43.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 495,
+						"spentTimeInHour": 8.25,
+						"departureTime": "03:15:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 649,
+						"spentTimeInHour": 10.817,
+						"departureTime": "00:31:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Sara",
+							"station": "CME",
+							"stationName": "Combe (Oxon)"
+						},
+						"spentTimeInMinutes": 619,
+						"spentTimeInHour": 10.317,
+						"departureTime": "01:16:43.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Ali",
+							"station": "OXF",
+							"stationName": "Oxford"
+						},
+						"spentTimeInMinutes": 495,
+						"spentTimeInHour": 8.25,
+						"departureTime": "03:15:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				},
+				{
+					"meetingTime": "2024-10-29T11:20:00.000Z",
+					"element": {
+						"city": {
+							"name": "Rajesh",
+							"station": "AGV",
+							"stationName": "Abergavenny"
+						},
+						"spentTimeInMinutes": 649,
+						"spentTimeInHour": 10.817,
+						"departureTime": "00:31:00.000",
+						"arrivalTime": "11:10:00.000",
+						"departureDate": "2024-10-29",
+						"arrivalDate": "2024-10-29",
+						"durationInDays": 0
+					}
+				}
+			],
+			"arrivalSlack": 10,
+			"departureSlack": 649
 		}
 	]
 }
