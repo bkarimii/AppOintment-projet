@@ -26,7 +26,8 @@ function TableContent({
 			<thead>
 				<tr>
 					<th>Rank</th>
-					<th>Meeting Date</th>
+					<th>Meeting Location</th>
+					{/* <th>Meeting Date</th> */}
 					<th>Meeting Time</th>
 					<th>Min Travel Time</th>
 					<th>Average Travel Time</th>
@@ -42,9 +43,10 @@ function TableContent({
 					<React.Fragment key={index}>
 						<tr onClick={() => toggleRowExpansion(index)}>
 							<td data-label="Rank"># {index + 1}</td>
-							<td data-label="Meeting Date">
+							<td data-label="Meeting Location">{result.destination}</td>
+							{/* <td data-label="Meeting Date">
 								{extractDateTime(result.meetingTime)[0]}
-							</td>
+							</td> */}
 							<td data-label="Meeting Time">
 								{extractDateTime(result.meetingTime)[1]}
 							</td>
@@ -184,7 +186,7 @@ function DisplayTravelResults() {
 
 	const handleGoBackButton = (e) => {
 		e.preventDefault();
-		navigate("/new-meeting");
+		navigate("/");
 	};
 
 	const getSortedResults = () => {
@@ -239,24 +241,50 @@ function DisplayTravelResults() {
 								<Tab className="tab">Meeting Time</Tab>
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
-								<Tab className="tab">Min Slack</Tab>
+								<Tab className="tab">Min Arrival Slack</Tab>
 								<Tab className="tab">Diagram</Tab>
 							</TabList>
 
 							<TabPanel>
-								{selectedOption === "diagram" ? (
-									<div>
-										<Visualise travelData={processedResultsStorage} />
-									</div>
-								) : (
-									<TableContent
-										sortedResults={getSortedResults()}
-										toggleRowExpansion={toggleRowExpansion}
-										expandedRow={expandedRow}
-										extractDateTime={extractDateTime}
-										processedReport={processedReport}
-									/>
-								)}
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<div>
+									<Visualise travelData={processedResultsStorage} />
+								</div>
 							</TabPanel>
 						</Tabs>
 					</div>
