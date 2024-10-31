@@ -232,6 +232,11 @@ function DisplayTravelResults() {
 		}
 	};
 
+	const meetingDateToShowInBrowser =
+		processedResultsStorage.length > 0
+			? extractDateTime(processedResultsStorage[0].meetingTime)[0]
+			: "";
+
 	return (
 		<>
 			{loading ? (
@@ -248,6 +253,11 @@ function DisplayTravelResults() {
 					>
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
+					<div id="meeting-date-container">
+						<h3 id="meeting-date">
+							Meeting Date: {meetingDateToShowInBrowser}
+						</h3>
+					</div>
 					<div className="table-container">
 						<Tabs
 							selectedTabClassName="active-tab"
