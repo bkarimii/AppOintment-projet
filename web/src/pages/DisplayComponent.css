@@ -193,14 +193,7 @@ button:hover {
 .report-table {
 	width: 100%;
 	border-collapse: collapse;
-	table-layout: fixed;
-}
-
-.report-table tbody {
-	display: block;
-	max-height: 300px;
-	overflow-y: auto;
-	width: 100%;
+	table-layout: fixed; /* Ensures all columns are the same width */
 }
 
 .report-table thead,
@@ -210,8 +203,30 @@ button:hover {
 	table-layout: fixed;
 }
 
+.report-table tbody {
+	display: block;
+	max-height: 300px; /* Controls the scrollable height */
+	overflow-y: auto;
+	width: 100%;
+}
+
+.report-table thead {
+	display: table;
+	width: calc(100% - 17px); /* Adjust for scrollbar width */
+	table-layout: fixed;
+}
+
+.report-table th,
+.report-table td {
+	width: 20%; /* Adjust each column width as needed */
+	padding: 0.75rem;
+	text-align: left;
+	border: 1px solid #ddd;
+}
+
 .report-table th {
 	background-color: #46a249;
+	color: white;
 }
 
 .report-container {
