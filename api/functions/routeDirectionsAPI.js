@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import fetchedDataGoogle from "./staticData/fetchedDataGoogle.js";
+import sampleOutPutOfFunction from "./staticData/fetchedDataGoogle.js";
 
 export async function computeRoutesForOrigins(
 	meetingTimeArray,
@@ -10,14 +10,13 @@ export async function computeRoutesForOrigins(
 	fields,
 	apiKey,
 ) {
-	const runFetch = false;
-	if (runFetch) {
+	try {
 		const multiDestinationData = arrayOfDestination.map(
 			async (meetingLocation) => {
 				const destinationDetails = await Promise.all(
 					meetingTimeArray.map(async (arrivalTime) => {
 						const arrivalDetail = {
-							destination: meetingLocation.stationCode,
+							destination: meetingLocation.stationCrs,
 							destinationName: meetingLocation.stationName,
 							arrivalTime,
 							details: [],
@@ -97,11 +96,16 @@ export async function computeRoutesForOrigins(
 									return {
 										city: originElement.city,
 										error: "Too many requests. Please try again later.",
+										status: "429",
+										staticOutPut: sampleOutPutOfFunction,
 									};
 								} else {
 									return {
 										city: originElement.city,
 										error: "Failed to compute the route",
+										// A hypothetical status
+										status: "2",
+										staticOutPut: sampleOutPutOfFunction,
 									};
 								}
 							}
@@ -117,8 +121,13 @@ export async function computeRoutesForOrigins(
 
 		const userTravelInfoContainer = await Promise.all(multiDestinationData);
 		const flattenedUserTravelInfoContainer = userTravelInfoContainer.flat();
-		return flattenedUserTravelInfoContainer;
-	} else {
-		return fetchedDataGoogle;
+		const data = { status: "1", liveData: flattenedUserTravelInfoContainer };
+		return data;
+	} catch (error) {
+		return {
+			error: "Unknown error",
+			status: "0",
+			staticOutPut: sampleOutPutOfFunction,
+		};
 	}
 }

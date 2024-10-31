@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 
 // These are output of fetch function from google
-const fetchedDataGoogle = [
+const sampleOutPutOfFunction = [
 	{
 		destinationName: "Abbey Wood",
 		arrivalTime: "2024-10-29T10:00:00.000Z",
@@ -2224,4 +2224,4 @@ const fetchedDataGoogle = [
 	},
 ];
 
-export default fetchedDataGoogle;
+export default sampleOutPutOfFunction;
