@@ -334,7 +334,7 @@ function DisplayTravelResults() {
 								/>
 							</TabPanel>
 							<TabPanel>
-								<div>
+								<div id="chart-container">
 									<Visualise travelData={processedResultsStorage} />
 								</div>
 							</TabPanel>
