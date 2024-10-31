@@ -292,3 +292,15 @@ button:hover {
 		transform: rotate(360deg);
 	}
 }
+
+#meeting-date-container {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 1rem;
+}
+
+#meeting-date {
+	margin: 1rem 0 0 0;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
