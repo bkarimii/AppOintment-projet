@@ -5,12 +5,22 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
-import { useState } from "react";
-
-import "./ReportMaker.css";
+import { useState, useEffect } from "react";
 
 export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [isCopied, setIsCopied] = useState(false);
+	const [reportDestination, setReportDestination] = useState(
+		"Unknown Destination",
+	);
+
+	useEffect(() => {
+		const meetingData = localStorage.getItem("newMeetingData");
+		setReportDestination(
+			meetingData
+				? JSON.parse(meetingData).meetingStation
+				: "Unknown Destination",
+		);
+	}, []);
 
 	// Extract destination from local storage
 	const meetingData = localStorage.getItem("newMeetingData");
@@ -61,34 +71,37 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 
 		return (
 			<div className="report-container">
-				{isCopied ? (
-					<button
-						onClick={() => handleCopyButton(reportText)}
-						className="icon-button"
-					>
-						<FontAwesomeIcon icon={faCheck} style={{ color: "white" }} />
-						{"  "}
-						Copied!
-					</button>
-				) : (
-					<button
-						onClick={() => handleCopyButton(reportText)}
-						className="icon-button"
-					>
-						<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />
-					</button>
-				)}
-
 				<div className="date-time-report">
-					<h3>Meeting Report</h3>
-					<h4>
-						<strong>Date of Meeting:</strong> {meetingDate}
-					</h4>
-					<h4>
-						<strong>Time of Meeting:</strong> {meetingTime}
-					</h4>
+					<div className="copy-button-container">
+						{isCopied ? (
+							<button
+								onClick={() => handleCopyButton(reportText)}
+								className="icon-button"
+							>
+								<FontAwesomeIcon icon={faCheck} style={{ color: "white" }} />
+								{"  "}
+								Copied!
+							</button>
+						) : (
+							<button
+								onClick={() => handleCopyButton(reportText)}
+								className="icon-button"
+							>
+								<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />
+							</button>
+						)}
+						<h3>Meeting Report</h3>
+					</div>
+					<div className="date-time-info">
+						<h4>
+							<strong>Date of Meeting:</strong> {meetingDate}
+						</h4>
+						<h4>Meeting Location: {reportDestination}</h4>
+						<h4>
+							<strong>Time of Meeting:</strong> {meetingTime}
+						</h4>
+					</div>
 				</div>
-
 				<table className="report-table">
 					<thead>
 						<tr>
@@ -103,7 +116,6 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 					<tbody>
 						{personalReports.map((personalInfo, index) => (
 							<tr key={index} className="each-person-report">
-								{/* Attendee Name with conditional styling */}
 								<td>
 									{personalInfo.durationIndays > 0 ||
 									personalInfo.approximateTravelTime > 360 ? (
@@ -119,20 +131,10 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 										personalInfo.name
 									)}
 								</td>
-
-								{/* From */}
 								<td>{personalInfo.origin}</td>
-
-								{/* Departure Time */}
 								<td>{personalInfo.departureTime}</td>
-
-								{/* Expected Arrival Time */}
 								<td>{personalInfo.arrivalTime}</td>
-
-								{/* Duration */}
 								<td>{personalInfo.approximateTravelTime}</td>
-
-								{/* Notes */}
 								<td>
 									{personalInfo.durationIndays > 0 ||
 									personalInfo.approximateTravelTime > 360

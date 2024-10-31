@@ -2,26 +2,138 @@ import {
 	faExclamationTriangle,
 	faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
-import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 
 import "./DisplayComponent.css";
 
+function TableContent({
+	sortedResults,
+	toggleRowExpansion,
+	expandedRow,
+	extractDateTime,
+	processedReport,
+}) {
+	return (
+		<table>
+			<thead>
+				<tr>
+					<th>Rank</th>
+					<th>Meeting Location</th>
+					{/* <th>Meeting Date</th> */}
+					<th>Meeting Time</th>
+					<th>Min Travel Time</th>
+					<th>Average Travel Time</th>
+					<th>Max Travel Time</th>
+					<th>Departures</th>
+					<th>Arrivals</th>
+					<th>Arrival Slack</th>
+					<th>Warnings</th>
+				</tr>
+			</thead>
+			<tbody>
+				{sortedResults.map((result, index) => (
+					<React.Fragment key={index}>
+						<tr onClick={() => toggleRowExpansion(index)}>
+							<td data-label="Rank"># {index + 1}</td>
+							<td data-label="Meeting Location">{result.destination}</td>
+							{/* <td data-label="Meeting Date">
+								{extractDateTime(result.meetingTime)[0]}
+							</td> */}
+							<td data-label="Meeting Time">
+								{extractDateTime(result.meetingTime)[1]}
+							</td>
+							<td data-label="Min Travel Time">
+								{result.minTravelTimeInMinute}
+							</td>
+							<td data-label="Average Travel Time">
+								{result.averageTravelTimeInMinute}
+							</td>
+							<td data-label="Max Travel Time">
+								{result.maxTravelTimeInMinute}
+							</td>
+							<td data-label="Departures">
+								{result.earliestDeparture} - {result.latestDeparture}
+							</td>
+							<td data-label="Arrivals">
+								{result.earliestArrival} - {result.latestArrival}
+							</td>
+							<td data-label="Arrival Slack">{result.arrivalSlack}</td>
+							<td data-label="Warnings">
+								{result.difficultTravels.length > 0 ||
+								result.tooLongTravels.length > 0 ? (
+									<FontAwesomeIcon
+										icon={faExclamationTriangle}
+										title="Warning"
+										id="warning-button"
+									/>
+								) : (
+									<FontAwesomeIcon
+										icon={faCheckCircle}
+										title="All Good"
+										id="check-tick-button"
+									/>
+								)}
+							</td>
+						</tr>
+						{expandedRow === index && (
+							<tr>
+								<td colSpan="10">
+									<ReportMaker
+										timeOfReport={extractDateTime(result.meetingTime)[1]}
+										arrayOfReport={processedReport}
+									/>
+								</td>
+							</tr>
+						)}
+					</React.Fragment>
+				))}
+			</tbody>
+		</table>
+	);
+}
+
+TableContent.propTypes = {
+	sortedResults: PropTypes.arrayOf(
+		PropTypes.shape({
+			meetingTime: PropTypes.string.isRequired,
+			minTravelTimeInMinute: PropTypes.number.isRequired,
+			averageTravelTimeInMinute: PropTypes.number.isRequired,
+			maxTravelTimeInMinute: PropTypes.number.isRequired,
+			earliestDeparture: PropTypes.string.isRequired,
+			latestDeparture: PropTypes.string.isRequired,
+			earliestArrival: PropTypes.string.isRequired,
+			latestArrival: PropTypes.string.isRequired,
+			arrivalSlack: PropTypes.number.isRequired,
+			difficultTravels: PropTypes.array.isRequired,
+			tooLongTravels: PropTypes.array.isRequired,
+		}),
+	).isRequired,
+	toggleRowExpansion: PropTypes.func.isRequired,
+	expandedRow: PropTypes.number,
+	extractDateTime: PropTypes.func.isRequired,
+	processedReport: PropTypes.array.isRequired,
+};
+
 function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
 	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
-	const [loading, setLoading] = useState(false); // Loading state
+	const [loading, setLoading] = useState(false);
+	const [selectedOption, setSelectedOption] = useState("meeting-time");
+
 	const navigate = useNavigate();
 	const url = "/api/compute-route";
 
 	const fetchTravelData = async (URL) => {
-		setLoading(true); // Set loading to true when starting to fetch data
+		setLoading(true);
 		try {
 			const bodyData = localStorage.getItem("newMeetingData");
 
@@ -35,17 +147,38 @@ function DisplayTravelResults() {
 
 			if (response.ok) {
 				const totalInformation = await response.json();
-				const result = totalInformation[0];
-				const reports = totalInformation[1];
+				const result = totalInformation.totalInformation[0];
+				const reports = totalInformation.totalInformation[1];
 				setProcessedResultsStorage(result);
 				setProcessedReport(reports);
+
+				switch (response.status) {
+					case 429:
+						alert(
+							"Google API Quota exceeded - This is a sample meeting generated by the app to show how it works. Please try again later for live data.",
+						);
+						break;
+					case 2:
+						alert(
+							"Failed to compute the route - This is a sample meeting generated by the app to show how it works. Please try again later for live data.",
+						);
+						break;
+					case 0:
+						alert(
+							"Unknown error occurred - This is a sample meeting generated by the app to show how it works. Please try again later for live data.",
+						);
+						break;
+				}
 			} else {
-				console.error("An error happened!", response.status.error);
+				if (response.status === 429) {
+					alert("Google API Quota exceeded - please try again later");
+				}
+				console.error("An error occurred!", response.status.error);
 			}
 		} catch (error) {
 			console.error(error);
 		} finally {
-			setLoading(false); // Set loading to false when done
+			setLoading(false);
 		}
 	};
 
@@ -65,116 +198,116 @@ function DisplayTravelResults() {
 		return [date, time];
 	};
 
-	// Function to fetch travel data from API
-
 	const toggleRowExpansion = (index) => {
-		setExpandedRow(expandedRow === index ? null : index); // Toggle the expanded row
+		setExpandedRow(expandedRow === index ? null : index);
 	};
 
 	const handleGoBackButton = (e) => {
 		e.preventDefault();
-		navigate("/new-meeting");
+		navigate("/");
+	};
+
+	const getSortedResults = () => {
+		const results = [...processedResultsStorage];
+		switch (selectedOption) {
+			case "min":
+				return results.sort(
+					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
+				);
+			case "max":
+				return results.sort(
+					(a, b) => a.maxTravelTimeInMinute - b.maxTravelTimeInMinute,
+				);
+			case "minSlack":
+				return results.sort((a, b) => a.arrivalSlack - b.arrivalSlack);
+			default:
+				return results;
+		}
 	};
 
 	return (
 		<>
-			<button onClick={handleGoBackButton}>Go Back</button>
+			{loading ? (
+				<div className="spinner-container">
+					<div className="spinner"></div>
+					<p>Data is loading...</p>
+				</div>
+			) : (
+				<>
+					<button
+						onClick={handleGoBackButton}
+						aria-label="Go Back"
+						id="back-button"
+					>
+						<FontAwesomeIcon icon={faArrowLeft} />
+					</button>
+					<div className="table-container">
+						<Tabs
+							selectedTabClassName="active-tab"
+							onSelect={(index) => {
+								const options = [
+									"meeting-time",
+									"min",
+									"max",
+									"minSlack",
+									"diagram",
+								];
+								setSelectedOption(options[index]);
+							}}
+						>
+							<TabList className="tabs">
+								<Tab className="tab">Meeting Time</Tab>
+								<Tab className="tab">Min Travel Time</Tab>
+								<Tab className="tab">Max Travel Time</Tab>
+								<Tab className="tab">Min Arrival Slack</Tab>
+								<Tab className="tab">Diagram</Tab>
+							</TabList>
 
-			<div>
-				{loading ? (
-					<p>
-						<strong>Loading data, please wait...</strong>
-					</p>
-				) : (
-					<div>
-						<table>
-							<thead>
-								<tr>
-									<th>Meeting Date</th>
-									<th>Meeting Time</th>
-									<th>Min Travel Time</th>
-									<th>Average Travel Time</th>
-									<th>Max Travel Time</th>
-									<th>Arrivals</th>
-									<th>Arrival Slack</th>
-									<th>Departures</th>
-									<th>Warnings</th>
-								</tr>
-							</thead>
-							<tbody>
-								{processedResultsStorage.map((result, index) => (
-									<React.Fragment key={index}>
-										<tr
-											key={`main-row-${index}`}
-											onClick={() => toggleRowExpansion(index)}
-										>
-											<td data-label="Meeting Date">
-												{extractDateTime(result.meetingTime)[0]}
-											</td>
-											<td data-label="Meeting Time">
-												{extractDateTime(result.meetingTime)[1]}
-											</td>
-											<td data-label="Min Travel Time">
-												{result.minTravelTimeInMinute}
-											</td>
-											<td data-label="Average Travel Time">
-												{result.averageTravelTimeInMinute}
-											</td>
-											<td data-label="Max Travel Time">
-												{result.maxTravelTimeInMinute}
-											</td>
-											<td data-label="Arrivals">
-												{result.earliestArrival} : {result.latestArrival}
-											</td>
-											<td data-label="Arrival Slack">{result.arrivalSlack}</td>
-											<td data-label="Departure">
-												{result.earliestDeparture} : {result.latestDeparture}
-											</td>
-											<td data-label="Warnings">
-												{result.difficultTravels.length > 0 ||
-												result.tooLongTravels.length > 0 ? (
-													<FontAwesomeIcon
-														icon={faExclamationTriangle}
-														style={{ color: "orange", fontSize: "1.5em" }}
-														title="Warning"
-														data-tip="Warning: you have long travel"
-													/>
-												) : (
-													<FontAwesomeIcon
-														icon={faCheckCircle}
-														style={{ color: "green", fontSize: "1.5em" }}
-														title="All Good"
-													/>
-												)}
-											</td>
-										</tr>
-										{expandedRow === index && (
-											<tr key={`expanded-row-${index}`}>
-												<td colSpan="9">
-													<div className="container">
-														<div className="report">
-															<ReportMaker
-																timeOfReport={
-																	extractDateTime(result.meetingTime)[1]
-																}
-																arrayOfReport={processedReport}
-															/>
-														</div>
-													</div>
-												</td>
-											</tr>
-										)}
-									</React.Fragment>
-								))}
-							</tbody>
-						</table>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<div>
+									<Visualise travelData={processedResultsStorage} />
+								</div>
+							</TabPanel>
+						</Tabs>
 					</div>
-				)}
-			</div>
-
-			<div>
-				<Visualise travelData={processedResultsStorage} />
-			</div>
+				</>
+			)}
 		</>
 	);
 }

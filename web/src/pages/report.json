@@ -1,0 +1,1684 @@
+{
+	"report": [
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:00",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 216,
+					"departureTime": "06:31",
+					"arrivalTime": "09:34",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 183,
+					"departureTime": "07:00",
+					"arrivalTime": "09:19",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 183,
+					"departureTime": "07:15",
+					"arrivalTime": "09:24",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 130,
+					"departureTime": "07:53",
+					"arrivalTime": "09:24",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 179,
+					"departureTime": "07:04",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 183,
+					"departureTime": "07:00",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 184,
+					"departureTime": "07:00",
+					"arrivalTime": "09:40",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 215,
+					"departureTime": "06:28",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 623,
+					"departureTime": "23:40",
+					"arrivalTime": "07:58",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 216,
+					"departureTime": "06:31",
+					"arrivalTime": "09:34",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 183,
+					"departureTime": "07:00",
+					"arrivalTime": "09:19",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 183,
+					"departureTime": "07:15",
+					"arrivalTime": "09:24",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 130,
+					"departureTime": "07:53",
+					"arrivalTime": "09:24",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 179,
+					"departureTime": "07:04",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 183,
+					"departureTime": "07:00",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 184,
+					"departureTime": "07:00",
+					"arrivalTime": "09:40",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 215,
+					"departureTime": "06:28",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 623,
+					"departureTime": "23:40",
+					"arrivalTime": "07:58",
+					"difficultJourney": 86400000
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:20",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "07:15",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 143,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 133,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 116,
+					"departureTime": "08:27",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 199,
+					"departureTime": "07:04",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 203,
+					"departureTime": "07:00",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 189,
+					"departureTime": "07:15",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 235,
+					"departureTime": "06:28",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 355,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "07:15",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 143,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 133,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 116,
+					"departureTime": "08:27",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 199,
+					"departureTime": "07:04",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 203,
+					"departureTime": "07:00",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 189,
+					"departureTime": "07:15",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 235,
+					"departureTime": "06:28",
+					"arrivalTime": "09:52",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 355,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:40",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "07:35",
+					"arrivalTime": "10:28",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 163,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 153,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 103,
+					"departureTime": "09:00",
+					"arrivalTime": "10:35",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 189,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 189,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 209,
+					"departureTime": "07:15",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 226,
+					"departureTime": "06:57",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 375,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "07:35",
+					"arrivalTime": "10:28",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 163,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 153,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 103,
+					"departureTime": "09:00",
+					"arrivalTime": "10:35",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 189,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 189,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 209,
+					"departureTime": "07:15",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 226,
+					"departureTime": "06:57",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 375,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "11:00",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 211,
+					"departureTime": "07:35",
+					"arrivalTime": "10:28",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 183,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 173,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 107,
+					"departureTime": "09:16",
+					"arrivalTime": "10:50",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 209,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 209,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 203,
+					"departureTime": "07:41",
+					"arrivalTime": "10:42",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 246,
+					"departureTime": "06:57",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 395,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 211,
+					"departureTime": "07:35",
+					"arrivalTime": "10:28",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 183,
+					"departureTime": "08:00",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 173,
+					"departureTime": "08:13",
+					"arrivalTime": "10:16",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 107,
+					"departureTime": "09:16",
+					"arrivalTime": "10:50",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 209,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 209,
+					"departureTime": "07:34",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 203,
+					"departureTime": "07:41",
+					"arrivalTime": "10:42",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 246,
+					"departureTime": "06:57",
+					"arrivalTime": "10:22",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 395,
+					"departureTime": "04:28",
+					"arrivalTime": "09:58",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "11:20",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "08:15",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 173,
+					"departureTime": "08:30",
+					"arrivalTime": "10:57",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 155,
+					"departureTime": "09:03",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 111,
+					"departureTime": "09:32",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 190,
+					"departureTime": "08:13",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 206,
+					"departureTime": "07:57",
+					"arrivalTime": "10:50",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 189,
+					"departureTime": "08:15",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 224,
+					"departureTime": "07:43",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 350,
+					"departureTime": "05:33",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 191,
+					"departureTime": "08:15",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 173,
+					"departureTime": "08:30",
+					"arrivalTime": "10:57",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 155,
+					"departureTime": "09:03",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 111,
+					"departureTime": "09:32",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 190,
+					"departureTime": "08:13",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 206,
+					"departureTime": "07:57",
+					"arrivalTime": "10:50",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 189,
+					"departureTime": "08:15",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 224,
+					"departureTime": "07:43",
+					"arrivalTime": "11:12",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 350,
+					"departureTime": "05:33",
+					"arrivalTime": "11:05",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:00",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 305,
+					"departureTime": "04:57",
+					"arrivalTime": "09:08",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 768,
+					"departureTime": "21:12",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 719,
+					"departureTime": "22:16",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 629,
+					"departureTime": "23:40",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 727,
+					"departureTime": "21:53",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 484,
+					"departureTime": "02:00",
+					"arrivalTime": "08:37",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 470,
+					"departureTime": "02:11",
+					"arrivalTime": "09:08",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 817,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 113,
+					"departureTime": "08:07",
+					"arrivalTime": "09:38",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 305,
+					"departureTime": "04:57",
+					"arrivalTime": "09:08",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 768,
+					"departureTime": "21:12",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 719,
+					"departureTime": "22:16",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 629,
+					"departureTime": "23:40",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 727,
+					"departureTime": "21:53",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 484,
+					"departureTime": "02:00",
+					"arrivalTime": "08:37",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 470,
+					"departureTime": "02:11",
+					"arrivalTime": "09:08",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 817,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 113,
+					"departureTime": "08:07",
+					"arrivalTime": "09:38",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:20",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 240,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 800,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 659,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 579,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 700,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 312,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 269,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 837,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 103,
+					"departureTime": "08:45",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 240,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 800,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 659,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 579,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 700,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 312,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 269,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 837,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 103,
+					"departureTime": "08:45",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "10:40",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 260,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 820,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 679,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 599,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 720,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 332,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 289,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 857,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 93,
+					"departureTime": "09:15",
+					"arrivalTime": "10:34",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 260,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 820,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 679,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 599,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 720,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 332,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 289,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 857,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 93,
+					"departureTime": "09:15",
+					"arrivalTime": "10:34",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "11:00",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 280,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 840,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 699,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 619,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 740,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 352,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 309,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 877,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 113,
+					"departureTime": "09:15",
+					"arrivalTime": "10:34",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 280,
+					"departureTime": "06:22",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 840,
+					"departureTime": "21:00",
+					"arrivalTime": "08:05",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 699,
+					"departureTime": "23:36",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 619,
+					"departureTime": "00:50",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 740,
+					"departureTime": "22:40",
+					"arrivalTime": "10:09",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 352,
+					"departureTime": "05:08",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 309,
+					"departureTime": "05:52",
+					"arrivalTime": "10:09",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 877,
+					"departureTime": "20:23",
+					"arrivalTime": "09:08",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 113,
+					"departureTime": "09:15",
+					"arrivalTime": "10:34",
+					"difficultJourney": 0
+				}
+			]
+		},
+		{
+			"meetingDate": "2024-10-29",
+			"meetingTime": "11:20",
+			"personalReports": [
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 278,
+					"departureTime": "06:44",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 720,
+					"departureTime": "23:20",
+					"arrivalTime": "11:10",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 619,
+					"departureTime": "01:16",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 495,
+					"departureTime": "03:15",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 649,
+					"departureTime": "00:31",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 352,
+					"departureTime": "05:28",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 252,
+					"departureTime": "07:08",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 712,
+					"departureTime": "23:40",
+					"arrivalTime": "11:10",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 103,
+					"departureTime": "09:45",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Zara",
+					"origin": "Manchester Piccadilly",
+					"originCrc": "MAN",
+					"approximateTravelTime": 278,
+					"departureTime": "06:44",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Leah",
+					"origin": "Norwich",
+					"originCrc": "NRW",
+					"approximateTravelTime": 720,
+					"departureTime": "23:20",
+					"arrivalTime": "11:10",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Sara",
+					"origin": "Combe (Oxon)",
+					"originCrc": "CME",
+					"approximateTravelTime": 619,
+					"departureTime": "01:16",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Ali",
+					"origin": "Oxford",
+					"originCrc": "OXF",
+					"approximateTravelTime": 495,
+					"departureTime": "03:15",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Rajesh",
+					"origin": "Abergavenny",
+					"originCrc": "AGV",
+					"approximateTravelTime": 649,
+					"departureTime": "00:31",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "David",
+					"origin": "Sheffield",
+					"originCrc": "SHF",
+					"approximateTravelTime": 352,
+					"departureTime": "05:28",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Toba",
+					"origin": "Leeds",
+					"originCrc": "LDS",
+					"approximateTravelTime": 252,
+					"departureTime": "07:08",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				},
+				{
+					"name": "Anna",
+					"origin": "Swansea",
+					"originCrc": "SWA",
+					"approximateTravelTime": 712,
+					"departureTime": "23:40",
+					"arrivalTime": "11:10",
+					"difficultJourney": 86400000
+				},
+				{
+					"name": "Miya",
+					"origin": "Glasgow Central",
+					"originCrc": "GLC",
+					"approximateTravelTime": 103,
+					"departureTime": "09:45",
+					"arrivalTime": "11:10",
+					"difficultJourney": 0
+				}
+			]
+		}
+	]
+}
