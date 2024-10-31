@@ -27,7 +27,7 @@ export async function fetchBodyMaker(body) {
 			const destinationObject = {
 				latitude: destinationsDBDetail.lat,
 				longitude: destinationsDBDetail.long,
-				stationsCrs: eachDestinationCrs.station,
+				stationCrs: eachDestinationCrs.station,
 				stationName: destinationsDBDetail.stationName,
 			};
 
