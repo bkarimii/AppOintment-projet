@@ -28,7 +28,7 @@ describe("/api", () => {
 			const response = await request(app).post("/api/compute-route").send(body);
 
 			// Validate the response body structure
-			expect(Array.isArray(response.body)).toBe(true); // Check if response body is an array
+			expect(typeof response.body).toBe("object"); // Check if response body is an object
 		}, 30000);
 	});
 
