@@ -9,7 +9,7 @@ const dotenvPath = resolve(
 
 configDotenv({ path: dotenvPath });
 
-requireArgs(["DATABASE_URL", "GOOGLE_MAPS_API_KEY_TWO", "USE_LIVE-DATA"]);
+requireArgs(["DATABASE_URL", "GOOGLE_MAPS_API_KEY_TWO", "USE_LIVE_DATA"]);
 // Get the API key from the environment
 const googleApiKey = process.env.GOOGLE_MAPS_API_KEY_TWO;
 const useLiveData = process.env.USE_LIVE_DATA;
