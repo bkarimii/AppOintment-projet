@@ -15,11 +15,9 @@ describe("/api", () => {
 					station: "ABW",
 				},
 			],
-			meetingDate: "2024-10-18",
-			meetingRange: {
-				startingTime: "05:29",
-				endingTime: "06:29",
-			},
+			meetingDate: "2024-12-20",
+			earliestStartTime: "05:29",
+			latestStartTime: "05:45",
 
 			attendees: [
 				{ name: "fikret", station: "MAN" },
@@ -47,11 +45,9 @@ describe("/api", () => {
 					station: "ABW",
 				},
 			],
-			meetingDate: "2024-10-18",
-			meetingRange: {
-				startingTime: "05:29",
-				endingTime: "06:29",
-			},
+			meetingDate: "2024-12-20",
+			earliestStartTime: "05:29",
+			latestStartTime: "05:45",
 			attendees: [
 				{ name: "fikret", station: "MAN" },
 				{ name: "behrouz", station: "ACY" },
