@@ -62,11 +62,28 @@ api.post("/compute-route", async (req, res) => {
 			fields,
 			apiKey,
 		);
-		const processedInfo = processTravelInfo(travelInfo);
-		const stats = statistics(processedInfo);
-		const reports = prepareDataForReport(processedInfo);
-		const totalInformation = [stats, reports];
-		res.status(200).json(totalInformation);
+		const travelInfoStatus = travelInfo.status;
+		// getResponseForStatus based on the out put of the routeDirection function prepares the response
+		const getResponseForStatus = (status, travelInfoData) => {
+			const processedInfo = processTravelInfo(travelInfoData);
+			const stats = statistics(processedInfo);
+			const reports = prepareDataForReport(processedInfo);
+			const totalInformation = [stats, reports];
+			return { status, totalInformation };
+		};
+
+		const statusMap = {
+			1: travelInfo.liveData,
+			429: travelInfo.staticOutPut,
+			0: travelInfo.staticOutPut,
+			2: travelInfo.staticOutPut,
+		};
+
+		const userResponse = getResponseForStatus(
+			travelInfoStatus,
+			statusMap[travelInfoStatus] || travelInfo.staticOutPut,
+		);
+		res.status(200).json(userResponse);
 	} catch (error) {
 		res.status(500).json({ error: "Error happened: " + error });
 	}
@@ -77,6 +94,10 @@ api.get("/station-list", async (req, res) => {
 		"SELECT station_name, crs_code FROM uk_stations",
 	);
 	res.status(200).json(stations.rows);
+});
+
+api.get("/test", async (req, res) => {
+	res.status(200).json("TEST");
 });
 
 export async function fetchBodyMaker(body) {
@@ -105,10 +126,10 @@ export async function fetchBodyMaker(body) {
 			}
 
 			const destinationObject = {
-				latitude: destinationsDBDetail.lat,
-				longitude: destinationsDBDetail.long,
-				stationsCrs: eachDestinationCrs.station,
-				stationName: destinationsDBDetail.stationName,
+				latitude: destinationsDBDetail.rows[0].latitude,
+				longitude: destinationsDBDetail.rows[0].longitude,
+				stationCrs: eachDestinationCrs.station,
+				stationName: destinationsDBDetail.rows[0].station_name,
 			};
 
 			for (const originCrs of arrayOfOriginStationCrs) {
@@ -124,12 +145,12 @@ export async function fetchBodyMaker(body) {
 				const originObject = {
 					city: {
 						...originCrs,
-						stationName: originDBDetail.stationName,
+						stationName: originDBDetail.station_name,
 					},
 					location: {
 						latLng: {
-							latitude: originDBDetail.lat,
-							longitude: originDBDetail.long,
+							latitude: originDBDetail.rows[0].latitude,
+							longitude: originDBDetail.rows[0].longitude,
 						},
 					},
 				};
@@ -189,7 +210,7 @@ export async function fetchBodyMaker(body) {
 // 			const destinationObject = {
 // 				latitude: destinationsDBDetail.lat,
 // 				longitude: destinationsDBDetail.long,
-// 				stationsCrs: eachDestinationCrs.station,
+// 				stationCrs: eachDestinationCrs.station,
 // 				stationName: destinationsDBDetail.stationName,
 // 			};
 
