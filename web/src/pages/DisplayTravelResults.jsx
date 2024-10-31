@@ -11,6 +11,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
+import report from "./report.json";
+import results from "./results.json";
 
 import "./DisplayComponent.css";
 
@@ -71,8 +73,8 @@ function TableContent({
 								result.tooLongTravels.length > 0 ? (
 									<FontAwesomeIcon
 										icon={faExclamationTriangle}
-										title="Warning"
 										id="warning-button"
+										title="This meeting includes a long journey. Click the row for more details."
 									/>
 								) : (
 									<FontAwesomeIcon
@@ -123,8 +125,10 @@ TableContent.propTypes = {
 };
 
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
-	const [processedReport, setProcessedReport] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState(
+		results.results,
+	);
+	const [processedReport, setProcessedReport] = useState(report.report);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("meeting-time");
@@ -183,7 +187,10 @@ function DisplayTravelResults() {
 	};
 
 	useEffect(() => {
-		fetchTravelData(url);
+		const falsy = false;
+		if (falsy) {
+			fetchTravelData(url);
+		}
 	}, []);
 
 	const extractDateTime = (isoString) => {
