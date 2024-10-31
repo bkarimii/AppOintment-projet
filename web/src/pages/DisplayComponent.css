@@ -116,7 +116,7 @@ tr:hover {
 button {
 	margin-right: 0.5rem;
 	padding: 5px 10px;
-	background-color: #004f07;
+	background-color: #1c1c1c;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -126,6 +126,10 @@ button {
 #back-button {
 	margin: 1rem 95% 0 2%;
 	font-size: larger;
+}
+
+#back-button:hover {
+	background-color: #5b5a5a;
 }
 
 #warning-button {
@@ -139,7 +143,7 @@ button {
 }
 
 button:hover {
-	background-color: #169000;
+	background-color: #5b5a5a;
 }
 
 /* Specific Styles for Report Components */
@@ -303,4 +307,8 @@ button:hover {
 	margin: 1rem 0 0 0;
 	font-size: 1.5rem;
 	font-weight: bold;
+}
+
+#chart-container {
+	background-color: rgb(231, 230, 230);
 }
