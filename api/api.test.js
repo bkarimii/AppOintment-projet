@@ -48,8 +48,10 @@ describe("/api", () => {
 				},
 			],
 			meetingDate: "2024-10-18",
-			earliestStartTime: "05:29",
-			latestStartTime: "06:29",
+			meetingRange: {
+				startingTime: "05:29",
+				endingTime: "06:29",
+			},
 			attendees: [
 				{ name: "fikret", station: "MAN" },
 				{ name: "behrouz", station: "ACY" },
