@@ -124,6 +124,8 @@ TableContent.propTypes = {
 	processedReport: PropTypes.array.isRequired,
 };
 
+// -------------------------------------------------------------------------------
+
 function DisplayTravelResults() {
 	const [processedResultsStorage, setProcessedResultsStorage] = useState(
 		results.results,
@@ -217,6 +219,10 @@ function DisplayTravelResults() {
 	const getSortedResults = () => {
 		const results = [...processedResultsStorage];
 		switch (selectedOption) {
+			case "meeting-time":
+				return results.sort(
+					(a, b) => new Date(a.meetingTime) - new Date(b.meetingTime),
+				);
 			case "min":
 				return results.sort(
 					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
@@ -267,6 +273,7 @@ function DisplayTravelResults() {
 									"min",
 									"max",
 									"minSlack",
+									"meeting-location",
 									"diagram",
 								];
 								setSelectedOption(options[index]);
@@ -277,9 +284,19 @@ function DisplayTravelResults() {
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
 								<Tab className="tab">Min Arrival Slack</Tab>
+								<Tab className="tab">Group By Location</Tab>
 								<Tab className="tab">Diagram</Tab>
 							</TabList>
 
+							<TabPanel>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
 							<TabPanel>
 								<TableContent
 									sortedResults={getSortedResults()}
