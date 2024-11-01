@@ -198,9 +198,6 @@ button[type="button"]:hover {
 		font-size: 14px;
 	}
 
-	#attendees-list {
-	}
-
 	#attendees-list input[type="text"],
 	#attendees-list select {
 		font-size: 12px;
