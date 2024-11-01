@@ -240,7 +240,18 @@ function DisplayTravelResults() {
 		processedResultsStorage.length > 0
 			? extractDateTime(processedResultsStorage[0].meetingTime)[0]
 			: "";
-
+	const meetinDayToShow = new Date(
+		processedResultsStorage[0].meetingTime,
+	).getDay();
+	const daysOfWeek = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
 	return (
 		<>
 			{loading ? (
@@ -259,7 +270,8 @@ function DisplayTravelResults() {
 					</button>
 					<div id="meeting-date-container">
 						<h3 id="meeting-date-in-table-page">
-							Meeting Date: {meetingDateToShowInBrowser}
+							Meeting Date: &quot; {daysOfWeek[meetinDayToShow]} ,{" "}
+							{meetingDateToShowInBrowser} &quot;
 						</h3>
 					</div>
 					<div className="table-container">
