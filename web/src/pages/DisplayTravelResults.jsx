@@ -191,6 +191,7 @@ function DisplayTravelResults() {
 		if (falsy) {
 			fetchTravelData(url);
 		}
+		document.title = "Meeting results";
 	}, []);
 
 	const extractDateTime = (isoString) => {
