@@ -16,11 +16,19 @@ api.use("/message", messageRouter);
 
 api.post("/compute-route", async (req, res) => {
 	const body = await fetchBodyMaker(req.body);
-	const { meetingRange, intervalTime, destination, origins } = body;
+	const {
+		meetingDate,
+		startingTime,
+		endingTime,
+		intervalTime,
+		destination,
+		origins,
+	} = body;
 
-	if (!meetingRange || !meetingRange.startingTime || !meetingRange.endingTime) {
+	if (!meetingDate || !startingTime || !endingTime) {
 		return res.status(400).json({
-			error: "Meeting range (startingTime, endingTime) is required.",
+			error:
+				"Meeting time info (meetingDate, startingTime, endingTime) is required.",
 		});
 	}
 
@@ -38,13 +46,11 @@ api.post("/compute-route", async (req, res) => {
 		return res.status(400).json({ error: "At least one origin is required." });
 	}
 	try {
-		const startingMeetingTime = body.meetingRange.startingTime;
-		const endingMeetingTime = body.meetingRange.endingTime;
-		const intervalTime = body.intervalTime;
 		// This function creates period of times in an array
 		const meetingTimeArray = generateTimeSlots(
-			startingMeetingTime,
-			endingMeetingTime,
+			meetingDate,
+			startingTime,
+			endingTime,
 			intervalTime,
 		);
 
@@ -54,6 +60,7 @@ api.post("/compute-route", async (req, res) => {
 		const fields =
 			"routes.legs.duration,routes.legs.staticDuration,routes.legs.steps.transitDetails.stopDetails.departureTime,routes.legs.steps.transitDetails.stopDetails.arrivalTime";
 		const travelMode = "TRANSIT";
+
 		const travelInfo = await computeRoutesForOrigins(
 			meetingTimeArray,
 			arrayOfOrigins,
@@ -62,6 +69,7 @@ api.post("/compute-route", async (req, res) => {
 			fields,
 			apiKey,
 		);
+
 		const travelInfoStatus = travelInfo.status;
 		// getResponseForStatus based on the out put of the routeDirection function prepares the response
 		const getResponseForStatus = (status, travelInfoData) => {
@@ -108,12 +116,8 @@ export async function fetchBodyMaker(body) {
 		const arrayOfOriginStationCrs = body.attendees;
 
 		const meetingDate = body.meetingDate;
-		const meetingStartPoint = body.earliestStartTime;
-		const meetingEndPoint = body.latestStartTime;
-		const meetingRange = {
-			startingTime: `${meetingDate}T${meetingStartPoint}:00Z`,
-			endingTime: `${meetingDate}T${meetingEndPoint}:00Z`,
-		};
+		const startingTime = body.earliestStartTime;
+		const endingTime = body.latestStartTime;
 
 		for (const eachDestinationCrs of arrayOfDestination) {
 			// Find destination station in JSON data
@@ -132,42 +136,41 @@ export async function fetchBodyMaker(body) {
 				stationName: destinationsDBDetail.rows[0].station_name,
 			};
 
-			for (const originCrs of arrayOfOriginStationCrs) {
-				// Find origin station in JSON data
-				const originDBDetail = await db.query(
-					"SELECT * FROM uk_stations WHERE crs_code = $1",
-					[originCrs.station],
-				);
-				if (originDBDetail.rows.length === 0) {
-					throw new Error(`Origin CRS code ${originCrs} not found.`);
-				}
+			destinations.push(destinationObject);
+		}
 
-				const originObject = {
-					city: {
-						...originCrs,
-						stationName: originDBDetail.station_name,
-					},
-					location: {
-						latLng: {
-							latitude: originDBDetail.rows[0].latitude,
-							longitude: originDBDetail.rows[0].longitude,
-						},
-					},
-				};
-				origins.push(originObject);
+		for (const originCrs of arrayOfOriginStationCrs) {
+			// Find origin station in JSON data
+			const originDBDetail = await db.query(
+				"SELECT * FROM uk_stations WHERE crs_code = $1",
+				[originCrs.station],
+			);
+			if (originDBDetail.rows.length === 0) {
+				throw new Error(`Origin CRS code ${originCrs} not found.`);
 			}
 
-			destinations.push(destinationObject);
+			const originObject = {
+				city: {
+					...originCrs,
+					stationName: originDBDetail.station_name,
+				},
+				location: {
+					latLng: {
+						latitude: originDBDetail.rows[0].latitude,
+						longitude: originDBDetail.rows[0].longitude,
+					},
+				},
+			};
+			origins.push(originObject);
 		}
 
 		const intervalTime = body.intervalTime ?? 20;
 		const formattedBody = {
 			origins: origins,
 			destination: destinations,
-			meetingRange: {
-				startingTime: meetingRange.startingTime,
-				endingTime: meetingRange.endingTime,
-			},
+			meetingDate: meetingDate,
+			startingTime: startingTime,
+			endingTime: endingTime,
 			intervalTime: intervalTime,
 		};
 

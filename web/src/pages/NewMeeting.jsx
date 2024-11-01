@@ -1,5 +1,6 @@
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isArray } from "chart.js/helpers";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
@@ -10,9 +11,12 @@ function NewMeeting() {
 	const [helpIconToggle, setHelpIconToggle] = useState(false);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
+		if (!isArray(savedData.meetingStation)) {
+			savedData.meetingStation = [{ station: savedData.meetingStation }];
+		}
 		return (
 			savedData || {
-				meetingStation: "",
+				meetingStation: [{ station: "" }],
 				meetingDate: "",
 				earliestStartTime: "",
 				latestStartTime: "",
@@ -65,17 +69,23 @@ function NewMeeting() {
 		localStorage.setItem("newMeetingData", JSON.stringify(formData));
 	}, [formData]);
 
-	const handleAttendeeChange = (index, field, value) => {
-		const updatedAttendees = [...attendees];
-		updatedAttendees[index][field] = value;
-		setAttendees(updatedAttendees);
+	const handleMeetingStationChange = (index, field, value) => {
+		const updatedMeetingStation = [...meetingStation];
+		updatedMeetingStation[index][field] = value;
+		setMeetingStation(updatedMeetingStation);
+	};
+
+	const addMeetingStation = () => {
+		setMeetingStation([...meetingStation, { station: "" }]);
+	};
+
+	const deleteMeetingStation = (index) => {
+		const updatedMeetingStation = meetingStation.filter((_, i) => i !== index);
+		setMeetingStation(updatedMeetingStation);
 	};
 
 	const handleMeetingChange = (field, value) => {
 		switch (field) {
-			case "meetingStation":
-				setMeetingStation(value);
-				break;
 			case "meetingDate":
 				setMeetingDate(value);
 				break;
@@ -92,6 +102,12 @@ function NewMeeting() {
 			default:
 				break;
 		}
+	};
+
+	const handleAttendeeChange = (index, field, value) => {
+		const updatedAttendees = [...attendees];
+		updatedAttendees[index][field] = value;
+		setAttendees(updatedAttendees);
 	};
 
 	const addAttendee = () => {
@@ -114,30 +130,115 @@ function NewMeeting() {
 
 	return (
 		<>
-			<div id="form-help-container">
-				<form onSubmit={handleSubmit} aria-labelledby="form-title">
-					<h2 id="form-title">New Meeting</h2>
+			<div id="form-page">
+				<h1>THIS APP OINTMENT</h1>
+				<form onSubmit={handleSubmit}>
+					<h3 className="form-header">Plan your meeting details</h3>
 					<div className="form-group">
-						<select
-							name="meetingStation"
-							id="meeting-station"
-							value={meetingStation}
-							onChange={(e) =>
-								handleMeetingChange("meetingStation", e.target.value)
-							}
-							required
-							aria-required="true"
-						>
-							<option value="" disabled>
-								Select a station
-							</option>
-							{stations.map((station, index) => (
-								<option key={index} value={station.crs_code}>
-									{station.station_name}
-								</option>
-							))}
-						</select>
-						<label htmlFor="meeting-station">Meeting Station</label>
+						<label id="list-heading" htmlFor="stn-list">
+							Meeting Station List
+						</label>
+						<div id="station-list">
+							<ul id="stn-list">
+								{meetingStation.map((station, index) => (
+									<li className="station-li" key={index}>
+										<div className="form-group station-code-group">
+											<select
+												name="meetingStation"
+												id={"meeting-station" + index}
+												value={station.station}
+												onChange={(e) =>
+													handleMeetingStationChange(
+														index,
+														"station",
+														e.target.value,
+													)
+												}
+												required
+												aria-required="true"
+											>
+												<option value="" disabled>
+													Select a station
+												</option>
+												{stations.map((station, idx) => (
+													<option key={idx} value={station.crs_code}>
+														{station.station_name}
+													</option>
+												))}
+											</select>
+											<label htmlFor={"meeting-station" + index}>Station</label>
+										</div>
+										<button
+											className="delete-button"
+											onClick={() => deleteMeetingStation(index)}
+											style={{ display: "flex", alignItems: "center" }}
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="30"
+												height="30"
+												viewBox="0 0 64 64"
+											>
+												<rect
+													x="16"
+													y="22"
+													width="32"
+													height="34"
+													fill="black"
+													rx="4"
+												/>
+												<rect
+													x="12"
+													y="16"
+													width="40"
+													height="5"
+													fill="black"
+													rx="2"
+												/>
+												<rect
+													x="24"
+													y="11"
+													width="16"
+													height="6"
+													fill="black"
+													rx="2"
+												/>
+												<rect
+													x="22"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="30"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="38"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</li>
+								))}
+							</ul>
+
+							<button
+								id="add-station-button"
+								type="button"
+								onClick={addMeetingStation}
+							>
+								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>
+								Add Station
+							</button>
+						</div>
 					</div>
 
 					<div className="form-group">
@@ -147,7 +248,6 @@ function NewMeeting() {
 							name="meetingDate"
 							required
 							value={meetingDate}
-							min={new Date().toISOString().split("T")[0]}
 							onChange={(e) =>
 								handleMeetingChange("meetingDate", e.target.value)
 							}
@@ -156,36 +256,41 @@ function NewMeeting() {
 						<label htmlFor="meeting-date">Meeting Date</label>
 					</div>
 
-					<div className="form-group">
-						<input
-							type="time"
-							id="earliest-start-time"
-							name="earliestStartTime"
-							required
-							value={earliestStartTime}
-							onChange={(e) =>
-								handleMeetingChange("earliestStartTime", e.target.value)
-							}
-							aria-required="true"
-						/>
-						<label htmlFor="earliest-start-time">Earliest Start Time</label>
-					</div>
+					<div className="time-group">
+						<div className="form-group">
+							<input
+								type="time"
+								id="earliest-start-time"
+								name="earliestStartTime"
+								required
+								value={earliestStartTime}
+								onChange={(e) =>
+									handleMeetingChange("earliestStartTime", e.target.value)
+								}
+								aria-required="true"
+							/>
+							<label htmlFor="earliest-start-time">Earliest Start Time</label>
+						</div>
 
-					<div className="form-group">
-						<input
-							type="time"
-							id="latest-start-time"
-							name="latestStartTime"
-							required
-							value={latestStartTime}
-							min={earliestStartTime}
-							onChange={(e) =>
-								handleMeetingChange("latestStartTime", e.target.value)
-							}
-							aria-required="true"
-						/>
-						<label htmlFor="latest-start-time">Latest Start Time</label>
+						<p>to</p>
+
+						<div className="form-group">
+							<input
+								type="time"
+								id="latest-start-time"
+								name="latestStartTime"
+								required
+								value={latestStartTime}
+								onChange={(e) =>
+									handleMeetingChange("latestStartTime", e.target.value)
+								}
+								aria-required="true"
+							/>
+							<label htmlFor="latest-start-time">Latest Start Time</label>
+						</div>
 					</div>
+					<h3 className="form-header">Who is coming?</h3>
+
 					<div className="form-group">
 						<label id="list-heading" htmlFor="att-list">
 							Attendee List
@@ -255,7 +360,7 @@ function NewMeeting() {
 													y="16"
 													width="40"
 													height="5"
-													fill="red"
+													fill="black"
 													rx="2"
 												/>
 
@@ -264,7 +369,7 @@ function NewMeeting() {
 													y="11"
 													width="16"
 													height="6"
-													fill="red"
+													fill="inherit"
 													rx="2"
 												/>
 
@@ -301,6 +406,7 @@ function NewMeeting() {
 								onClick={addAttendee}
 								aria-label="Add attendee"
 							>
+								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>{" "}
 								Add Attendee
 							</button>
 						</div>
@@ -310,7 +416,6 @@ function NewMeeting() {
 						Submit
 					</button>
 				</form>
-
 				<div>
 					<div id="help-button-and-title">
 						<h2>Need help?</h2>
