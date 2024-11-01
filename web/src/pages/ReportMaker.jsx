@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import {
 	faExclamationTriangle,
 	faCopy,
@@ -71,41 +72,30 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 
 		return (
 			<div className="report-container">
-				<div className="date-time-report">
-					<div className="copy-button-container">
-						{isCopied ? (
-							<button
-								onClick={() => handleCopyButton(reportText)}
-								className="icon-button"
-							>
-								<FontAwesomeIcon icon={faCheck} style={{ color: "white" }} />
-								{"  "}
-								Copied!
-							</button>
-						) : (
-							<button
-								onClick={() => handleCopyButton(reportText)}
-								className="icon-button"
-							>
-								<FontAwesomeIcon icon={faCopy} style={{ color: "white" }} />
-							</button>
-						)}
-						<h3>Meeting Report</h3>
-					</div>
-					<div className="date-time-info">
-						<h4>
-							<strong>Date of Meeting:</strong> {meetingDate}
-						</h4>
-						<h4>Meeting Location: {reportDestination}</h4>
-						<h4>
-							<strong>Time of Meeting:</strong> {meetingTime}
-						</h4>
-					</div>
-				</div>
 				<table className="report-table">
 					<thead>
 						<tr>
-							<th>Attendee</th>
+							<th>
+								<>
+									{isCopied ? (
+										<button
+											onClick={() => handleCopyButton(reportText)}
+											className="icon-button"
+											title="Copied"
+										>
+											<FontAwesomeIcon icon={faCheck} />
+										</button>
+									) : (
+										<button
+											onClick={() => handleCopyButton(reportText)}
+											className="icon-button"
+										>
+											<FontAwesomeIcon icon={faCopy} title="Copy" />
+										</button>
+									)}
+								</>
+								Attendee
+							</th>
 							<th>From</th>
 							<th>Departure Time</th>
 							<th>Expected Arrival Time</th>

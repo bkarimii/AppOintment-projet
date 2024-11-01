@@ -1,4 +1,6 @@
 import { isArray } from "chart.js/helpers";
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
@@ -6,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 function NewMeeting() {
 	const [stations, setStations] = useState([]);
+	const [helpIconToggle, setHelpIconToggle] = useState(false);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
 		if (!isArray(savedData.meetingStation)) {
@@ -121,6 +124,10 @@ function NewMeeting() {
 		navigate("/meeting-analysis");
 	};
 
+	const handleHelpButton = () => {
+		setHelpIconToggle(!helpIconToggle);
+	};
+
 	return (
 		<>
 			<div id="form-page">
@@ -231,6 +238,7 @@ function NewMeeting() {
 								Add Station
 							</button>
 						</div>
+
 					</div>
 
 					<div className="form-group">
@@ -279,11 +287,11 @@ function NewMeeting() {
 						</div>
 					</div>
 					<h3 className="form-header">Who is coming?</h3>
+
 					<div className="form-group">
 						<label id="list-heading" htmlFor="att-list">
 							Attendee List
 						</label>
-
 						<div id="attendees-list">
 							<ul id="att-list">
 								{attendees.map((attendee, index) => (
@@ -340,7 +348,7 @@ function NewMeeting() {
 													y="22"
 													width="32"
 													height="34"
-													fill="black"
+													fill="red"
 													rx="4"
 												/>
 
@@ -402,6 +410,59 @@ function NewMeeting() {
 
 					<button type="submit">Submit</button>
 				</form>
+				<div>
+					<div id="help-button-and-title">
+						<h2>Need help?</h2>
+						<FontAwesomeIcon
+							icon={faQuestionCircle}
+							onClick={handleHelpButton}
+							id="help-fa-icon"
+						/>
+					</div>
+
+					{helpIconToggle && (
+						<div id="help-content">
+							<h3>How to Fill the Form</h3>
+							<p>
+								<strong>Meeting Station:</strong> Choose the station where the
+								meeting will take place from the dropdown menu. If the stations
+								is not listed, please check back later.
+							</p>
+							<p>
+								<strong>Meeting Date:</strong> Select the date of the meeting
+								using the date picker or import manually.
+							</p>
+							<p>
+								<strong>Earliest Start Time:</strong> Specify the earliest time
+								you can start the meeting.
+							</p>
+							<p>
+								<strong>Latest Start Time:</strong> Indicate the latest time you
+								can start the meeting.
+							</p>
+							<h4>Attendee List:</h4>
+							<p>Enter the names and select the stations for each attendee:</p>
+							<ul>
+								<li>
+									<strong>Name:</strong> Enter the full name of the attendee.
+								</li>
+								<li>
+									<strong>Station:</strong> Select the station from the dropdown
+									menu that corresponds to the attendee&lsquo;s location.
+								</li>
+							</ul>
+							<p>
+								To add more attendees, click the &ldquo;Add Attendee&quot;
+								button. If you need to remove an attendee, click the delete
+								button next to their information.
+							</p>
+							<p>
+								Once all fields are filled out, click the &quot;Submit&quot;
+								button to finalize your meeting details.
+							</p>
+						</div>
+					)}
+				</div>
 			</div>
 		</>
 	);

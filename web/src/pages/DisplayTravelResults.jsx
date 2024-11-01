@@ -11,6 +11,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
+import report from "./report.json";
+import results from "./results.json";
 
 import "./DisplayComponent.css";
 
@@ -22,12 +24,11 @@ function TableContent({
 	processedReport,
 }) {
 	return (
-		<table>
+		<table role="table">
 			<thead>
 				<tr>
 					<th>Rank</th>
 					<th>Meeting Location</th>
-					{/* <th>Meeting Date</th> */}
 					<th>Meeting Time</th>
 					<th>Min Travel Time</th>
 					<th>Average Travel Time</th>
@@ -41,12 +42,9 @@ function TableContent({
 			<tbody>
 				{sortedResults.map((result, index) => (
 					<React.Fragment key={index}>
-						<tr onClick={() => toggleRowExpansion(index)}>
+						<tr onClick={() => toggleRowExpansion(index)} role="row">
 							<td data-label="Rank"># {index + 1}</td>
 							<td data-label="Meeting Location">{result.destination}</td>
-							{/* <td data-label="Meeting Date">
-								{extractDateTime(result.meetingTime)[0]}
-							</td> */}
 							<td data-label="Meeting Time">
 								{extractDateTime(result.meetingTime)[1]}
 							</td>
@@ -71,20 +69,22 @@ function TableContent({
 								result.tooLongTravels.length > 0 ? (
 									<FontAwesomeIcon
 										icon={faExclamationTriangle}
-										title="Warning"
 										id="warning-button"
+										title="This meeting includes a long journey. Click the row for more details."
+										aria-label="Warning-long journey in this meeting. click the row for more details."
 									/>
 								) : (
 									<FontAwesomeIcon
 										icon={faCheckCircle}
 										title="All Good"
 										id="check-tick-button"
+										aria-label="All good in this journey."
 									/>
 								)}
 							</td>
 						</tr>
 						{expandedRow === index && (
-							<tr>
+							<tr role="row">
 								<td colSpan="10">
 									<ReportMaker
 										timeOfReport={extractDateTime(result.meetingTime)[1]}
@@ -122,9 +122,13 @@ TableContent.propTypes = {
 	processedReport: PropTypes.array.isRequired,
 };
 
+// -------------------------------------------------------------------------------
+
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
-	const [processedReport, setProcessedReport] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState(
+		results.results,
+	);
+	const [processedReport, setProcessedReport] = useState(report.report);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("meeting-time");
@@ -183,7 +187,11 @@ function DisplayTravelResults() {
 	};
 
 	useEffect(() => {
-		fetchTravelData(url);
+		const falsy = false;
+		if (falsy) {
+			fetchTravelData(url);
+		}
+		document.title = "Meeting results";
 	}, []);
 
 	const extractDateTime = (isoString) => {
@@ -204,12 +212,16 @@ function DisplayTravelResults() {
 
 	const handleGoBackButton = (e) => {
 		e.preventDefault();
-		navigate("/");
+		navigate("/new-meeting");
 	};
 
 	const getSortedResults = () => {
 		const results = [...processedResultsStorage];
 		switch (selectedOption) {
+			case "meeting-time":
+				return results.sort(
+					(a, b) => new Date(a.meetingTime) - new Date(b.meetingTime),
+				);
 			case "min":
 				return results.sort(
 					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
@@ -225,6 +237,22 @@ function DisplayTravelResults() {
 		}
 	};
 
+	const meetingDateToShowInBrowser =
+		processedResultsStorage.length > 0
+			? extractDateTime(processedResultsStorage[0].meetingTime)[0]
+			: "";
+	const meetinDayToShow = new Date(
+		processedResultsStorage[0].meetingTime,
+	).getDay();
+	const daysOfWeek = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
 	return (
 		<>
 			{loading ? (
@@ -236,11 +264,17 @@ function DisplayTravelResults() {
 				<>
 					<button
 						onClick={handleGoBackButton}
-						aria-label="Go Back"
+						aria-label="Go Back to the form page."
 						id="back-button"
 					>
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
+					<div id="meeting-date-container">
+						<h3 id="meeting-date-in-table-page">
+							Meeting Date: &quot; {daysOfWeek[meetinDayToShow]} ,{" "}
+							{meetingDateToShowInBrowser} &quot;
+						</h3>
+					</div>
 					<div className="table-container">
 						<Tabs
 							selectedTabClassName="active-tab"
@@ -250,16 +284,18 @@ function DisplayTravelResults() {
 									"min",
 									"max",
 									"minSlack",
+									"meeting-location",
 									"diagram",
 								];
 								setSelectedOption(options[index]);
 							}}
 						>
-							<TabList className="tabs">
+							<TabList className="tabs" role="tablist">
 								<Tab className="tab">Meeting Time</Tab>
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
 								<Tab className="tab">Min Arrival Slack</Tab>
+								<Tab className="tab">Group By Location</Tab>
 								<Tab className="tab">Diagram</Tab>
 							</TabList>
 
@@ -300,7 +336,16 @@ function DisplayTravelResults() {
 								/>
 							</TabPanel>
 							<TabPanel>
-								<div>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<div id="chart-container">
 									<Visualise travelData={processedResultsStorage} />
 								</div>
 							</TabPanel>
