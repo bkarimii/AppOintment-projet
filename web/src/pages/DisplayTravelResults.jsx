@@ -282,7 +282,7 @@ function DisplayTravelResults() {
 						</button>
 						{useOfflineData && (
 							<p>
-								<strong>Cautious: {statusMessages[statusCode]}</strong>
+								<strong>Caution: {statusMessages[statusCode]}</strong>
 							</p>
 						)}
 					</div>
