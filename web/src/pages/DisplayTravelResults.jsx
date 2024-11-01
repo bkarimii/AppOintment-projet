@@ -24,12 +24,11 @@ function TableContent({
 	processedReport,
 }) {
 	return (
-		<table>
+		<table role="table">
 			<thead>
 				<tr>
 					<th>Rank</th>
 					<th>Meeting Location</th>
-					{/* <th>Meeting Date</th> */}
 					<th>Meeting Time</th>
 					<th>Min Travel Time</th>
 					<th>Average Travel Time</th>
@@ -43,12 +42,9 @@ function TableContent({
 			<tbody>
 				{sortedResults.map((result, index) => (
 					<React.Fragment key={index}>
-						<tr onClick={() => toggleRowExpansion(index)}>
+						<tr onClick={() => toggleRowExpansion(index)} role="row">
 							<td data-label="Rank"># {index + 1}</td>
 							<td data-label="Meeting Location">{result.destination}</td>
-							{/* <td data-label="Meeting Date">
-								{extractDateTime(result.meetingTime)[0]}
-							</td> */}
 							<td data-label="Meeting Time">
 								{extractDateTime(result.meetingTime)[1]}
 							</td>
@@ -75,18 +71,20 @@ function TableContent({
 										icon={faExclamationTriangle}
 										id="warning-button"
 										title="This meeting includes a long journey. Click the row for more details."
+										aria-label="Warning-long journey in this meeting. click the row for more details."
 									/>
 								) : (
 									<FontAwesomeIcon
 										icon={faCheckCircle}
 										title="All Good"
 										id="check-tick-button"
+										aria-label="All good in this journey."
 									/>
 								)}
 							</td>
 						</tr>
 						{expandedRow === index && (
-							<tr>
+							<tr role="row">
 								<td colSpan="10">
 									<ReportMaker
 										timeOfReport={extractDateTime(result.meetingTime)[1]}
@@ -193,6 +191,7 @@ function DisplayTravelResults() {
 		if (falsy) {
 			fetchTravelData(url);
 		}
+		document.title = "Meeting results";
 	}, []);
 
 	const extractDateTime = (isoString) => {
@@ -242,7 +241,18 @@ function DisplayTravelResults() {
 		processedResultsStorage.length > 0
 			? extractDateTime(processedResultsStorage[0].meetingTime)[0]
 			: "";
-
+	const meetinDayToShow = new Date(
+		processedResultsStorage[0].meetingTime,
+	).getDay();
+	const daysOfWeek = [
+		"Sunday",
+		"Monday",
+		"Tuesday",
+		"Wednesday",
+		"Thursday",
+		"Friday",
+		"Saturday",
+	];
 	return (
 		<>
 			{loading ? (
@@ -254,14 +264,15 @@ function DisplayTravelResults() {
 				<>
 					<button
 						onClick={handleGoBackButton}
-						aria-label="Go Back"
+						aria-label="Go Back to the form page."
 						id="back-button"
 					>
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
 					<div id="meeting-date-container">
 						<h3 id="meeting-date-in-table-page">
-							Meeting Date: {meetingDateToShowInBrowser}
+							Meeting Date: &quot; {daysOfWeek[meetinDayToShow]} ,{" "}
+							{meetingDateToShowInBrowser} &quot;
 						</h3>
 					</div>
 					<div className="table-container">
@@ -279,7 +290,7 @@ function DisplayTravelResults() {
 								setSelectedOption(options[index]);
 							}}
 						>
-							<TabList className="tabs">
+							<TabList className="tabs" role="tablist">
 								<Tab className="tab">Meeting Time</Tab>
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>

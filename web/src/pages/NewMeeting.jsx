@@ -145,6 +145,7 @@ function NewMeeting() {
 							name="meetingDate"
 							required
 							value={meetingDate}
+							min={new Date().toISOString().split("T")[0]}
 							onChange={(e) =>
 								handleMeetingChange("meetingDate", e.target.value)
 							}
@@ -173,6 +174,7 @@ function NewMeeting() {
 							name="latestStartTime"
 							required
 							value={latestStartTime}
+							min={earliestStartTime}
 							onChange={(e) =>
 								handleMeetingChange("latestStartTime", e.target.value)
 							}

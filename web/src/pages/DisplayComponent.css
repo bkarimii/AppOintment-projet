@@ -194,10 +194,12 @@ button:hover {
 	border: 1px solid #ccc;
 	border-radius: 0 0 5px 5px;
 	overflow: hidden;
-	margin-top: 1rem;
+	max-width: 95%;
+	margin: 1rem auto 0 auto;
 }
 
 .report-table {
+	margin-top: 0;
 	width: 100%;
 	border-collapse: collapse;
 	table-layout: fixed; /* Ensures all columns are the same width */
@@ -219,7 +221,7 @@ button:hover {
 
 .report-table thead {
 	display: table;
-	width: calc(100% - 17px);
+	width: calc(100% - 18px);
 	table-layout: fixed;
 }
 
@@ -239,8 +241,7 @@ button:hover {
 .report-container {
 	border: 1px solid #ddd;
 	border-radius: 8px;
-	padding: 20px;
-	margin: 20px 0;
+	margin: 0 1rem;
 	background-color: #f9f9f9;
 	font-family: Arial, sans-serif;
 }
@@ -302,8 +303,8 @@ button:hover {
 
 #meeting-date-container {
 	display: flex;
-	justify-content: flex-start;
-	margin-bottom: 1rem;
+	justify-content: center;
+	margin: 1rem;
 }
 
 #meeting-date-in-table-page {
