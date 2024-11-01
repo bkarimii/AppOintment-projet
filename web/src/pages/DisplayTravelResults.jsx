@@ -260,7 +260,7 @@ function DisplayTravelResults() {
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
 					<div id="meeting-date-container">
-						<h3 id="meeting-date">
+						<h3 id="meeting-date-in-table-page">
 							Meeting Date: {meetingDateToShowInBrowser}
 						</h3>
 					</div>
