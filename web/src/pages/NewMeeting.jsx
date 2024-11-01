@@ -174,6 +174,7 @@ function NewMeeting() {
 							name="latestStartTime"
 							required
 							value={latestStartTime}
+							min={earliestStartTime}
 							onChange={(e) =>
 								handleMeetingChange("latestStartTime", e.target.value)
 							}
