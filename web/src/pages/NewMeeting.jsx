@@ -1,6 +1,6 @@
-import { isArray } from "chart.js/helpers";
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { isArray } from "chart.js/helpers";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
@@ -238,7 +238,6 @@ function NewMeeting() {
 								Add Station
 							</button>
 						</div>
-
 					</div>
 
 					<div className="form-group">
