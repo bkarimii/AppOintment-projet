@@ -14,7 +14,6 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [reportDestination, setReportDestination] = useState(
 		"Unknown Destination",
 	);
-	console.log(arrayOfReport, "<-----array of report");
 	useEffect(() => {
 		const meetingData = localStorage.getItem("newMeetingData");
 		setReportDestination(
