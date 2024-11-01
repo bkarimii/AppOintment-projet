@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function NewMeeting() {
 	const [stations, setStations] = useState([]);
@@ -9,7 +9,7 @@ function NewMeeting() {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
 		return (
 			savedData || {
-				meetingStation: [{ name: "", station: "" }],
+				meetingStation: [{ station: "" }],
 				meetingDate: "",
 				earliestStartTime: "",
 				latestStartTime: "",
@@ -28,7 +28,7 @@ function NewMeeting() {
 	);
 	const [attendees, setAttendees] = useState(formData.attendees);
 	const [intervalTime, setIntervalTime] = useState(formData.intervalTime);
-	// const navigate = useNavigate();
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		fetch("/api/station-list")
@@ -69,7 +69,7 @@ function NewMeeting() {
 	};
 
 	const addMeetingStation = () => {
-		setMeetingStation([...meetingStation, { name: "", station: "" }]);
+		setMeetingStation([...meetingStation, { station: "" }]);
 	};
 
 	const deleteMeetingStation = (index) => {
@@ -114,266 +114,291 @@ function NewMeeting() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(formData);
-		localStorage.removeItem("newMeetingData");
-		console.log(meetingStation);
-		// navigate("/meeting-analysis");
+		navigate("/meeting-analysis");
 	};
 
 	return (
 		<>
-			<form onSubmit={handleSubmit}>
-				<h3 className="form-header">Plan your meeting details</h3>
-				<div className="form-group">
-					<div id="station-list">
-						<ul id="stn-list">
-							{meetingStation.map((station, index) => (
-								<li className="station-li" key={index}>
-									<div className="form-group station-code-group">
-										<select
-											name="meetingStation"
-											id={"meeting-station" + index}
-											value={station.station}
-											onChange={(e) =>
-												handleMeetingStationChange(
-													index,
-													"station",
-													e.target.value,
-												)
-											}
-											required
-										>
-											<option value="" disabled>
-												Select a station
-											</option>
-											{stations.map((station, idx) => (
-												<option key={idx} value={station.crs_code}>
-													{station.station_name}
-												</option>
-											))}
-										</select>
-										<label htmlFor={"meeting-station" + index}>Station</label>
-									</div>
-									<button
-										className="delete-button"
-										onClick={() => deleteMeetingStation(index)}
-										style={{ display: "flex", alignItems: "center" }}
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="30"
-											height="30"
-											viewBox="0 0 64 64"
-										>
-											<rect
-												x="16"
-												y="22"
-												width="32"
-												height="34"
-												fill="black"
-												rx="4"
-											/>
-											<rect
-												x="12"
-												y="16"
-												width="40"
-												height="5"
-												fill="black"
-												rx="2"
-											/>
-											<rect
-												x="24"
-												y="11"
-												width="16"
-												height="6"
-												fill="black"
-												rx="2"
-											/>
-											<rect x="22" y="27" width="4" height="24" fill="white" />
-											<rect x="30" y="27" width="4" height="24" fill="white" />
-											<rect x="38" y="27" width="4" height="24" fill="white" />
-										</svg>
-									</button>
-								</li>
-							))}
-						</ul>
-
-						<button
-							id="add-station-button"
-							type="button"
-							onClick={addMeetingStation}
-						>
-							<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>Add
-							Station
-						</button>
-					</div>
-				</div>
-
-				{/* <div className="form-group">
-					<select
-						name="meetingStation"
-						id="meeting-station"
-						value={meetingStation}
-						onChange={(e) =>
-							handleMeetingChange("meetingStation", e.target.value)
-						}
-						required
-					>
-						<option value="" disabled>
-							Select a station
-						</option>
-						{stations.map((station, index) => (
-							<option key={index} value={station.crs_code}>
-								{station.station_name}
-							</option>
-						))}
-					</select>
-					<label htmlFor="meeting-station">Meeting Station</label>
-				</div> */}
-
-				<div className="form-group">
-					<input
-						type="date"
-						id="meeting-date"
-						name="meetingDate"
-						required
-						value={meetingDate}
-						onChange={(e) => handleMeetingChange("meetingDate", e.target.value)}
-					/>
-					<label htmlFor="meeting-date">Meeting Date</label>
-				</div>
-
-				<div className="time-group">
+			<div id="form-page">
+				<h1>THIS APP OINTMENT</h1>
+				<form onSubmit={handleSubmit}>
+					<h3 className="form-header">Plan your meeting details</h3>
 					<div className="form-group">
-						<input
-							type="time"
-							id="earliest-start-time"
-							name="earliestStartTime"
-							required
-							value={earliestStartTime}
-							onChange={(e) =>
-								handleMeetingChange("earliestStartTime", e.target.value)
-							}
-						/>
-						<label htmlFor="earliest-start-time">Earliest Start Time</label>
-					</div>
+						<label id="list-heading" htmlFor="stn-list">
+							Meeting Station List
+						</label>
+						<div id="station-list">
+							<ul id="stn-list">
+								{meetingStation.map((station, index) => (
+									<li className="station-li" key={index}>
+										<div className="form-group station-code-group">
+											<select
+												name="meetingStation"
+												id={"meeting-station" + index}
+												value={station.station}
+												onChange={(e) =>
+													handleMeetingStationChange(
+														index,
+														"station",
+														e.target.value,
+													)
+												}
+												required
+											>
+												<option value="" disabled>
+													Select a station
+												</option>
+												{stations.map((station, idx) => (
+													<option key={idx} value={station.crs_code}>
+														{station.station_name}
+													</option>
+												))}
+											</select>
+											<label htmlFor={"meeting-station" + index}>Station</label>
+										</div>
+										<button
+											className="delete-button"
+											onClick={() => deleteMeetingStation(index)}
+											style={{ display: "flex", alignItems: "center" }}
+										>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="30"
+												height="30"
+												viewBox="0 0 64 64"
+											>
+												<rect
+													x="16"
+													y="22"
+													width="32"
+													height="34"
+													fill="black"
+													rx="4"
+												/>
+												<rect
+													x="12"
+													y="16"
+													width="40"
+													height="5"
+													fill="black"
+													rx="2"
+												/>
+												<rect
+													x="24"
+													y="11"
+													width="16"
+													height="6"
+													fill="black"
+													rx="2"
+												/>
+												<rect
+													x="22"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="30"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="38"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</li>
+								))}
+							</ul>
 
-					<p>to</p>
+							<button
+								id="add-station-button"
+								type="button"
+								onClick={addMeetingStation}
+							>
+								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>
+								Add Station
+							</button>
+						</div>
+					</div>
 
 					<div className="form-group">
 						<input
-							type="time"
-							id="latest-start-time"
-							name="latestStartTime"
+							type="date"
+							id="meeting-date"
+							name="meetingDate"
 							required
-							value={latestStartTime}
+							value={meetingDate}
 							onChange={(e) =>
-								handleMeetingChange("latestStartTime", e.target.value)
+								handleMeetingChange("meetingDate", e.target.value)
 							}
 						/>
-						<label htmlFor="latest-start-time">Latest Start Time</label>
+						<label htmlFor="meeting-date">Meeting Date</label>
 					</div>
-				</div>
-				<h3 className="form-header">Who is coming?</h3>
-				<div className="form-group">
-					<div id="attendees-list">
-						<ul id="att-list">
-							{attendees.map((attendee, index) => (
-								<li className="attendee-li" key={index}>
-									<div className="form-group attendee-name-group">
-										<input
-											type="text"
-											id={"attendee-name" + index}
-											placeholder=" "
-											value={attendees[index].name}
-											onChange={(e) =>
-												handleAttendeeChange(index, "name", e.target.value)
-											}
-											required
-										/>
-										<label htmlFor={"attendee-name" + index}>Name</label>
-									</div>
-									<div className="form-group attendee-station-group">
-										<select
-											name="attendeesStation"
-											id={"attendees-station" + index}
-											value={attendees[index].station}
-											onChange={(e) =>
-												handleAttendeeChange(index, "station", e.target.value)
-											}
-											required
-										>
-											<option value="" disabled>
-												Select a station
-											</option>
-											{stations.map((station, idx) => (
-												<option key={idx} value={station.crs_code}>
-													{station.station_name}
+
+					<div className="time-group">
+						<div className="form-group">
+							<input
+								type="time"
+								id="earliest-start-time"
+								name="earliestStartTime"
+								required
+								value={earliestStartTime}
+								onChange={(e) =>
+									handleMeetingChange("earliestStartTime", e.target.value)
+								}
+							/>
+							<label htmlFor="earliest-start-time">Earliest Start Time</label>
+						</div>
+
+						<p>to</p>
+
+						<div className="form-group">
+							<input
+								type="time"
+								id="latest-start-time"
+								name="latestStartTime"
+								required
+								value={latestStartTime}
+								onChange={(e) =>
+									handleMeetingChange("latestStartTime", e.target.value)
+								}
+							/>
+							<label htmlFor="latest-start-time">Latest Start Time</label>
+						</div>
+					</div>
+					<h3 className="form-header">Who is coming?</h3>
+					<div className="form-group">
+						<label id="list-heading" htmlFor="att-list">
+							Attendee List
+						</label>
+
+						<div id="attendees-list">
+							<ul id="att-list">
+								{attendees.map((attendee, index) => (
+									<li className="attendee-li" key={index}>
+										<div className="form-group attendee-name-group">
+											<input
+												type="text"
+												id={"attendee-name" + index}
+												placeholder=" "
+												value={attendees[index].name}
+												onChange={(e) =>
+													handleAttendeeChange(index, "name", e.target.value)
+												}
+												required
+											/>
+											<label htmlFor={"attendee-name" + index}>Name</label>
+										</div>
+										<div className="form-group attendee-station-group">
+											<select
+												name="attendeesStation"
+												id={"attendees-station" + index}
+												value={attendees[index].station}
+												onChange={(e) =>
+													handleAttendeeChange(index, "station", e.target.value)
+												}
+												required
+											>
+												<option value="" disabled>
+													Select a station
 												</option>
-											))}
-										</select>
-										<label htmlFor={"attendees-station" + index}>Station</label>
-									</div>
-									<button
-										className="delete-button"
-										onClick={() => deleteAttendee(index)}
-										style={{ display: "flex", alignItems: "center" }}
-									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="30"
-											height="30"
-											viewBox="0 0 64 64"
+												{stations.map((station, idx) => (
+													<option key={idx} value={station.crs_code}>
+														{station.station_name}
+													</option>
+												))}
+											</select>
+											<label htmlFor={"attendees-station" + index}>
+												Station
+											</label>
+										</div>
+										<button
+											className="delete-button"
+											onClick={() => deleteAttendee(index)}
+											style={{ display: "flex", alignItems: "center" }}
 										>
-											<rect
-												x="16"
-												y="22"
-												width="32"
-												height="34"
-												fill="black"
-												rx="4"
-											/>
+											<svg
+												xmlns="http://www.w3.org/2000/svg"
+												width="30"
+												height="30"
+												viewBox="0 0 64 64"
+											>
+												<rect
+													x="16"
+													y="22"
+													width="32"
+													height="34"
+													fill="black"
+													rx="4"
+												/>
 
-											<rect
-												x="12"
-												y="16"
-												width="40"
-												height="5"
-												fill="black"
-												rx="2"
-											/>
+												<rect
+													x="12"
+													y="16"
+													width="40"
+													height="5"
+													fill="black"
+													rx="2"
+												/>
 
-											<rect
-												x="24"
-												y="11"
-												width="16"
-												height="6"
-												fill="inherit"
-												rx="2"
-											/>
+												<rect
+													x="24"
+													y="11"
+													width="16"
+													height="6"
+													fill="inherit"
+													rx="2"
+												/>
 
-											<rect x="22" y="27" width="4" height="24" fill="white" />
-											<rect x="30" y="27" width="4" height="24" fill="white" />
-											<rect x="38" y="27" width="4" height="24" fill="white" />
-										</svg>
-									</button>
-								</li>
-							))}
-						</ul>
+												<rect
+													x="22"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="30"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+												<rect
+													x="38"
+													y="27"
+													width="4"
+													height="24"
+													fill="white"
+												/>
+											</svg>
+										</button>
+									</li>
+								))}
+							</ul>
 
-						<button
-							id="add-attendee-button"
-							type="button"
-							onClick={addAttendee}
-						>
-							<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>{" "}
-							Add Attendee
-						</button>
+							<button
+								id="add-attendee-button"
+								type="button"
+								onClick={addAttendee}
+							>
+								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>{" "}
+								Add Attendee
+							</button>
+						</div>
 					</div>
-				</div>
 
-				<button type="submit">Submit</button>
-			</form>
+					<button type="submit">Submit</button>
+				</form>
+			</div>
 		</>
 	);
 }
