@@ -69,7 +69,7 @@ form {
 	margin: 1rem;
 	padding: 15px;
 	border-radius: 5px;
-	max-width: 40%;
+	width: 700px;
 }
 
 .form-group {
@@ -126,19 +126,41 @@ form select:focus {
 }
 
 #list-heading {
+	display: none;
 	color: var(--text-secondary-color, #555555);
 }
 
 /* Attendees Section */
 #attendees-list {
-	padding: 15px 10px;
+	padding: 0px 0px 0px;
 	border-radius: 8px;
-	border: 1px solid #ddd;
+}
+#station-list {
+	padding: 0px 0px 0px;
+	border-radius: 8px;
+}
+.station-li {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+}
+#add-station-button {
+	background-color: inherit;
+	color: #535bf2;
+	font-weight: 700;
+	font-size: 14px;
+	padding: 10px 12px;
+	margin-top: 8px;
+	margin-right: 0;
+}
+
+#add-station-button:hover {
+	color: #169000;
 }
 
 /* Primary Submit Button */
 button[type="submit"] {
-	background-color: #646cff;
+	background-color: black;
 	color: white;
 	padding: 12px 15px;
 	margin: 10px 0;
@@ -156,12 +178,17 @@ button[type="submit"]:hover {
 
 /* Secondary Button - Delete Attendee */
 #add-attendee-button {
-	background-color: #dc3545;
-	color: white;
+	background-color: inherit;
+	color: #535bf2;
+	font-weight: 700;
 	font-size: 14px;
 	padding: 10px 12px;
 	margin-top: 8px;
-	width: 100%; /* Ensure button fits the container */
+	margin-right: 0;
+}
+
+#add-attendee-button:hover {
+	color: #169000;
 }
 
 ul {
@@ -182,10 +209,39 @@ ul {
 	background-color: var(--input-bg-color, #f9f9f9);
 	padding: 5px 3px;
 	color: #dc3545;
+
+	margin-right: 0;
+}
+
+.delete-button:hover svg rect {
+	fill: #dc3545; /* Change to red on hover */
+}
+
+.delete-button:hover {
+	background-color: #f9f9f9;
 }
 
 button[type="button"]:hover {
 	background-color: #b32d3a;
+}
+.form-header {
+	font-size: 25px;
+	margin-top: 40px;
+	margin-left: 10px;
+	text-align: left;
+	margin-bottom: 10px;
+}
+
+.time-group {
+	display: flex;
+	gap: 10px;
+	flex-direction: row;
+}
+
+#form-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 /* Responsive Design */
