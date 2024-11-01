@@ -35,7 +35,7 @@ const sslMode = ["prefer", "require", "verify-ca", "verify-full"].includes(
  */
 module.exports = {
 	googleApiKey, // Export the API key
-	useStaticData: useLiveData, // export static data for dev enviroment not to exceed API limit
+	useLiveData, // export static data for dev enviroment not to exceed API limit
 
 	dbConfig: {
 		connectionString: databaseUrl.toString(),
