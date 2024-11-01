@@ -1,4 +1,7 @@
-/* General Table Styles */
+body {
+	background-color: rgb(153, 153, 153);
+}
+
 table {
 	width: 100%;
 	border-collapse: collapse;
@@ -116,7 +119,7 @@ tr:hover {
 button {
 	margin-right: 0.5rem;
 	padding: 5px 10px;
-	background-color: #004f07;
+	background-color: #1c1c1c;
 	color: white;
 	border: none;
 	border-radius: 5px;
@@ -126,6 +129,10 @@ button {
 #back-button {
 	margin: 1rem 95% 0 2%;
 	font-size: larger;
+}
+
+#back-button:hover {
+	background-color: #5b5a5a;
 }
 
 #warning-button {
@@ -139,7 +146,7 @@ button {
 }
 
 button:hover {
-	background-color: #169000;
+	background-color: #5b5a5a;
 }
 
 /* Specific Styles for Report Components */
@@ -193,6 +200,13 @@ button:hover {
 .report-table {
 	width: 100%;
 	border-collapse: collapse;
+	table-layout: fixed; /* Ensures all columns are the same width */
+}
+
+.report-table thead,
+.report-table tbody tr {
+	display: table;
+	width: 100%;
 	table-layout: fixed;
 }
 
@@ -203,15 +217,23 @@ button:hover {
 	width: 100%;
 }
 
-.report-table thead,
-.report-table tbody tr {
+.report-table thead {
 	display: table;
-	width: 100%;
+	width: calc(100% - 17px);
 	table-layout: fixed;
+}
+
+.report-table th,
+.report-table td {
+	width: 20%;
+	padding: 0.75rem;
+	text-align: left;
+	border: 1px solid #ddd;
 }
 
 .report-table th {
 	background-color: #46a249;
+	color: white;
 }
 
 .report-container {
@@ -276,4 +298,20 @@ button:hover {
 	to {
 		transform: rotate(360deg);
 	}
+}
+
+#meeting-date-container {
+	display: flex;
+	justify-content: flex-start;
+	margin-bottom: 1rem;
+}
+
+#meeting-date-in-table-page {
+	margin: 1rem 0 0 0;
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+#chart-container {
+	background-color: rgb(231, 230, 230);
 }

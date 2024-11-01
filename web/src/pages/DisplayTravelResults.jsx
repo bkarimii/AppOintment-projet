@@ -11,6 +11,8 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
+import report from "./report.json";
+import results from "./results.json";
 
 import "./DisplayComponent.css";
 
@@ -71,8 +73,8 @@ function TableContent({
 								result.tooLongTravels.length > 0 ? (
 									<FontAwesomeIcon
 										icon={faExclamationTriangle}
-										title="Warning"
 										id="warning-button"
+										title="This meeting includes a long journey. Click the row for more details."
 									/>
 								) : (
 									<FontAwesomeIcon
@@ -122,9 +124,13 @@ TableContent.propTypes = {
 	processedReport: PropTypes.array.isRequired,
 };
 
+// -------------------------------------------------------------------------------
+
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
-	const [processedReport, setProcessedReport] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState(
+		results.results,
+	);
+	const [processedReport, setProcessedReport] = useState(report.report);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("meeting-time");
@@ -183,7 +189,10 @@ function DisplayTravelResults() {
 	};
 
 	useEffect(() => {
-		fetchTravelData(url);
+		const falsy = false;
+		if (falsy) {
+			fetchTravelData(url);
+		}
 	}, []);
 
 	const extractDateTime = (isoString) => {
@@ -204,12 +213,16 @@ function DisplayTravelResults() {
 
 	const handleGoBackButton = (e) => {
 		e.preventDefault();
-		navigate("/");
+		navigate("/new-meeting");
 	};
 
 	const getSortedResults = () => {
 		const results = [...processedResultsStorage];
 		switch (selectedOption) {
+			case "meeting-time":
+				return results.sort(
+					(a, b) => new Date(a.meetingTime) - new Date(b.meetingTime),
+				);
 			case "min":
 				return results.sort(
 					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
@@ -224,6 +237,11 @@ function DisplayTravelResults() {
 				return results;
 		}
 	};
+
+	const meetingDateToShowInBrowser =
+		processedResultsStorage.length > 0
+			? extractDateTime(processedResultsStorage[0].meetingTime)[0]
+			: "";
 
 	return (
 		<>
@@ -241,6 +259,11 @@ function DisplayTravelResults() {
 					>
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
+					<div id="meeting-date-container">
+						<h3 id="meeting-date-in-table-page">
+							Meeting Date: {meetingDateToShowInBrowser}
+						</h3>
+					</div>
 					<div className="table-container">
 						<Tabs
 							selectedTabClassName="active-tab"
@@ -250,6 +273,7 @@ function DisplayTravelResults() {
 									"min",
 									"max",
 									"minSlack",
+									"meeting-location",
 									"diagram",
 								];
 								setSelectedOption(options[index]);
@@ -260,6 +284,7 @@ function DisplayTravelResults() {
 								<Tab className="tab">Min Travel Time</Tab>
 								<Tab className="tab">Max Travel Time</Tab>
 								<Tab className="tab">Min Arrival Slack</Tab>
+								<Tab className="tab">Group By Location</Tab>
 								<Tab className="tab">Diagram</Tab>
 							</TabList>
 
@@ -300,7 +325,16 @@ function DisplayTravelResults() {
 								/>
 							</TabPanel>
 							<TabPanel>
-								<div>
+								<TableContent
+									sortedResults={getSortedResults()}
+									toggleRowExpansion={toggleRowExpansion}
+									expandedRow={expandedRow}
+									extractDateTime={extractDateTime}
+									processedReport={processedReport}
+								/>
+							</TabPanel>
+							<TabPanel>
+								<div id="chart-container">
 									<Visualise travelData={processedResultsStorage} />
 								</div>
 							</TabPanel>
