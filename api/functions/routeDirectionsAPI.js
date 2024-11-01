@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { useStaticData as useLiveData } from "../utils/config.cjs";
+import { useLiveData } from "../utils/config.cjs";
 
 import sampleOutPutOfFunction from "./staticData/fetchedDataGoogle.js";
 
