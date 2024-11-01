@@ -182,6 +182,8 @@ ul {
 	background-color: var(--input-bg-color, #f9f9f9);
 	padding: 5px 3px;
 	color: #dc3545;
+	align-items: center;
+	display: "flex";
 }
 
 button[type="button"]:hover {

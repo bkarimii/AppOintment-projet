@@ -115,7 +115,8 @@ function NewMeeting() {
 	return (
 		<>
 			<div id="form-help-container">
-				<form onSubmit={handleSubmit}>
+				<form onSubmit={handleSubmit} aria-labelledby="form-title">
+					<h2 id="form-title">New Meeting</h2>
 					<div className="form-group">
 						<select
 							name="meetingStation"
@@ -125,6 +126,7 @@ function NewMeeting() {
 								handleMeetingChange("meetingStation", e.target.value)
 							}
 							required
+							aria-required="true"
 						>
 							<option value="" disabled>
 								Select a station
@@ -149,6 +151,7 @@ function NewMeeting() {
 							onChange={(e) =>
 								handleMeetingChange("meetingDate", e.target.value)
 							}
+							aria-required="true"
 						/>
 						<label htmlFor="meeting-date">Meeting Date</label>
 					</div>
@@ -163,6 +166,7 @@ function NewMeeting() {
 							onChange={(e) =>
 								handleMeetingChange("earliestStartTime", e.target.value)
 							}
+							aria-required="true"
 						/>
 						<label htmlFor="earliest-start-time">Earliest Start Time</label>
 					</div>
@@ -178,6 +182,7 @@ function NewMeeting() {
 							onChange={(e) =>
 								handleMeetingChange("latestStartTime", e.target.value)
 							}
+							aria-required="true"
 						/>
 						<label htmlFor="latest-start-time">Latest Start Time</label>
 					</div>
@@ -228,7 +233,7 @@ function NewMeeting() {
 										<button
 											className="delete-button"
 											onClick={() => deleteAttendee(index)}
-											style={{ display: "flex", alignItems: "center" }}
+											aria-label={`Remove ${attendee.name} from attendee list`}
 										>
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -294,13 +299,16 @@ function NewMeeting() {
 								id="add-attendee-button"
 								type="button"
 								onClick={addAttendee}
+								aria-label="Add attendee"
 							>
 								Add Attendee
 							</button>
 						</div>
 					</div>
 
-					<button type="submit">Submit</button>
+					<button type="submit" aria-label="Submit meeting details">
+						Submit
+					</button>
 				</form>
 
 				<div>
@@ -310,12 +318,14 @@ function NewMeeting() {
 							icon={faQuestionCircle}
 							onClick={handleHelpButton}
 							id="help-fa-icon"
+							aria-expanded={helpIconToggle}
+							aria-controls="help-content"
 						/>
 					</div>
 
 					{helpIconToggle && (
-						<div id="help-content">
-							<h3>How to Fill the Form</h3>
+						<div id="help-content" aria-labelledby="help-title">
+							<h3 id="help-title">How to Fill the Form</h3>
 							<p>
 								<strong>Meeting Station:</strong> Choose the station where the
 								meeting will take place from the dropdown menu. If the stations
