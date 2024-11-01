@@ -85,7 +85,7 @@ function TableContent({
 						</tr>
 						{expandedRow === index && (
 							<tr role="row">
-								<td colSpan="10">
+								<td colSpan="10" id="col-span-tabel-td">
 									<ReportMaker
 										timeOfReport={extractDateTime(result.meetingTime)[1]}
 										arrayOfReport={processedReport}
@@ -271,8 +271,8 @@ function DisplayTravelResults() {
 					</button>
 					<div id="meeting-date-container">
 						<h3 id="meeting-date-in-table-page">
-							Meeting Date: &quot; {daysOfWeek[meetinDayToShow]} ,{" "}
-							{meetingDateToShowInBrowser} &quot;
+							Meeting Date: {daysOfWeek[meetinDayToShow]},{" "}
+							{meetingDateToShowInBrowser}
 						</h3>
 					</div>
 					<div className="table-container">

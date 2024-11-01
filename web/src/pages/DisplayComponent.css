@@ -5,7 +5,6 @@ body {
 table {
 	width: 100%;
 	border-collapse: collapse;
-	margin: 1rem 0;
 	font-size: 1rem;
 	background-color: #f9f9f9;
 }
@@ -166,7 +165,7 @@ button:hover {
 	display: flex;
 	flex-direction: row;
 	list-style: none;
-	margin-bottom: 1rem;
+	gap: 0px;
 }
 
 .tab {
@@ -178,10 +177,11 @@ button:hover {
 	margin-right: 2px;
 	border-radius: 5px 5px 0 0;
 	transition: background-color 0.3s;
+	gap: 0;
 }
 
 .tab:hover {
-	background-color: #e0e0e0;
+	background-color: #d3d3d3;
 }
 
 .active-tab {
@@ -191,7 +191,6 @@ button:hover {
 }
 
 .table-container {
-	border: 1px solid #ccc;
 	border-radius: 0 0 5px 5px;
 	overflow: hidden;
 	max-width: 95%;
@@ -315,4 +314,8 @@ button:hover {
 
 #chart-container {
 	background-color: rgb(231, 230, 230);
+}
+
+#col-span-tabel-td {
+	padding: 0;
 }
