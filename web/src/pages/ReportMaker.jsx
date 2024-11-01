@@ -1,4 +1,5 @@
 /* eslint-disable no-unused-vars */
+
 import {
 	faExclamationTriangle,
 	faCopy,
@@ -13,7 +14,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const [reportDestination, setReportDestination] = useState(
 		"Unknown Destination",
 	);
-
+	console.log(arrayOfReport, "<-----array of report");
 	useEffect(() => {
 		const meetingData = localStorage.getItem("newMeetingData");
 		setReportDestination(
@@ -31,7 +32,6 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	const copyReportToClipboard = async (reportText) => {
 		try {
 			await navigator.clipboard.writeText(reportText);
-			// alert("Report copied!");
 			setIsCopied(true);
 			setTimeout(() => {
 				setIsCopied(false);
@@ -64,6 +64,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 				.map(
 					(personalInfo) =>
 						`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, ` +
+						`Destination: ${destinationTrainStation}, ` +
 						`Departure: ${personalInfo.departureTime}, ` +
 						`Arrival: ${personalInfo.arrivalTime}, ` +
 						`Duration: ${personalInfo.approximateTravelTime} minutes`,

@@ -131,297 +131,319 @@ function NewMeeting() {
 	return (
 		<>
 			<div id="form-page">
-				<h1>THIS APP OINTMENT</h1>
-				<form onSubmit={handleSubmit}>
-					<h3 className="form-header">Plan your meeting details</h3>
-					<div className="form-group">
-						<label id="list-heading" htmlFor="stn-list">
-							Meeting Station List
-						</label>
-						<div id="station-list">
-							<ul id="stn-list">
-								{meetingStation.map((station, index) => (
-									<li className="station-li" key={index}>
-										<div className="form-group station-code-group">
-											<select
-												name="meetingStation"
-												id={"meeting-station" + index}
-												value={station.station}
-												onChange={(e) =>
-													handleMeetingStationChange(
-														index,
-														"station",
-														e.target.value,
-													)
-												}
-												required
-											>
-												<option value="" disabled>
-													Select a station
-												</option>
-												{stations.map((station, idx) => (
-													<option key={idx} value={station.crs_code}>
-														{station.station_name}
-													</option>
-												))}
-											</select>
-											<label htmlFor={"meeting-station" + index}>Station</label>
-										</div>
-										<button
-											className="delete-button"
-											onClick={() => deleteMeetingStation(index)}
-											style={{ display: "flex", alignItems: "center" }}
-										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="30"
-												height="30"
-												viewBox="0 0 64 64"
-											>
-												<rect
-													x="16"
-													y="22"
-													width="32"
-													height="34"
-													fill="black"
-													rx="4"
-												/>
-												<rect
-													x="12"
-													y="16"
-													width="40"
-													height="5"
-													fill="black"
-													rx="2"
-												/>
-												<rect
-													x="24"
-													y="11"
-													width="16"
-													height="6"
-													fill="black"
-													rx="2"
-												/>
-												<rect
-													x="22"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-												<rect
-													x="30"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-												<rect
-													x="38"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</li>
-								))}
-							</ul>
-
-							<button
-								id="add-station-button"
-								type="button"
-								onClick={addMeetingStation}
-							>
-								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>
-								Add Station
-							</button>
-						</div>
-					</div>
-
-					<div className="form-group">
-						<input
-							type="date"
-							id="meeting-date"
-							name="meetingDate"
-							required
-							value={meetingDate}
-							onChange={(e) =>
-								handleMeetingChange("meetingDate", e.target.value)
-							}
-						/>
-						<label htmlFor="meeting-date">Meeting Date</label>
-					</div>
-
-					<div className="time-group">
-						<div className="form-group">
-							<input
-								type="time"
-								id="earliest-start-time"
-								name="earliestStartTime"
-								required
-								value={earliestStartTime}
-								onChange={(e) =>
-									handleMeetingChange("earliestStartTime", e.target.value)
-								}
-							/>
-							<label htmlFor="earliest-start-time">Earliest Start Time</label>
-						</div>
-
-						<p>to</p>
-
-						<div className="form-group">
-							<input
-								type="time"
-								id="latest-start-time"
-								name="latestStartTime"
-								required
-								value={latestStartTime}
-								onChange={(e) =>
-									handleMeetingChange("latestStartTime", e.target.value)
-								}
-							/>
-							<label htmlFor="latest-start-time">Latest Start Time</label>
-						</div>
-					</div>
-					<h3 className="form-header">Who is coming?</h3>
-
-					<div className="form-group">
-						<label id="list-heading" htmlFor="att-list">
-							Attendee List
-						</label>
-						<div id="attendees-list">
-							<ul id="att-list">
-								{attendees.map((attendee, index) => (
-									<li className="attendee-li" key={index}>
-										<div className="form-group attendee-name-group">
-											<input
-												type="text"
-												id={"attendee-name" + index}
-												placeholder=" "
-												value={attendees[index].name}
-												onChange={(e) =>
-													handleAttendeeChange(index, "name", e.target.value)
-												}
-												required
-											/>
-											<label htmlFor={"attendee-name" + index}>Name</label>
-										</div>
-										<div className="form-group attendee-station-group">
-											<select
-												name="attendeesStation"
-												id={"attendees-station" + index}
-												value={attendees[index].station}
-												onChange={(e) =>
-													handleAttendeeChange(index, "station", e.target.value)
-												}
-												required
-											>
-												<option value="" disabled>
-													Select a station
-												</option>
-												{stations.map((station, idx) => (
-													<option key={idx} value={station.crs_code}>
-														{station.station_name}
-													</option>
-												))}
-											</select>
-											<label htmlFor={"attendees-station" + index}>
-												Station
-											</label>
-										</div>
-										<button
-											className="delete-button"
-											onClick={() => deleteAttendee(index)}
-											style={{ display: "flex", alignItems: "center" }}
-										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												width="30"
-												height="30"
-												viewBox="0 0 64 64"
-											>
-												<rect
-													x="16"
-													y="22"
-													width="32"
-													height="34"
-													fill="red"
-													rx="4"
-												/>
-
-												<rect
-													x="12"
-													y="16"
-													width="40"
-													height="5"
-													fill="black"
-													rx="2"
-												/>
-
-												<rect
-													x="24"
-													y="11"
-													width="16"
-													height="6"
-													fill="inherit"
-													rx="2"
-												/>
-
-												<rect
-													x="22"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-												<rect
-													x="30"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-												<rect
-													x="38"
-													y="27"
-													width="4"
-													height="24"
-													fill="white"
-												/>
-											</svg>
-										</button>
-									</li>
-								))}
-							</ul>
-
-							<button
-								id="add-attendee-button"
-								type="button"
-								onClick={addAttendee}
-							>
-								<span style={{ fontSize: "18px", marginRight: "5px" }}>+</span>{" "}
-								Add Attendee
-							</button>
-						</div>
-					</div>
-
-					<button type="submit">Submit</button>
-				</form>
 				<div>
+					<h1>THIS APP OINTMENT</h1>
+					<form onSubmit={handleSubmit}>
+						<h3 className="form-header">Plan your meeting details</h3>
+						<div className="form-group">
+							<label id="list-heading" htmlFor="stn-list">
+								Meeting Station List
+							</label>
+							<div id="station-list">
+								<ul id="stn-list">
+									{meetingStation.map((station, index) => (
+										<li className="station-li" key={index}>
+											<div className="form-group station-code-group">
+												<select
+													name="meetingStation"
+													id={"meeting-station" + index}
+													value={station.station}
+													onChange={(e) =>
+														handleMeetingStationChange(
+															index,
+															"station",
+															e.target.value,
+														)
+													}
+													required
+													aria-required="true"
+												>
+													<option value="" disabled>
+														Select a station
+													</option>
+													{stations.map((station, idx) => (
+														<option key={idx} value={station.crs_code}>
+															{station.station_name}
+														</option>
+													))}
+												</select>
+												<label htmlFor={"meeting-station" + index}>
+													Station
+												</label>
+											</div>
+											<button
+												className="delete-button"
+												onClick={() => deleteMeetingStation(index)}
+												style={{ display: "flex", alignItems: "center" }}
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="30"
+													height="30"
+													viewBox="0 0 64 64"
+												>
+													<rect
+														x="16"
+														y="22"
+														width="32"
+														height="34"
+														fill="black"
+														rx="4"
+													/>
+													<rect
+														x="12"
+														y="16"
+														width="40"
+														height="5"
+														fill="black"
+														rx="2"
+													/>
+													<rect
+														x="24"
+														y="11"
+														width="16"
+														height="6"
+														fill="black"
+														rx="2"
+													/>
+													<rect
+														x="22"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+													<rect
+														x="30"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+													<rect
+														x="38"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</li>
+									))}
+								</ul>
+
+								<button
+									id="add-station-button"
+									type="button"
+									onClick={addMeetingStation}
+								>
+									<span style={{ fontSize: "18px", marginRight: "5px" }}>
+										+
+									</span>
+									Add Station
+								</button>
+							</div>
+						</div>
+
+						<div className="form-group">
+							<input
+								type="date"
+								id="meeting-date"
+								name="meetingDate"
+								required
+								value={meetingDate}
+								onChange={(e) =>
+									handleMeetingChange("meetingDate", e.target.value)
+								}
+								aria-required="true"
+							/>
+							<label htmlFor="meeting-date">Meeting Date</label>
+						</div>
+
+						<div className="time-group">
+							<div className="form-group">
+								<input
+									type="time"
+									id="earliest-start-time"
+									name="earliestStartTime"
+									required
+									value={earliestStartTime}
+									onChange={(e) =>
+										handleMeetingChange("earliestStartTime", e.target.value)
+									}
+									aria-required="true"
+								/>
+								<label htmlFor="earliest-start-time">Earliest Start Time</label>
+							</div>
+
+							<p>to</p>
+
+							<div className="form-group">
+								<input
+									type="time"
+									id="latest-start-time"
+									name="latestStartTime"
+									required
+									value={latestStartTime}
+									onChange={(e) =>
+										handleMeetingChange("latestStartTime", e.target.value)
+									}
+									aria-required="true"
+								/>
+								<label htmlFor="latest-start-time">Latest Start Time</label>
+							</div>
+						</div>
+						<h3 className="form-header">Who is coming?</h3>
+
+						<div className="form-group">
+							<label id="list-heading" htmlFor="att-list">
+								Attendee List
+							</label>
+							<div id="attendees-list">
+								<ul id="att-list">
+									{attendees.map((attendee, index) => (
+										<li className="attendee-li" key={index}>
+											<div className="form-group attendee-name-group">
+												<input
+													type="text"
+													id={"attendee-name" + index}
+													placeholder=" "
+													value={attendees[index].name}
+													onChange={(e) =>
+														handleAttendeeChange(index, "name", e.target.value)
+													}
+													required
+												/>
+												<label htmlFor={"attendee-name" + index}>Name</label>
+											</div>
+											<div className="form-group attendee-station-group">
+												<select
+													name="attendeesStation"
+													id={"attendees-station" + index}
+													value={attendees[index].station}
+													onChange={(e) =>
+														handleAttendeeChange(
+															index,
+															"station",
+															e.target.value,
+														)
+													}
+													required
+												>
+													<option value="" disabled>
+														Select a station
+													</option>
+													{stations.map((station, idx) => (
+														<option key={idx} value={station.crs_code}>
+															{station.station_name}
+														</option>
+													))}
+												</select>
+												<label htmlFor={"attendees-station" + index}>
+													Station
+												</label>
+											</div>
+											<button
+												className="delete-button"
+												onClick={() => deleteAttendee(index)}
+												aria-label={`Remove ${attendee.name} from attendee list`}
+											>
+												<svg
+													xmlns="http://www.w3.org/2000/svg"
+													width="30"
+													height="30"
+													viewBox="0 0 64 64"
+												>
+													<rect
+														x="16"
+														y="22"
+														width="32"
+														height="34"
+														fill="red"
+														rx="4"
+													/>
+
+													<rect
+														x="12"
+														y="16"
+														width="40"
+														height="5"
+														fill="black"
+														rx="2"
+													/>
+
+													<rect
+														x="24"
+														y="11"
+														width="16"
+														height="6"
+														fill="inherit"
+														rx="2"
+													/>
+
+													<rect
+														x="22"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+													<rect
+														x="30"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+													<rect
+														x="38"
+														y="27"
+														width="4"
+														height="24"
+														fill="white"
+													/>
+												</svg>
+											</button>
+										</li>
+									))}
+								</ul>
+
+								<button
+									id="add-attendee-button"
+									type="button"
+									onClick={addAttendee}
+									aria-label="Add attendee"
+								>
+									<span style={{ fontSize: "18px", marginRight: "5px" }}>
+										+
+									</span>{" "}
+									Add Attendee
+								</button>
+							</div>
+						</div>
+
+						<button type="submit" aria-label="Submit meeting details">
+							Submit
+						</button>
+					</form>
+				</div>
+
+				<div id="help-button-content-parent">
 					<div id="help-button-and-title">
 						<h2>Need help?</h2>
 						<FontAwesomeIcon
 							icon={faQuestionCircle}
 							onClick={handleHelpButton}
 							id="help-fa-icon"
+							aria-expanded={helpIconToggle}
+							aria-controls="help-content"
 						/>
 					</div>
 
 					{helpIconToggle && (
-						<div id="help-content">
-							<h3>How to Fill the Form</h3>
+						<div id="help-content" aria-labelledby="help-title">
+							<h3 id="help-title">How to Fill the Form</h3>
 							<p>
 								<strong>Meeting Station:</strong> Choose the station where the
 								meeting will take place from the dropdown menu. If the stations
