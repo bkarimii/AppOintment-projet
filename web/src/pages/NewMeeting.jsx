@@ -1,3 +1,4 @@
+import { isArray } from "chart.js/helpers";
 import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
 import "./NewMeeting.css";
@@ -7,6 +8,9 @@ function NewMeeting() {
 	const [stations, setStations] = useState([]);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
+		if (!isArray(savedData.meetingStation)) {
+			savedData.meetingStation = [{ station: savedData.meetingStation }];
+		}
 		return (
 			savedData || {
 				meetingStation: [{ station: "" }],
