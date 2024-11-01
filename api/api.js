@@ -85,6 +85,7 @@ api.post("/compute-route", async (req, res) => {
 			429: travelInfo.staticOutPut,
 			0: travelInfo.staticOutPut,
 			2: travelInfo.staticOutPut,
+			10: travelInfo.staticOutPut,
 		};
 
 		const userResponse = getResponseForStatus(

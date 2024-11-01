@@ -69,7 +69,7 @@ form {
 	margin: 1rem;
 	padding: 15px;
 	border-radius: 5px;
-	width: 700px;
+	max-width: 40%;
 }
 
 .form-group {
