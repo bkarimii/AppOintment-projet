@@ -9,6 +9,8 @@ on:
 jobs:
   windows:
     runs-on: windows-latest
+    env:
+      USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
     steps:
       - uses: textbook/take-action@nodejs
         with:
@@ -44,15 +46,19 @@ jobs:
         env:
           FORCE_COLOR: true
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - run: npm run migration up
         env:
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - run: npm run e2e
         env:
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - run: npm run e2e:dev
         env:
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
   docker:
     runs-on: ubuntu-latest
     services:
@@ -87,9 +93,11 @@ jobs:
           echo 'NODE_ENV=docker' >> "$ENV_FILE"
           echo "file=$ENV_FILE" >> "$GITHUB_OUTPUT"
           echo "GOOGLE_MAPS_API_KEY_TWO=${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}" >> "$ENV_FILE"
+          echo "USE_LIVE_DATA=${{ secrets.USE_LIVE_DATA }}" >> "$ENV_FILE"
         env:
           ENV_FILE: docker.env
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - id: docker-run
         run: |
           echo "id=$(docker run \
@@ -101,9 +109,11 @@ jobs:
       - run: npx --yes wait-on --log --timeout 30000 http-get://localhost:4321
         env:
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - run: npm run e2e
         env:
           PLAYWRIGHT_BASE_URL: http://localhost:4321
           GOOGLE_MAPS_API_KEY_TWO: ${{ secrets.GOOGLE_MAPS_API_KEY_TWO }}
+          USE_LIVE_DATA: ${{ secrets.USE_LIVE_DATA }}
       - if: always() && steps.docker-run.outputs.id
         run: docker logs ${{ steps.docker-run.outputs.id }}
