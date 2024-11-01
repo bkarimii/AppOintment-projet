@@ -2,6 +2,22 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
+			"name": "Debug Jest Tests",
+			"type": "node",
+			"request": "launch",
+			"runtimeArgs": [
+				"--inspect-brk",
+				"--experimental-vm-modules",
+				"${workspaceRoot}/node_modules/jest/bin/jest.js",
+				"--runInBand",
+				"--config",
+				"${workspaceRoot}/api/jest.config.js"
+			],
+			"console": "integratedTerminal",
+			"internalConsoleOptions": "neverOpen",
+			"port": 9229
+		},
+		{
 			"type": "node",
 			"request": "attach",
 			"name": "Debug API",
