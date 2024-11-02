@@ -66,6 +66,7 @@ function NewMeeting() {
 	]);
 
 	useEffect(() => {
+		document.title = "ThisAppointment";
 		localStorage.setItem("newMeetingData", JSON.stringify(formData));
 	}, [formData]);
 
