@@ -337,3 +337,7 @@ button:hover {
 #div-container div {
 	width: inherit;
 }
+
+#alert-message {
+	background-color: #fff7ac;
+}
