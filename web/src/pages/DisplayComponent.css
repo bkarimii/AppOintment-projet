@@ -18,7 +18,7 @@ td {
 
 /* Table Header */
 th {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	color: white;
 }
 
@@ -232,7 +232,7 @@ button:hover {
 }
 
 .report-table th {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	color: white;
 }
 
@@ -259,7 +259,7 @@ button:hover {
 }
 
 .date-time-report {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	border-radius: 5px;
 	padding: 1rem;
 	margin: 0.5rem;
