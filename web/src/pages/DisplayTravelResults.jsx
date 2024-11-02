@@ -84,7 +84,6 @@ function TableContent({
 						{expandedRow === index && (
 							<tr role="row">
 								<td colSpan="10" id="col-span-tabel-td">
-									{console.log(result.destination)}
 									<ReportMaker
 										destination={result.destination}
 										timeOfReport={extractDateTime(result.meetingTime)[1]}
@@ -157,7 +156,6 @@ function DisplayTravelResults() {
 				setProcessedResultsStorage(result);
 				setProcessedReport(reports);
 				setUseOfflineData(totalInformation.status !== "1");
-				console.log(totalInformation.totalInformation[1]);
 
 				switch (totalInformation.status) {
 					case "1":
