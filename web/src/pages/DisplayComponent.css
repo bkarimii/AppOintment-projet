@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(153, 153, 153);
+	background-color: rgb(206, 206, 206);
 }
 
 table {
@@ -126,7 +126,6 @@ button {
 }
 
 #back-button {
-	margin: 1rem 95% 0 2%;
 	font-size: larger;
 }
 
@@ -318,4 +317,22 @@ button:hover {
 
 #col-span-tabel-td {
 	padding: 0;
+}
+
+#button-text-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	width: 96%;
+}
+
+#button-text-container p {
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+	word-wrap: break-word;
+	white-space: normal;
+}
+
+#div-container div {
+	width: inherit;
 }
