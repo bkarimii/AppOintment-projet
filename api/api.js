@@ -24,7 +24,6 @@ api.post("/compute-route", async (req, res) => {
 		destination,
 		origins,
 	} = body;
-
 	if (!meetingDate || !startingTime || !endingTime) {
 		return res.status(400).json({
 			error:
@@ -153,7 +152,7 @@ export async function fetchBodyMaker(body) {
 			const originObject = {
 				city: {
 					...originCrs,
-					stationName: originDBDetail.station_name,
+					stationName: originDBDetail.rows[0].station_name,
 				},
 				location: {
 					latLng: {
