@@ -39,7 +39,7 @@ function prepareDataForReport(processedInfo) {
 			const personalReport = {
 				name: eachPerson.city.name,
 				origin: eachPerson.city.stationName,
-				originCrc: eachPerson.city.station,
+				originCrs: eachPerson.city.station,
 				approximateTravelTime: eachPerson.spentTimeInMinutes,
 				departureTime: extractHourAndMinute(
 					eachPerson.departureTime.split(".")[0],
