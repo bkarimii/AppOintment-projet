@@ -65,7 +65,7 @@ export function ReportMaker({ destination, timeOfReport, arrayOfReport }) {
 			personalReports
 				.map(
 					(personalInfo) =>
-						`Attendee: ${personalInfo.name}, From: ${personalInfo.originCrs}, ` +
+						`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, ` +
 						`Destination: ${meetingLocation}, ` +
 						`Departure: ${personalInfo.departureTime}, ` +
 						`Arrival: ${personalInfo.arrivalTime}, ` +
@@ -124,7 +124,7 @@ export function ReportMaker({ destination, timeOfReport, arrayOfReport }) {
 										personalInfo.name
 									)}
 								</td>
-								<td>{personalInfo.originCrc}</td>
+								<td>{personalInfo.origin}</td>
 								<td>{personalInfo.departureTime}</td>
 								<td>{personalInfo.arrivalTime}</td>
 								<td>{personalInfo.approximateTravelTime}</td>
