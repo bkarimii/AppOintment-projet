@@ -283,6 +283,7 @@ button:hover {
 	border-radius: 50%;
 	border-left-color: rgb(5, 81, 18);
 	animation: spin 2s ease infinite;
+	border: 2px solid blue;
 }
 
 .spinner > p {

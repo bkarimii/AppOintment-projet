@@ -136,7 +136,7 @@ function NewMeeting() {
 				<h1 id="form-page-title">THIS APP OINTMENT</h1>
 				<div id="form-page">
 					<form onSubmit={handleSubmit}>
-						<h3 className="form-header">Plan your meeting details</h3>
+						<h2 className="form-header">Plan your meeting details</h2>
 						<div className="form-group">
 							<label id="list-heading" htmlFor="stn-list">
 								Meeting Station List
@@ -177,6 +177,7 @@ function NewMeeting() {
 												className="delete-button"
 												onClick={() => deleteMeetingStation(index)}
 												style={{ display: "flex", alignItems: "center" }}
+												name="delete-station"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -239,6 +240,7 @@ function NewMeeting() {
 									id="add-station-button"
 									type="button"
 									onClick={addMeetingStation}
+									name="add-station"
 								>
 									<span style={{ fontSize: "18px", marginRight: "5px" }}>
 										+
@@ -352,6 +354,7 @@ function NewMeeting() {
 												className="delete-button"
 												onClick={deleteAttendee(index)}
 												aria-label={`Remove ${attendee.name} from attendee list`}
+												name="delete-attendee"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -418,6 +421,7 @@ function NewMeeting() {
 									type="button"
 									onClick={addAttendee}
 									aria-label="Add attendee"
+									name="add-attendee"
 								>
 									<span style={{ fontSize: "18px", marginRight: "5px" }}>
 										+
@@ -427,7 +431,11 @@ function NewMeeting() {
 							</div>
 						</div>
 
-						<button type="submit" aria-label="Submit meeting details">
+						<button
+							type="submit"
+							aria-label="Submit meeting details"
+							name="submit"
+						>
 							Submit
 						</button>
 					</form>
@@ -440,6 +448,9 @@ function NewMeeting() {
 								id="help-fa-icon"
 								aria-expanded={helpIconToggle}
 								aria-controls="help-content"
+								name="help-button"
+								aria-label="help-button"
+								role="button"
 							/>
 						</div>
 
