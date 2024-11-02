@@ -209,7 +209,7 @@ function DisplayTravelResults() {
 
 	const handleGoBackButton = (e) => {
 		e.preventDefault();
-		navigate("/new-meeting");
+		navigate("/");
 	};
 
 	const getSortedResults = () => {
