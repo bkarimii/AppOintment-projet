@@ -239,8 +239,9 @@ ul {
 }
 
 .delete-button svg rect {
-	fill: black;
+	fill: rgb(56, 56, 56);
 }
+
 .delete-button:hover {
 	background-color: #f9f9f9;
 }
