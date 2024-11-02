@@ -23,7 +23,7 @@ afterAll(async () => {
 	if (dbContainer) {
 		await dbContainer.stop();
 	}
-});
+}, 20000);
 
 async function applyMigrations(databaseUrl) {
 	await runner({
