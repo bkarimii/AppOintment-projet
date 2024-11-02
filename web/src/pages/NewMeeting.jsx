@@ -66,6 +66,7 @@ function NewMeeting() {
 	]);
 
 	useEffect(() => {
+		document.title = "ThisAppointment";
 		localStorage.setItem("newMeetingData", JSON.stringify(formData));
 	}, [formData]);
 
@@ -131,11 +132,11 @@ function NewMeeting() {
 
 	return (
 		<>
-			<div id="form-page">
-				<div>
-					<h1>THIS APP OINTMENT</h1>
+			<div id="page-container">
+				<h1 id="form-page-title">THIS APP OINTMENT</h1>
+				<div id="form-page">
 					<form onSubmit={handleSubmit}>
-						<h3 className="form-header">Plan your meeting details</h3>
+						<h2 className="form-header">Plan your meeting details</h2>
 						<div className="form-group">
 							<label id="list-heading" htmlFor="stn-list">
 								Meeting Station List
@@ -176,6 +177,7 @@ function NewMeeting() {
 												className="delete-button"
 												onClick={() => deleteMeetingStation(index)}
 												style={{ display: "flex", alignItems: "center" }}
+												name="delete-station"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -238,6 +240,7 @@ function NewMeeting() {
 									id="add-station-button"
 									type="button"
 									onClick={addMeetingStation}
+									name="add-station"
 								>
 									<span style={{ fontSize: "18px", marginRight: "5px" }}>
 										+
@@ -351,6 +354,7 @@ function NewMeeting() {
 												className="delete-button"
 												onClick={deleteAttendee(index)}
 												aria-label={`Remove ${attendee.name} from attendee list`}
+												name="delete-attendee"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -417,6 +421,7 @@ function NewMeeting() {
 									type="button"
 									onClick={addAttendee}
 									aria-label="Add attendee"
+									name="add-attendee"
 								>
 									<span style={{ fontSize: "18px", marginRight: "5px" }}>
 										+
@@ -426,66 +431,75 @@ function NewMeeting() {
 							</div>
 						</div>
 
-						<button type="submit" aria-label="Submit meeting details">
+						<button
+							type="submit"
+							aria-label="Submit meeting details"
+							name="submit"
+						>
 							Submit
 						</button>
 					</form>
-				</div>
-
-				<div id="help-button-content-parent">
-					<div id="help-button-and-title">
-						<h2>Need help?</h2>
-						<FontAwesomeIcon
-							icon={faQuestionCircle}
-							onClick={handleHelpButton}
-							id="help-fa-icon"
-							aria-expanded={helpIconToggle}
-							aria-controls="help-content"
-						/>
-					</div>
-
-					{helpIconToggle && (
-						<div id="help-content" aria-labelledby="help-title">
-							<h3 id="help-title">How to Fill the Form</h3>
-							<p>
-								<strong>Meeting Station:</strong> Choose the station where the
-								meeting will take place from the dropdown menu. If the stations
-								is not listed, please check back later.
-							</p>
-							<p>
-								<strong>Meeting Date:</strong> Select the date of the meeting
-								using the date picker or import manually.
-							</p>
-							<p>
-								<strong>Earliest Start Time:</strong> Specify the earliest time
-								you can start the meeting.
-							</p>
-							<p>
-								<strong>Latest Start Time:</strong> Indicate the latest time you
-								can start the meeting.
-							</p>
-							<h4>Attendee List:</h4>
-							<p>Enter the names and select the stations for each attendee:</p>
-							<ul>
-								<li>
-									<strong>Name:</strong> Enter the full name of the attendee.
-								</li>
-								<li>
-									<strong>Station:</strong> Select the station from the dropdown
-									menu that corresponds to the attendee&lsquo;s location.
-								</li>
-							</ul>
-							<p>
-								To add more attendees, click the &ldquo;Add Attendee&quot;
-								button. If you need to remove an attendee, click the delete
-								button next to their information.
-							</p>
-							<p>
-								Once all fields are filled out, click the &quot;Submit&quot;
-								button to finalize your meeting details.
-							</p>
+					<div id="help-button-content-parent">
+						<div id="help-button-and-title">
+							<h2>Need help?</h2>
+							<FontAwesomeIcon
+								icon={faQuestionCircle}
+								onClick={handleHelpButton}
+								id="help-fa-icon"
+								aria-expanded={helpIconToggle}
+								aria-controls="help-content"
+								name="help-button"
+								aria-label="help-button"
+								role="button"
+							/>
 						</div>
-					)}
+
+						{helpIconToggle && (
+							<div id="help-content" aria-labelledby="help-title">
+								<h3 id="help-title">How to Fill the Form</h3>
+								<p>
+									<strong>Meeting Station:</strong> Choose the station where the
+									meeting will take place from the dropdown menu. If the
+									stations is not listed, please check back later.
+								</p>
+								<p>
+									<strong>Meeting Date:</strong> Select the date of the meeting
+									using the date picker or import manually.
+								</p>
+								<p>
+									<strong>Earliest Start Time:</strong> Specify the earliest
+									time you can start the meeting.
+								</p>
+								<p>
+									<strong>Latest Start Time:</strong> Indicate the latest time
+									you can start the meeting.
+								</p>
+								<h4>Attendee List:</h4>
+								<p>
+									Enter the names and select the stations for each attendee:
+								</p>
+								<ul>
+									<li>
+										<strong>Name:</strong> Enter the full name of the attendee.
+									</li>
+									<li>
+										<strong>Station:</strong> Select the station from the
+										dropdown menu that corresponds to the attendee&lsquo;s
+										location.
+									</li>
+								</ul>
+								<p>
+									To add more attendees, click the &ldquo;Add Attendee&quot;
+									button. If you need to remove an attendee, click the delete
+									button next to their information.
+								</p>
+								<p>
+									Once all fields are filled out, click the &quot;Submit&quot;
+									button to finalize your meeting details.
+								</p>
+							</div>
+						)}
+					</div>
 				</div>
 			</div>
 		</>

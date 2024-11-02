@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(153, 153, 153);
+	background-color: rgb(179, 177, 177);
 }
 
 #form-help-container {
@@ -30,10 +30,6 @@ body {
 	transform: scale(1.1); /* Slightly increase size on hover */
 }
 
-#help-button-content-parent {
-	margin: 0 auto;
-}
-
 #help-content {
 	transition:
 		max-height 0.3s ease,
@@ -49,6 +45,10 @@ body {
 	align-items: flex-start;
 	max-width: 70%;
 	margin: auto;
+}
+
+#help-button-content-parent {
+	font-family: "Roboto", sans-serif;
 }
 
 #help-content h3 {
@@ -79,17 +79,6 @@ body {
 
 #help-content li {
 	margin-bottom: 0.5rem; /* Space between list items */
-}
-
-form {
-	background-color: var(--input-bg-color, #f9f9f9);
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
-	margin: 1rem;
-	padding: 15px;
-	border-radius: 5px;
-	max-width: 40%;
 }
 
 .form-group {
@@ -264,12 +253,30 @@ button[type="button"]:hover {
 }
 
 #form-page {
-	display: flex;
-	flex-direction: row;
-	align-items: flex-start;
-	justify-content: space-around;
+	display: grid;
+	grid-template-columns: 45% 40%;
+	justify-content: space-between;
 	width: 90%;
-	margin: 0.7rem auto;
+	margin: 0 auto;
+}
+
+form {
+	background-color: var(--input-bg-color, #f9f9f9);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 1rem;
+	padding: 15px;
+	border-radius: 5px;
+	width: 90%;
+}
+
+#form-page-title {
+	margin: 2rem 0;
+}
+
+#page-container {
+	width: 90%;
 }
 
 /* Responsive Design */

@@ -18,7 +18,7 @@ td {
 
 /* Table Header */
 th {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	color: white;
 }
 
@@ -232,7 +232,7 @@ button:hover {
 }
 
 .report-table th {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	color: white;
 }
 
@@ -259,7 +259,7 @@ button:hover {
 }
 
 .date-time-report {
-	background-color: #46a249;
+	background-color: #2b6e2d;
 	border-radius: 5px;
 	padding: 1rem;
 	margin: 0.5rem;
@@ -283,6 +283,7 @@ button:hover {
 	border-radius: 50%;
 	border-left-color: rgb(5, 81, 18);
 	animation: spin 2s ease infinite;
+	border: 2px solid blue;
 }
 
 .spinner > p {
