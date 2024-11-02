@@ -11,6 +11,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T04:40:00Z",
@@ -22,6 +23,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T07:01:43Z",
@@ -33,6 +35,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T07:41:00Z",
@@ -44,6 +47,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -55,6 +59,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T04:55:00Z",
@@ -66,6 +71,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -77,6 +83,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -88,6 +95,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -99,6 +107,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:14:00Z",
@@ -117,6 +126,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T04:40:00Z",
@@ -128,6 +138,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T07:31:43Z",
@@ -139,6 +150,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T08:12:00Z",
@@ -150,6 +162,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -161,6 +174,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T04:55:00Z",
@@ -172,6 +186,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -183,6 +198,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -194,6 +210,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -205,6 +222,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T08:44:00Z",
@@ -223,6 +241,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T07:05:00Z",
@@ -234,6 +253,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T08:01:43Z",
@@ -245,6 +265,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T08:41:00Z",
@@ -256,6 +277,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -267,6 +289,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T06:45:00Z",
@@ -278,6 +301,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T08:05:00Z",
@@ -289,6 +313,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -300,6 +325,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -311,6 +337,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T09:14:00Z",
@@ -329,6 +356,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T07:05:00Z",
@@ -340,6 +368,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:01:43Z",
@@ -351,6 +380,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:41:00Z",
@@ -362,6 +392,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -373,6 +404,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:36:00Z",
@@ -384,6 +416,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:17:00Z",
@@ -395,6 +428,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -406,6 +440,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -417,6 +452,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T09:14:00Z",
@@ -435,6 +471,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T03:40:00Z",
@@ -446,6 +483,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T01:16:43Z",
@@ -457,6 +495,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T06:45:00Z",
@@ -468,6 +507,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -479,6 +519,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T03:25:00Z",
@@ -490,6 +531,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -501,6 +543,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T02:08:00Z",
@@ -512,6 +555,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:15:00Z",
@@ -523,6 +567,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:00:00.000Z",
 				firstDepartureTime: "2024-11-03T06:58:00Z",
@@ -541,6 +586,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T04:40:00Z",
@@ -552,6 +598,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T07:01:43Z",
@@ -563,6 +610,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T07:41:00Z",
@@ -574,6 +622,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -585,6 +634,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T04:55:00Z",
@@ -596,6 +646,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -607,6 +658,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -618,6 +670,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -629,6 +682,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:20:00.000Z",
 				firstDepartureTime: "2024-11-03T08:14:00Z",
@@ -647,6 +701,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T04:40:00Z",
@@ -658,6 +713,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T07:01:43Z",
@@ -669,6 +725,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T07:41:00Z",
@@ -680,6 +737,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -691,6 +749,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T04:55:00Z",
@@ -702,6 +761,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -713,6 +773,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -724,6 +785,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -735,6 +797,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T10:40:00.000Z",
 				firstDepartureTime: "2024-11-03T08:44:00Z",
@@ -753,6 +816,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T07:05:00Z",
@@ -764,6 +828,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T07:31:43Z",
@@ -775,6 +840,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:12:00Z",
@@ -786,6 +852,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:38:00Z",
@@ -797,6 +864,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T04:55:00Z",
@@ -808,6 +876,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T00:34:13Z",
@@ -819,6 +888,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T03:38:00Z",
@@ -830,6 +900,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-02T23:41:00Z",
@@ -841,6 +912,7 @@ const sampleOutPutOfFunction = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				arrivalTime: "2024-11-03T11:00:00.000Z",
 				firstDepartureTime: "2024-11-03T08:44:00Z",
