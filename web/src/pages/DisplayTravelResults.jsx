@@ -139,7 +139,6 @@ function DisplayTravelResults() {
 		setLoading(true);
 		try {
 			const bodyData = localStorage.getItem("newMeetingData");
-			console.log(bodyData);
 
 			const response = await fetch(URL, {
 				method: "POST",
