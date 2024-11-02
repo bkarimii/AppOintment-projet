@@ -276,7 +276,7 @@ function DisplayTravelResults() {
 								<FontAwesomeIcon icon={faArrowLeft} />
 							</button>
 							{useOfflineData && (
-								<p>
+								<p id="alert-message">
 									<i>
 										<strong>Caution: {statusMessages[statusCode]}</strong>
 									</i>
