@@ -31,6 +31,7 @@ function prepareDataForReport(processedInfo) {
 			meetingTime: extractHourAndMinute(
 				timeExtractor(anySlotTimeMeeting.meetingTime)[1].split(".")[0],
 			), // Meeting Time
+			meetingLocation: anySlotTimeMeeting.destination,
 			personalReports: [], // Array to hold individual person reports
 		};
 		// Iterate over each person's travel details
