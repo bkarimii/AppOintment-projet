@@ -267,6 +267,13 @@ button[type="button"]:hover {
 	width: 90%;
 	margin: 0.7rem auto;
 }
+#form-page > div:first-child {
+	width: 60%; /* First child gets 60% width */
+}
+
+#help-button-content-parent {
+	width: 35%; /* Second child takes remaining 35% width */
+}
 
 /* Responsive Design */
 @media (max-width: 480px) {
