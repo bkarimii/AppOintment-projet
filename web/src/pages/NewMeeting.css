@@ -89,7 +89,7 @@ form {
 	margin: 1rem;
 	padding: 15px;
 	border-radius: 5px;
-	width: inherit;
+	max-width: 40%;
 }
 
 .form-group {
@@ -235,7 +235,11 @@ ul {
 }
 
 .delete-button:hover svg rect {
-	fill: #dc3545; /* Change to red on hover */
+	fill: #b32d3a;
+}
+
+.delete-button svg rect {
+	fill: rgb(56, 56, 56);
 }
 
 .delete-button:hover {
@@ -266,13 +270,6 @@ button[type="button"]:hover {
 	justify-content: space-around;
 	width: 90%;
 	margin: 0.7rem auto;
-}
-#form-page > div:first-child {
-	width: 60%; /* First child gets 60% width */
-}
-
-#help-button-content-parent {
-	width: 35%; /* Second child takes remaining 35% width */
 }
 
 /* Responsive Design */
