@@ -232,8 +232,6 @@ function DisplayTravelResults() {
 				);
 			case "minSlack":
 				return results.sort((a, b) => a.arrivalSlack - b.arrivalSlack);
-			default:
-				return results;
 		}
 	};
 
@@ -264,114 +262,105 @@ function DisplayTravelResults() {
 
 	return (
 		<>
-			{loading ? (
-				<div className="spinner-container">
-					<div className="spinner"></div>
-					<p>Data is loading...</p>
-				</div>
-			) : (
-				<>
-					<div id="button-text-container">
-						<button
-							onClick={handleGoBackButton}
-							aria-label="Go Back to the form page."
-							id="back-button"
-						>
-							<FontAwesomeIcon icon={faArrowLeft} />
-						</button>
-						{useOfflineData && (
-							<p>
-								<i>
-									<strong>Caution: {statusMessages[statusCode]}</strong>
-								</i>
-							</p>
-						)}
+			<div id="div-container">
+				{loading ? (
+					<div className="spinner-container">
+						<div className="spinner"></div>
+						<p>Data is loading...</p>
 					</div>
+				) : (
+					<>
+						<div id="button-text-container">
+							<button
+								onClick={handleGoBackButton}
+								aria-label="Go Back to the form page."
+								id="back-button"
+							>
+								<FontAwesomeIcon icon={faArrowLeft} />
+							</button>
+							{useOfflineData && (
+								<p>
+									<i>
+										<strong>Caution: {statusMessages[statusCode]}</strong>
+									</i>
+								</p>
+							)}
+						</div>
 
-					<div id="meeting-date-container">
-						<h3 id="meeting-date-in-table-page">
-							Meeting Date: {daysOfWeek[meetinDayToShow]},{" "}
-							{meetingDateToShowInBrowser}
-						</h3>
-					</div>
-					<div className="table-container">
-						<Tabs
-							selectedTabClassName="active-tab"
-							onSelect={(index) => {
-								const options = [
-									"meeting-time",
-									"min",
-									"max",
-									"minSlack",
-									"meeting-location",
-									"diagram",
-								];
-								setSelectedOption(options[index]);
-							}}
-						>
-							<TabList className="tabs" role="tablist">
-								<Tab className="tab">Meeting Time</Tab>
-								<Tab className="tab">Min Travel Time</Tab>
-								<Tab className="tab">Max Travel Time</Tab>
-								<Tab className="tab">Min Arrival Slack</Tab>
-								<Tab className="tab">Group By Location</Tab>
-								<Tab className="tab">Diagram</Tab>
-							</TabList>
-
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<TableContent
-									sortedResults={getSortedResults()}
-									toggleRowExpansion={toggleRowExpansion}
-									expandedRow={expandedRow}
-									extractDateTime={extractDateTime}
-									processedReport={processedReport}
-								/>
-							</TabPanel>
-							<TabPanel>
-								<div id="chart-container">
-									<Visualise travelData={processedResultsStorage} />
-								</div>
-							</TabPanel>
-						</Tabs>
-					</div>
-				</>
-			)}
+						<div id="meeting-date-container">
+							<h3 id="meeting-date-in-table-page">
+								Meeting Date: {daysOfWeek[meetinDayToShow]},{" "}
+								{meetingDateToShowInBrowser}
+							</h3>
+						</div>
+						<div className="table-container">
+							<Tabs
+								selectedTabClassName="active-tab"
+								onSelect={(index) => {
+									const options = [
+										"meeting-time",
+										"min",
+										"max",
+										"minSlack",
+										"meeting-location",
+										"diagram",
+									];
+									setSelectedOption(options[index]);
+								}}
+							>
+								<TabList className="tabs" role="tablist">
+									<Tab className="tab">Meeting Time</Tab>
+									<Tab className="tab">Min Travel Time</Tab>
+									<Tab className="tab">Max Travel Time</Tab>
+									<Tab className="tab">Min Arrival Slack</Tab>
+									<Tab className="tab">Diagram</Tab>
+								</TabList>
+								<TabPanel>
+									<TableContent
+										sortedResults={getSortedResults()}
+										toggleRowExpansion={toggleRowExpansion}
+										expandedRow={expandedRow}
+										extractDateTime={extractDateTime}
+										processedReport={processedReport}
+									/>
+								</TabPanel>
+								<TabPanel>
+									<TableContent
+										sortedResults={getSortedResults()}
+										toggleRowExpansion={toggleRowExpansion}
+										expandedRow={expandedRow}
+										extractDateTime={extractDateTime}
+										processedReport={processedReport}
+									/>
+								</TabPanel>
+								<TabPanel>
+									<TableContent
+										sortedResults={getSortedResults()}
+										toggleRowExpansion={toggleRowExpansion}
+										expandedRow={expandedRow}
+										extractDateTime={extractDateTime}
+										processedReport={processedReport}
+									/>
+								</TabPanel>
+								<TabPanel>
+									<TableContent
+										sortedResults={getSortedResults()}
+										toggleRowExpansion={toggleRowExpansion}
+										expandedRow={expandedRow}
+										extractDateTime={extractDateTime}
+										processedReport={processedReport}
+									/>
+								</TabPanel>
+								<TabPanel>
+									<div id="chart-container">
+										<Visualise travelData={processedResultsStorage} />
+									</div>
+								</TabPanel>
+							</Tabs>
+						</div>
+					</>
+				)}
+			</div>
 		</>
 	);
 }

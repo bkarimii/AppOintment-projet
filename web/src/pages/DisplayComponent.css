@@ -1,5 +1,5 @@
 body {
-	background-color: rgb(153, 153, 153);
+	background-color: rgb(206, 206, 206);
 }
 
 table {
@@ -331,4 +331,8 @@ button:hover {
 	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
 	word-wrap: break-word;
 	white-space: normal;
+}
+
+#div-container div {
+	width: inherit;
 }
