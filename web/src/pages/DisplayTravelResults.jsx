@@ -271,7 +271,7 @@ function DisplayTravelResults() {
 				</div>
 			) : (
 				<>
-					<div>
+					<div id="button-text-container">
 						<button
 							onClick={handleGoBackButton}
 							aria-label="Go Back to the form page."
@@ -281,7 +281,9 @@ function DisplayTravelResults() {
 						</button>
 						{useOfflineData && (
 							<p>
-								<strong>Caution: {statusMessages[statusCode]}</strong>
+								<i>
+									<strong>Caution: {statusMessages[statusCode]}</strong>
+								</i>
 							</p>
 						)}
 					</div>
