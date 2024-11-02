@@ -8,6 +8,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 320,
 				spentTimeInHour: 5.333,
@@ -21,6 +22,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 194,
 				spentTimeInHour: 3.233,
@@ -34,6 +36,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 140,
 				spentTimeInHour: 2.333,
@@ -47,6 +50,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 634,
 				spentTimeInHour: 10.567,
@@ -60,6 +64,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 309,
 				spentTimeInHour: 5.15,
@@ -73,6 +78,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 570,
 				spentTimeInHour: 9.5,
@@ -86,6 +92,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 382,
 				spentTimeInHour: 6.367,
@@ -99,6 +106,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 623,
 				spentTimeInHour: 10.383,
@@ -112,6 +120,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 106,
 				spentTimeInHour: 1.767,
@@ -131,6 +140,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 340,
 				spentTimeInHour: 5.667,
@@ -144,6 +154,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 191,
 				spentTimeInHour: 3.183,
@@ -157,6 +168,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 136,
 				spentTimeInHour: 2.267,
@@ -170,6 +182,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 654,
 				spentTimeInHour: 10.9,
@@ -183,6 +196,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 329,
 				spentTimeInHour: 5.483,
@@ -196,6 +210,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 590,
 				spentTimeInHour: 9.833,
@@ -209,6 +224,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 402,
 				spentTimeInHour: 6.7,
@@ -222,6 +238,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 643,
 				spentTimeInHour: 10.717,
@@ -235,6 +252,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 96,
 				spentTimeInHour: 1.6,
@@ -254,6 +272,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 215,
 				spentTimeInHour: 3.583,
@@ -267,6 +286,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 181,
 				spentTimeInHour: 3.017,
@@ -280,6 +300,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 127,
 				spentTimeInHour: 2.117,
@@ -293,6 +314,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 674,
 				spentTimeInHour: 11.233,
@@ -306,6 +328,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 239,
 				spentTimeInHour: 3.983,
@@ -319,6 +342,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 156,
 				spentTimeInHour: 2.6,
@@ -332,6 +356,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 422,
 				spentTimeInHour: 7.033,
@@ -345,6 +370,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 663,
 				spentTimeInHour: 11.05,
@@ -358,6 +384,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 86,
 				spentTimeInHour: 1.433,
@@ -377,6 +404,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 235,
 				spentTimeInHour: 3.917,
@@ -390,6 +418,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 201,
 				spentTimeInHour: 3.35,
@@ -403,6 +432,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 147,
 				spentTimeInHour: 2.45,
@@ -416,6 +446,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 694,
 				spentTimeInHour: 11.567,
@@ -429,6 +460,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 144,
 				spentTimeInHour: 2.4,
@@ -442,6 +474,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 164,
 				spentTimeInHour: 2.733,
@@ -455,6 +488,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 442,
 				spentTimeInHour: 7.367,
@@ -468,6 +502,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 683,
 				spentTimeInHour: 11.383,
@@ -481,6 +516,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 106,
 				spentTimeInHour: 1.767,
@@ -500,6 +536,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 385,
 				spentTimeInHour: 6.417,
@@ -513,6 +550,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 544,
 				spentTimeInHour: 9.067,
@@ -526,6 +564,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 206,
 				spentTimeInHour: 3.433,
@@ -539,6 +578,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 627,
 				spentTimeInHour: 10.45,
@@ -552,6 +592,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 413,
 				spentTimeInHour: 6.883,
@@ -565,6 +606,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 584,
 				spentTimeInHour: 9.733,
@@ -578,6 +620,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 480,
 				spentTimeInHour: 8,
@@ -591,6 +634,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 650,
 				spentTimeInHour: 10.833,
@@ -604,6 +648,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 189,
 				spentTimeInHour: 3.15,
@@ -623,6 +668,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 348,
 				spentTimeInHour: 5.8,
@@ -636,6 +682,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 228,
 				spentTimeInHour: 3.8,
@@ -649,6 +696,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 174,
 				spentTimeInHour: 2.9,
@@ -662,6 +710,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 647,
 				spentTimeInHour: 10.783,
@@ -675,6 +724,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 343,
 				spentTimeInHour: 5.717,
@@ -688,6 +738,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 604,
 				spentTimeInHour: 10.067,
@@ -701,6 +752,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 410,
 				spentTimeInHour: 6.833,
@@ -714,6 +766,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 657,
 				spentTimeInHour: 10.95,
@@ -727,6 +780,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 134,
 				spentTimeInHour: 2.233,
@@ -746,6 +800,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 368,
 				spentTimeInHour: 6.133,
@@ -759,6 +814,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 248,
 				spentTimeInHour: 4.133,
@@ -772,6 +828,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 194,
 				spentTimeInHour: 3.233,
@@ -785,6 +842,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 667,
 				spentTimeInHour: 11.117,
@@ -798,6 +856,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 363,
 				spentTimeInHour: 6.05,
@@ -811,6 +870,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 624,
 				spentTimeInHour: 10.4,
@@ -824,6 +884,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 430,
 				spentTimeInHour: 7.167,
@@ -837,6 +898,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 677,
 				spentTimeInHour: 11.283,
@@ -850,6 +912,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 124,
 				spentTimeInHour: 2.067,
@@ -869,6 +932,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Leah",
 					station: "NRW",
+					stationName: "Norwich",
 				},
 				spentTimeInMinutes: 242,
 				spentTimeInHour: 4.033,
@@ -882,6 +946,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Sara",
 					station: "CME",
+					stationName: "Combe (Oxon)",
 				},
 				spentTimeInMinutes: 226,
 				spentTimeInHour: 3.767,
@@ -895,6 +960,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Ali",
 					station: "OXF",
+					stationName: "Oxford",
 				},
 				spentTimeInMinutes: 171,
 				spentTimeInHour: 2.85,
@@ -908,6 +974,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Rajesh",
 					station: "AGV",
+					stationName: "Abergavenny",
 				},
 				spentTimeInMinutes: 687,
 				spentTimeInHour: 11.45,
@@ -921,6 +988,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "David",
 					station: "SHF",
+					stationName: "Sheffield",
 				},
 				spentTimeInMinutes: 383,
 				spentTimeInHour: 6.383,
@@ -934,6 +1002,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Toba",
 					station: "LDS",
+					stationName: "Leeds",
 				},
 				spentTimeInMinutes: 644,
 				spentTimeInHour: 10.733,
@@ -947,6 +1016,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Anna",
 					station: "SWA",
+					stationName: "Swansea",
 				},
 				spentTimeInMinutes: 450,
 				spentTimeInHour: 7.5,
@@ -960,6 +1030,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Miya",
 					station: "GLC",
+					stationName: "Glasgow Central",
 				},
 				spentTimeInMinutes: 697,
 				spentTimeInHour: 11.617,
@@ -973,6 +1044,7 @@ const processedInfoFakeData = [
 				city: {
 					name: "Mariana",
 					station: "BCE",
+					stationName: "Bracknell",
 				},
 				spentTimeInMinutes: 144,
 				spentTimeInHour: 2.4,
