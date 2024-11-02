@@ -114,7 +114,8 @@ function NewMeeting() {
 		setAttendees([...attendees, { name: "", station: "" }]);
 	};
 
-	const deleteAttendee = (index) => {
+	const deleteAttendee = (index) => (e) => {
+		e.preventDefault();
 		const updatedAttendees = attendees.filter((_, i) => i !== index);
 		setAttendees(updatedAttendees);
 	};
@@ -348,7 +349,7 @@ function NewMeeting() {
 											</div>
 											<button
 												className="delete-button"
-												onClick={() => deleteAttendee(index)}
+												onClick={deleteAttendee(index)}
 												aria-label={`Remove ${attendee.name} from attendee list`}
 											>
 												<svg
