@@ -89,7 +89,7 @@ form {
 	margin: 1rem;
 	padding: 15px;
 	border-radius: 5px;
-	max-width: 40%;
+	width: inherit;
 }
 
 .form-group {
