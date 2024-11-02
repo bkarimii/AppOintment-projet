@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 
-export function ReportMaker({ timeOfReport, arrayOfReport }) {
+export function ReportMaker({ destination, timeOfReport, arrayOfReport }) {
 	const [isCopied, setIsCopied] = useState(false);
 	const [reportDestination, setReportDestination] = useState(
 		"Unknown Destination",
@@ -48,22 +48,25 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 	};
 
 	const eachReportObject = arrayOfReport.find(
-		(eachTimeSlotObject) => eachTimeSlotObject.meetingTime == timeOfReport,
+		(eachTimeSlotObject) =>
+			eachTimeSlotObject.meetingTime == timeOfReport &&
+			eachTimeSlotObject.meetingLocation == destination,
 	);
 
 	function generateReportText(eachReportObject) {
 		// Extract necessary details
-		const { meetingDate, meetingTime, personalReports } = eachReportObject;
+		const { meetingDate, meetingTime, meetingLocation, personalReports } =
+			eachReportObject;
 
 		// Generate the report text for each person's travel details
 		const reportText =
 			`Meeting on ${meetingDate} at ${meetingTime}\n` +
-			`Destination: ${destinationTrainStation}\n` +
+			`Destination: ${meetingLocation}\n` +
 			personalReports
 				.map(
 					(personalInfo) =>
-						`Attendee: ${personalInfo.name}, From: ${personalInfo.origin}, ` +
-						`Destination: ${destinationTrainStation}, ` +
+						`Attendee: ${personalInfo.name}, From: ${personalInfo.originCrs}, ` +
+						`Destination: ${meetingLocation}, ` +
 						`Departure: ${personalInfo.departureTime}, ` +
 						`Arrival: ${personalInfo.arrivalTime}, ` +
 						`Duration: ${personalInfo.approximateTravelTime} minutes`,
@@ -121,7 +124,7 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 										personalInfo.name
 									)}
 								</td>
-								<td>{personalInfo.origin}</td>
+								<td>{personalInfo.originCrc}</td>
 								<td>{personalInfo.departureTime}</td>
 								<td>{personalInfo.arrivalTime}</td>
 								<td>{personalInfo.approximateTravelTime}</td>
@@ -151,10 +154,12 @@ export function ReportMaker({ timeOfReport, arrayOfReport }) {
 // PropTypes for ReportMaker
 ReportMaker.propTypes = {
 	timeOfReport: PropTypes.string.isRequired,
+	destination: PropTypes.string.isRequired,
 	arrayOfReport: PropTypes.arrayOf(
 		PropTypes.shape({
 			meetingDate: PropTypes.string.isRequired,
 			meetingTime: PropTypes.string.isRequired,
+			meetingLocation: PropTypes.string.isRequired,
 			personalReports: PropTypes.arrayOf(
 				PropTypes.shape({
 					name: PropTypes.string.isRequired,
