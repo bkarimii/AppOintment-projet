@@ -11,7 +11,7 @@ function NewMeeting() {
 	const [helpIconToggle, setHelpIconToggle] = useState(false);
 	const [formData, setFormData] = useState(() => {
 		const savedData = JSON.parse(localStorage.getItem("newMeetingData"));
-		if (!isArray(savedData.meetingStation)) {
+		if (savedData && !isArray(savedData.meetingStation)) {
 			savedData.meetingStation = [{ station: savedData.meetingStation }];
 		}
 		return (
