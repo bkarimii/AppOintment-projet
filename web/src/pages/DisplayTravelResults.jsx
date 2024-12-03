@@ -11,8 +11,10 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
-
 import "./DisplayComponent.css";
+// eslint-disable-next-line no-unused-vars
+import processedInfoFakeData from "./staticData/processedInfoData";
+import statsFakeData from "./staticData/statsFakeData";
 
 function TableContent({
 	sortedResults,
@@ -124,8 +126,9 @@ TableContent.propTypes = {
 // -------------------------------------------------------------------------------
 
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
-	const [processedReport, setProcessedReport] = useState([]);
+	const [processedResultsStorage, setProcessedResultsStorage] =
+		useState(statsFakeData);
+	const [processedReport, setProcessedReport] = useState(processedInfoFakeData);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("meeting-time");
@@ -187,7 +190,12 @@ function DisplayTravelResults() {
 	};
 
 	useEffect(() => {
-		fetchTravelData(url);
+		const falsy = false;
+
+		if (falsy) {
+			fetchTravelData(url);
+		}
+
 		document.title = "Meeting results";
 	}, []);
 
