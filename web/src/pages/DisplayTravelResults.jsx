@@ -13,8 +13,8 @@ import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 import "./DisplayComponent.css";
 // eslint-disable-next-line no-unused-vars
-import processedInfoFakeData from "./staticData/processedInfoData";
-import statsFakeData from "./staticData/statsFakeData";
+// import processedInfoFakeData from "./staticData/processedInfoData";
+// import statsFakeData from "./staticData/statsFakeData";
 
 function TableContent({
 	sortedResults,
@@ -126,9 +126,8 @@ TableContent.propTypes = {
 // -------------------------------------------------------------------------------
 
 function DisplayTravelResults() {
-	const [processedResultsStorage, setProcessedResultsStorage] =
-		useState(statsFakeData);
-	const [processedReport, setProcessedReport] = useState(processedInfoFakeData);
+	const [processedResultsStorage, setProcessedResultsStorage] = useState([]);
+	const [processedReport, setProcessedReport] = useState([]);
 	const [expandedRow, setExpandedRow] = useState(null);
 	const [loading, setLoading] = useState(false);
 	const [selectedOption, setSelectedOption] = useState("meeting-time");
@@ -190,12 +189,7 @@ function DisplayTravelResults() {
 	};
 
 	useEffect(() => {
-		const falsy = false;
-
-		if (falsy) {
-			fetchTravelData(url);
-		}
-
+		fetchTravelData(url);
 		document.title = "Meeting results";
 	}, []);
 
