@@ -12,9 +12,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
 import "./DisplayComponent.css";
-// eslint-disable-next-line no-unused-vars
-// import processedInfoFakeData from "./staticData/processedInfoData";
-// import statsFakeData from "./staticData/statsFakeData";
 
 function TableContent({
 	sortedResults,
@@ -221,9 +218,9 @@ function DisplayTravelResults() {
 				return results.sort(
 					(a, b) => new Date(a.meetingTime) - new Date(b.meetingTime),
 				);
-			case "min":
+			case "average":
 				return results.sort(
-					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
+					(a, b) => a.averageTravelTimeInMinute - b.averageTravelTimeInMinute,
 				);
 			case "max":
 				return results.sort(
@@ -298,7 +295,7 @@ function DisplayTravelResults() {
 								onSelect={(index) => {
 									const options = [
 										"meeting-time",
-										"min",
+										"average",
 										"max",
 										"minSlack",
 										"meeting-location",
@@ -309,7 +306,7 @@ function DisplayTravelResults() {
 							>
 								<TabList className="tabs" role="tablist">
 									<Tab className="tab">Meeting Time</Tab>
-									<Tab className="tab">Min Travel Time</Tab>
+									<Tab className="tab">Avg Travel Time</Tab>
 									<Tab className="tab">Max Travel Time</Tab>
 									<Tab className="tab">Min Arrival Slack</Tab>
 									<Tab className="tab">Diagram</Tab>
