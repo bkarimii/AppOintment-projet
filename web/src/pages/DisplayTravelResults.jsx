@@ -11,7 +11,6 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 
 import { ReportMaker } from "./ReportMaker";
 import Visualise from "./Visualise";
-
 import "./DisplayComponent.css";
 
 function TableContent({
@@ -47,13 +46,13 @@ function TableContent({
 								{extractDateTime(result.meetingTime)[1]}
 							</td>
 							<td data-label="Min Travel Time">
-								{result.minTravelTimeInMinute}
+								{`${formatHours(result.minTravelTimeInHour)} h (${result.minTravelTimeInMinute} m)`}
 							</td>
 							<td data-label="Average Travel Time">
-								{result.averageTravelTimeInMinute}
+								{`${formatHours(result.averageTravelTimeInHour)} h (${result.averageTravelTimeInMinute} m)`}
 							</td>
 							<td data-label="Max Travel Time">
-								{result.maxTravelTimeInMinute}
+								{`${formatHours(result.maxTravelTimeInHour)} h (${result.maxTravelTimeInMinute} m)`}
 							</td>
 							<td data-label="Departures">
 								{result.earliestDeparture} - {result.latestDeparture}
@@ -104,6 +103,7 @@ TableContent.propTypes = {
 		PropTypes.shape({
 			meetingTime: PropTypes.string.isRequired,
 			minTravelTimeInMinute: PropTypes.number.isRequired,
+			minTravelTimeInHour: PropTypes.string.isRequired,
 			averageTravelTimeInMinute: PropTypes.number.isRequired,
 			maxTravelTimeInMinute: PropTypes.number.isRequired,
 			earliestDeparture: PropTypes.string.isRequired,
@@ -121,6 +121,13 @@ TableContent.propTypes = {
 	processedReport: PropTypes.array.isRequired,
 };
 
+const formatHours = (hourValue) => {
+	const hours = Math.floor(hourValue);
+	const minutes = Math.round((hourValue - hours) * 60);
+	return `${hours}:${minutes.toString().padStart(2, "0")}`;
+};
+
+// -------------------------------------------------------------------------------
 // -------------------------------------------------------------------------------
 
 function DisplayTravelResults() {
@@ -219,9 +226,9 @@ function DisplayTravelResults() {
 				return results.sort(
 					(a, b) => new Date(a.meetingTime) - new Date(b.meetingTime),
 				);
-			case "min":
+			case "average":
 				return results.sort(
-					(a, b) => a.minTravelTimeInMinute - b.minTravelTimeInMinute,
+					(a, b) => a.averageTravelTimeInMinute - b.averageTravelTimeInMinute,
 				);
 			case "max":
 				return results.sort(
@@ -296,7 +303,7 @@ function DisplayTravelResults() {
 								onSelect={(index) => {
 									const options = [
 										"meeting-time",
-										"min",
+										"average",
 										"max",
 										"minSlack",
 										"meeting-location",
@@ -307,7 +314,7 @@ function DisplayTravelResults() {
 							>
 								<TabList className="tabs" role="tablist">
 									<Tab className="tab">Meeting Time</Tab>
-									<Tab className="tab">Min Travel Time</Tab>
+									<Tab className="tab">Avg Travel Time</Tab>
 									<Tab className="tab">Max Travel Time</Tab>
 									<Tab className="tab">Min Arrival Slack</Tab>
 									<Tab className="tab">Diagram</Tab>
