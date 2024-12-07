@@ -236,7 +236,7 @@ ul {
 }
 
 button[type="button"]:hover {
-	background-color: #b32d3a;
+	/* background-color: #b32d3a; //this makes the whole background of delete button red*/
 }
 .form-header {
 	font-size: 25px;
