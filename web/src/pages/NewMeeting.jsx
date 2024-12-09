@@ -178,6 +178,7 @@ function NewMeeting() {
 												onClick={() => deleteMeetingStation(index)}
 												style={{ display: "flex", alignItems: "center" }}
 												name="delete-station"
+												type="button"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
@@ -355,6 +356,7 @@ function NewMeeting() {
 												onClick={deleteAttendee(index)}
 												aria-label={`Remove ${attendee.name} from attendee list`}
 												name="delete-attendee"
+												type="button"
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
