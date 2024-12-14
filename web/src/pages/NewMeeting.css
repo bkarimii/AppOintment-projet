@@ -293,3 +293,110 @@ form {
 		padding: 10px;
 	}
 }
+
+/* ==================================================== */
+#station-list {
+	margin: 20px;
+	font-family: Arial, sans-serif;
+}
+
+#station-list-new-code {
+	margin-bottom: 20px;
+}
+
+#input-box-container {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
+#input-box-container label {
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+
+#input-box-container input {
+	padding: 8px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 14px;
+}
+
+#input-box-container button {
+	padding: 8px 12px;
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	align-self: flex-start;
+}
+
+#input-box-container button:hover {
+	background-color: #0056b3;
+}
+
+#suggestions {
+	margin-top: 5px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	background-color: white;
+	max-height: 150px;
+	overflow-y: auto;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	padding: 8px;
+	z-index: 1000;
+	position: relative;
+}
+
+#suggestions div {
+	padding: 8px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+}
+
+#suggestions div:hover {
+	background-color: #f0f0f0;
+}
+
+#added-stations {
+	margin-top: 20px;
+}
+
+#added-stations h3 {
+	font-size: 16px;
+	margin-bottom: 10px;
+}
+
+#added-stations ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+#added-stations ul li {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	padding: 10px;
+	margin-bottom: 10px;
+	background-color: #f9f9f9;
+}
+
+.delete-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+}
+
+.delete-button svg {
+	fill: #ff4d4d;
+	transition: fill 0.3s;
+}
+
+.delete-button svg:hover {
+	fill: #ff0000;
+}
