@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { isArray } from "chart.js/helpers";
@@ -7,6 +8,12 @@ import "./NewMeeting.css";
 import { useNavigate } from "react-router-dom";
 
 function NewMeeting() {
+	//This variable handle the inputbox value to search stations
+	const [searchedStation, setSearchedStation] = useState("");
+	const [filteredStations, setFilteredStations] = useState([]); // Matched stations
+	// const [addedStations, setAddedStations] = useState([]);
+
+	// ====================================================================
 	const [stations, setStations] = useState([]);
 	const [helpIconToggle, setHelpIconToggle] = useState(false);
 	const [formData, setFormData] = useState(() => {
@@ -16,6 +23,8 @@ function NewMeeting() {
 		}
 		return (
 			savedData || {
+				addedStations: [{ station: "" }],
+				copyMeetingStation: [{ station: "" }],
 				meetingStation: [{ station: "" }],
 				meetingDate: "",
 				earliestStartTime: "",
@@ -25,6 +34,8 @@ function NewMeeting() {
 			}
 		);
 	});
+	const [addedStations, setAddedStations] = useState(formData.addedStations);
+
 	const [meetingStation, setMeetingStation] = useState(formData.meetingStation);
 	const [meetingDate, setMeetingDate] = useState(formData.meetingDate);
 	const [earliestStartTime, setEarliestStartTime] = useState(
@@ -46,6 +57,7 @@ function NewMeeting() {
 	useEffect(() => {
 		const updateFormData = () => {
 			setFormData({
+				addedStations,
 				meetingStation,
 				meetingDate,
 				earliestStartTime,
@@ -54,9 +66,9 @@ function NewMeeting() {
 				intervalTime,
 			});
 		};
-
 		updateFormData();
 	}, [
+		addedStations,
 		meetingStation,
 		meetingDate,
 		earliestStartTime,
@@ -68,6 +80,7 @@ function NewMeeting() {
 	useEffect(() => {
 		document.title = "ThisAppointment";
 		localStorage.setItem("newMeetingData", JSON.stringify(formData));
+		console.log(formData, "This is form data ------------<");
 	}, [formData]);
 
 	const handleMeetingStationChange = (index, field, value) => {
@@ -130,6 +143,56 @@ function NewMeeting() {
 		setHelpIconToggle(!helpIconToggle);
 	};
 
+	// =======================New Implementation==============================
+
+	const handleSearch = (event) => {
+		const value = event.target.value.toLowerCase();
+		setSearchedStation(value);
+
+		// Filter stations that match the input
+		if (value) {
+			const matches = stations.filter((station) =>
+				station.station_name.toLowerCase().includes(value),
+			);
+			setFilteredStations(matches);
+		} else {
+			setFilteredStations([]); // Clear suggestions if input is empty
+		}
+	};
+
+	const handleSelect = (station_name) => {
+		setSearchedStation(station_name); // Populate the selected station in the input box
+		setFilteredStations([]); // Clear the dropdown after selection
+	};
+
+	// Add selected station to the list
+	const handleAddButtonClick = (e) => {
+		e.preventDefault();
+		if (searchedStation) {
+			const selectedStation = stations.find(
+				(station) => station.station_name === searchedStation,
+			);
+
+			if (
+				selectedStation &&
+				!addedStations.some(
+					(station) => station.station_name === selectedStation.station_name,
+				)
+			) {
+				setAddedStations([...addedStations, selectedStation]);
+				setSearchedStation(""); // Clear input box after adding
+			}
+		}
+	};
+
+	// This function handles deleting stations for the ones added by input box
+	const deleteMeetingStationCopy = (index) => {
+		const updatedMeetingStation = addedStations.filter((_, i) => i !== index);
+		setAddedStations(updatedMeetingStation);
+	};
+
+	// =====================================================
+
 	return (
 		<>
 			<div id="page-container">
@@ -142,111 +205,116 @@ function NewMeeting() {
 								Meeting Station List
 							</label>
 							<div id="station-list">
-								<ul id="stn-list">
-									{meetingStation.map((station, index) => (
-										<li className="station-li" key={index}>
-											<div className="form-group station-code-group">
-												<select
-													name="meetingStation"
-													id={"meeting-station" + index}
-													value={station.station}
-													onChange={(e) =>
-														handleMeetingStationChange(
-															index,
-															"station",
-															e.target.value,
-														)
-													}
-													required
-													aria-required="true"
-												>
-													<option value="" disabled>
-														Select a station
-													</option>
-													{stations.map((station, idx) => (
-														<option key={idx} value={station.crs_code}>
-															{station.station_name}
-														</option>
-													))}
-												</select>
-												<label htmlFor={"meeting-station" + index}>
-													Station
-												</label>
-											</div>
-											<button
-												className="delete-button"
-												onClick={() => deleteMeetingStation(index)}
-												style={{ display: "flex", alignItems: "center" }}
-												name="delete-station"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													width="30"
-													height="30"
-													viewBox="0 0 64 64"
-												>
-													<rect
-														x="16"
-														y="22"
-														width="32"
-														height="34"
-														fill="black"
-														rx="4"
-													/>
-													<rect
-														x="12"
-														y="16"
-														width="40"
-														height="5"
-														fill="black"
-														rx="2"
-													/>
-													<rect
-														x="24"
-														y="11"
-														width="16"
-														height="6"
-														fill="black"
-														rx="2"
-													/>
-													<rect
-														x="22"
-														y="27"
-														width="4"
-														height="24"
-														fill="white"
-													/>
-													<rect
-														x="30"
-														y="27"
-														width="4"
-														height="24"
-														fill="white"
-													/>
-													<rect
-														x="38"
-														y="27"
-														width="4"
-														height="24"
-														fill="white"
-													/>
-												</svg>
-											</button>
-										</li>
-									))}
-								</ul>
+								{/* ====================I am adding a text box to search stations========================= */}
 
-								<button
-									id="add-station-button"
-									type="button"
-									onClick={addMeetingStation}
-									name="add-station"
-								>
-									<span style={{ fontSize: "18px", marginRight: "5px" }}>
-										+
-									</span>
-									Add Station
-								</button>
+								<div id="station-list-new-code">
+									<div id="input-box-container">
+										<label htmlFor="meetingStations">Stations: </label>
+										<input
+											type="text"
+											name="meetingStations"
+											value={searchedStation}
+											onChange={handleSearch}
+											placeholder="Search for a station"
+										/>
+										<button onClick={handleAddButtonClick}>Add</button>
+
+										{/* Suggestions dropdown */}
+										{filteredStations.length > 0 && (
+											<div id="suggestions">
+												{filteredStations.map((station, index) => (
+													<div
+														key={index}
+														role="button"
+														tabIndex={0}
+														onClick={() => handleSelect(station.station_name)}
+														onKeyDown={(e) => {
+															if (e.key === "Enter") {
+																handleSelect(station.station_name);
+															}
+														}}
+													>
+														{station.station_name} ({station.crs_code})
+													</div>
+												))}
+											</div>
+										)}
+									</div>
+								</div>
+								{/* Display added stations */}
+								{addedStations.length > 0 && (
+									<div id="added-stations">
+										<h3>Added Stations:</h3>
+										<ul id="ul-added-station">
+											{addedStations.map((station, index) => (
+												<li key={index} className="li-added-stations">
+													{station.station_name} ({station.crs_code})
+													<button
+														className="delete-button"
+														onClick={() => deleteMeetingStationCopy(index)}
+														style={{ display: "flex", alignItems: "center" }}
+														name="delete-station-inputbox"
+													>
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															width="30"
+															height="30"
+															viewBox="0 0 64 64"
+														>
+															<rect
+																x="16"
+																y="22"
+																width="32"
+																height="34"
+																fill="black"
+																rx="4"
+															/>
+															<rect
+																x="12"
+																y="16"
+																width="40"
+																height="5"
+																fill="black"
+																rx="2"
+															/>
+															<rect
+																x="24"
+																y="11"
+																width="16"
+																height="6"
+																fill="black"
+																rx="2"
+															/>
+															<rect
+																x="22"
+																y="27"
+																width="4"
+																height="24"
+																fill="white"
+															/>
+															<rect
+																x="30"
+																y="27"
+																width="4"
+																height="24"
+																fill="white"
+															/>
+															<rect
+																x="38"
+																y="27"
+																width="4"
+																height="24"
+																fill="white"
+															/>
+														</svg>
+													</button>
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+
+								{/* ============================================= */}
 							</div>
 						</div>
 
